@@ -1,0 +1,148 @@
+[
+{
+	"uri": "http://localhost:1313/vi/2-preparation/2.1-iam-role/",
+	"title": "Tạo IAM role",
+	"tags": [],
+	"description": "",
+	"content": "Tạo IAM Role Trong bước này, chúng ta sẽ chuyển tới giao diện IAM Console và tạo role cho dịch vụ Glue. Role này sẽ cho phép AWS Glue truy cập tới dữ liệu nằm trong S3 và tạo các đối tượng cần thiết trong Glue Catalog.\nTruy cập vào giao diện AWS Management Console\nTìm IAM Chọn IAM để vào IAM Dashboard Trong IAM Dashboard\nChọn Role Chọn Create role Trong giao diện Create role, ở bước Select trusted entity\nChọn AWS Service Ở phần Service or use case chọn Glue Chọn Next Trong giao diện Create role, ở bước Add Permission\nTìm và chọn AmazonS3FullAccess Tìm và chọn AWSGlueServiceRole Chọn Next Trong giao diện Create role, ở bước Name, review and create\nỞ Role name, đặt tên AWSGlueServiceRoleDefault Xem lại thông tin role tại Select trusted entity và Add Permission Chọn Create role Giao diện tạo role thành công: "
+},
+{
+	"uri": "http://localhost:1313/vi/",
+	"title": "Data Lake",
+	"tags": [],
+	"description": "",
+	"content": "Tìm hiểu về Data Lake trên AWS Giới thiệu Data Lake Data Lake là một hệ thống lưu trữ tập trung cho phép lưu trữ dữ liệu dưới mọi định dạng - có cấu trúc, bán cấu trúc hoặc không cấu trúc. Không giống như các cơ sở dữ liệu truyền thống yêu cầu định dạng dữ liệu trước khi lưu trữ, Data Lake cho phép lưu trữ dữ liệu thô và xử lý hoặc phân tích khi cần.\nLợi ích của Data Lake Lưu trữ linh hoạt: Hỗ trợ dữ liệu từ nhiều nguồn và dưới nhiều định dạng khác nhau.\nPhân tích toàn diện: Tạo điều kiện cho phân tích dữ liệu lớn và các ứng dụng AI/ML.\nTiết kiệm chi phí: Sử dụng các giải pháp lưu trữ chi phí thấp như Amazon S3.\nTích hợp dễ dàng: Kết nối mượt mà với các công cụ phân tích và báo cáo như Amazon Athena và QuickSight.\nThách thức khi triển khai Data Lake Quản Lý Dữ Liệu: Làm thế nào để tổ chức và quản lý dữ liệu hiệu quả?\nBảo Mật: Làm sao để ngăn chặn truy cập trái phép vào dữ liệu?\nKhả Năng Mở Rộng: Hệ thống phải có khả năng mở rộng để xử lý sự gia tăng dữ liệu.\nHiệu Suất: Cần tối ưu hóa cho việc truy vấn và xử lý dữ liệu.\nChất Lượng Dữ Liệu: Đảm bảo tính chính xác và độ tin cậy của dữ liệu là rất quan trọng.\nKiến trúc Workshop Tổng quan về kiến trúc Hình dưới đây minh họa kiến trúc hệ thống Data Lake mà chúng ta sẽ triển khai trong workshop này: Mô tả kiến trúc Thu thập dữ liệu:\nDữ liệu từ nhiều nguồn khác nhau được thu thập qua Kinesis. Kinesis Firehose Stream xử lý và chuyển dữ liệu đến Amazon S3. Lưu trữ dữ liệu thô:\nDữ liệu thô được lưu trữ trong S3 ở thư mục \u0026ldquo;raw data\u0026rdquo;. CloudFormation tự động triển khai các tài nguyên cần thiết. AWS Glue:\nAWS Glue Crawler quét dữ liệu thô trong S3 để tạo metadata. Metadata được lưu trữ trong AWS Glue Data Catalog. Một ETL Job (Extract, Transform, Load) xử lý và chuyển đổi dữ liệu thô thành dữ liệu đã qua xử lý. Lưu trữ dữ liệu đã xử lý:\nDữ liệu đã được chuyển đổi được lưu trong một bucket S3 khác dưới thư mục \u0026ldquo;processed-data\u0026rdquo;. Phân tích và trực quan hóa dữ liệu:\nAWS Glue Crawler quét dữ liệu đã qua xử lý và cập nhật Glue Data Catalog. Amazon Athena được sử dụng để truy vấn dữ liệu trong S3. Amazon QuickSight kết nối đến dữ liệu để trực quan hóa và báo cáo. Mục tiêu của workshop Hiểu các thành phần của kiến trúc Data Lake. Triển khai một hệ thống Data Lake đơn giản bằng các dịch vụ AWS. Tích hợp các công cụ phân tích và trực quan hóa để trích xuất thông tin hữu ích từ dữ liệu. Nội dung: Giới thiệu Các bước chuẩn bị Thu thập và lưu trữ dữ liệu Tạo Data Catalog Chuyển đổi dữ liệu Phân tích và trực quan hóa Dọn dẹp tài nguyên "
+},
+{
+	"uri": "http://localhost:1313/vi/1-introduce/",
+	"title": "Giới thiệu",
+	"tags": [],
+	"description": "",
+	"content": "Tìm hiểu về Data Lake trên AWS Giới thiệu Data Lake Data Lake là một hệ thống lưu trữ tập trung cho phép lưu trữ dữ liệu dưới mọi định dạng - có cấu trúc, bán cấu trúc hoặc không cấu trúc. Không giống như các cơ sở dữ liệu truyền thống yêu cầu định dạng dữ liệu trước khi lưu trữ, Data Lake cho phép lưu trữ dữ liệu thô và xử lý hoặc phân tích khi cần.\nLợi ích của Data Lake Lưu trữ linh hoạt: Hỗ trợ dữ liệu từ nhiều nguồn và dưới nhiều định dạng khác nhau.\nPhân tích toàn diện: Tạo điều kiện cho phân tích dữ liệu lớn và các ứng dụng AI/ML.\nTiết kiệm chi phí: Sử dụng các giải pháp lưu trữ chi phí thấp như Amazon S3.\nTích hợp dễ dàng: Kết nối mượt mà với các công cụ phân tích và báo cáo như Amazon Athena và QuickSight.\nThách thức khi triển khai Data Lake Quản Lý Dữ Liệu: Làm thế nào để tổ chức và quản lý dữ liệu hiệu quả?\nBảo Mật: Làm sao để ngăn chặn truy cập trái phép vào dữ liệu?\nKhả Năng Mở Rộng: Hệ thống phải có khả năng mở rộng để xử lý sự gia tăng dữ liệu.\nHiệu Suất: Cần tối ưu hóa cho việc truy vấn và xử lý dữ liệu.\nChất Lượng Dữ Liệu: Đảm bảo tính chính xác và độ tin cậy của dữ liệu là rất quan trọng.\nKiến trúc Workshop Tổng quan về kiến trúc Hình dưới đây minh họa kiến trúc hệ thống Data Lake mà chúng ta sẽ triển khai trong workshop này: Mô tả kiến trúc Thu thập dữ liệu:\nDữ liệu từ nhiều nguồn khác nhau được thu thập qua Kinesis. Kinesis Firehose Stream xử lý và chuyển dữ liệu đến Amazon S3. Lưu trữ dữ liệu thô:\nDữ liệu thô được lưu trữ trong S3 ở thư mục \u0026ldquo;raw data\u0026rdquo;. CloudFormation tự động triển khai các tài nguyên cần thiết. AWS Glue:\nAWS Glue Crawler quét dữ liệu thô trong S3 để tạo metadata. Metadata được lưu trữ trong AWS Glue Data Catalog. Một ETL Job (Extract, Transform, Load) xử lý và chuyển đổi dữ liệu thô thành dữ liệu đã qua xử lý. Lưu trữ dữ liệu đã xử lý:\nDữ liệu đã được chuyển đổi được lưu trong một bucket S3 khác dưới thư mục \u0026ldquo;processed-data\u0026rdquo;. Phân tích và trực quan hóa dữ liệu:\nAWS Glue Crawler quét dữ liệu đã qua xử lý và cập nhật Glue Data Catalog. Amazon Athena được sử dụng để truy vấn dữ liệu trong S3. Amazon QuickSight kết nối đến dữ liệu để trực quan hóa và báo cáo. Mục tiêu của workshop Hiểu các thành phần của kiến trúc Data Lake. Triển khai một hệ thống Data Lake đơn giản bằng các dịch vụ AWS. Tích hợp các công cụ phân tích và trực quan hóa để trích xuất thông tin hữu ích từ dữ liệu. Bài lab này được thực hiện ở region Singapore (ap-southeast-1).\n"
+},
+{
+	"uri": "http://localhost:1313/vi/6-analysis-visualize/6.1-athena/",
+	"title": "Phân tích với Athena",
+	"tags": [],
+	"description": "",
+	"content": "Phân tích với Athena Tìm kiếm và chọn dịch vụ Athena Thực hiện query với: Data source: AwsDataCatalog Database: summitdb Thực hiện câu truy vấn: SELECT artist_name, count(artist_name) AS count FROM processed_data GROUP BY artist_name ORDER BY count DESC Chọn Run query Kết quả câu truy vấn trên: Tiếp theo, thực hiện query với: SELECT device_id, track_name, count(track_name) AS count FROM processed_data GROUP BY device_id, track_name ORDER BY count DESC Chọn Run query Kết quả câu truy vấn trên: "
+},
+{
+	"uri": "http://localhost:1313/vi/4-data-catalog/4.1-glue-crawler/",
+	"title": "Tạo Glue Crawler",
+	"tags": [],
+	"description": "",
+	"content": "Tạo Glue Crawler Tìm và chọn AWS Glue\nTrong giao diện AWS Glue\nChọn Crawler Chọn Create crawler Trong giao diện Add new crawler Ở bước Set crawler properties\nNhập Name là summitcrawler Chọn Next Ở bước Choose data sources and classifiers\nChọn Add a data source Chọn Data source S3 Chọn Browse S3 Chọn S3 path (như hình ảnh) Chọn Crawler new sub-folders only Chọn Add an S3 data source Sau đó chọn Next Ở bước Configure security settings\nChọn IAM role: AWSGlueServiceRoleDefault Chọn Next Ở bước Set output and scheduling\nChọn Add database Ở giao diện Create database:\nĐặt tên database: summitdb Chọn Create database Quay lại giao diện bước Set output and scheduling\nChọn target database: summitdb Chọn Next Nếu summitdb không hiển thị, bạn có thể bấm button reload bên cạnh textfield Target database\nỞ bước Review and create\nReview lại các cấu hình Chọn Create crawler Sau khi tạo crawler thành công, chọn Run crawler Đợi một khoảng thời gian để crawler run. Sau khi run thành công, crawler ở trạng thái Complete Chọn Tables ở giao diện AWS Glue, chúng ta sẽ thấy có 2 bảng dữ liệu. Dữ liệu ở raw2024 Dữ liệu ở reference_data "
+},
+{
+	"uri": "http://localhost:1313/vi/3-collection-storage/3.1-s3-bucket/",
+	"title": "Tạo S3 bucket",
+	"tags": [],
+	"description": "",
+	"content": "Tạo S3 bucket Tìm kiếm và chọn dịch vụ S3\nTrong giao diện S3, chọn Create bucket\nTại Bucket name, đặt tên asg-datalake-demo-2024\nKiểm tra các cấu hình như hình dưới:\nClick Create bucket\nTạo bucket thành công\n"
+},
+{
+	"uri": "http://localhost:1313/vi/2-preparation/",
+	"title": "Các bước chuẩn bị",
+	"tags": [],
+	"description": "",
+	"content": "Các bước chuẩn bị Chúng ta sẽ chuẩn bị để tạo IAM role và gắn các policy cần thiết để đảm bảo AWS Glue có quyền truy cập vào dữ liệu trong Amazon S3 và thực hiện các công việc ETL một cách an toàn và hiệu quả.\nNội dung: Tạo IAM role Tạo policy Attach policy vào role "
+},
+{
+	"uri": "http://localhost:1313/vi/4-data-catalog/4.2-test-data/",
+	"title": "Kiểm tra dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Kiểm tra dữ liệu Tìm kiếm và chọn dịch vụ S3 Chọn vào bucket asg-datalake-demo-2024 Chọn Create folder Đặt tên cho folder là Athena, sau đó chọn Create folder Ta được kết quả Tiếp theo, ta sẽ sử dụng Athena cùng các câu truy vấn để kiểm tra cấu trúc dữ liệu\nTìm kiếm và chọn dịch vụ Athena Trong Query editor, chọn Settings, sau đó chọn Manage Trong Manage settings Chọn Browse S3 Chọn đường dẫn dẫn tới thư mục Athena Chọn Save Thực hiện query với: Data source: AwsDataCatalog Database: summitdb Thực hiện câu truy vấn: lấy 10 dòng của table raw2024 SELECT * FROM \u0026#34;summitdb\u0026#34;.\u0026#34;raw2024\u0026#34; limit 10 Chọn Run query Kết quả câu truy vấn trên: Tiếp tục thực hiện query với: Data source: AwsDataCatalog Database: summitdb Thực hiện câu truy vấn: SELECT activity_type, count(activity_type) FROM raw2024 GROUP BY activity_type ORDER BY activity_type Chọn Run query Kết quả câu truy vấn trên: "
+},
+{
+	"uri": "http://localhost:1313/vi/3-collection-storage/3.2-object-in-bucket/",
+	"title": "Tạo object cho S3 bucket",
+	"tags": [],
+	"description": "",
+	"content": "Tạo object cho S3 bucket Tiếp theo, click vào bucket vừa tạo. Tại tab Object chọn Create folder\nTrong giao diện Create bucket, đặt Folder name là data\nKiểm tra các cấu hình và chọn Create folder\nTương tự với cách tạo folder, ta sẽ tạo folder reference_data ở trong folder data\nTạo folder reference_data thành công\nTiến hành download file tracks_list.json tại đây\nCtrl + S để lưu file Tiến hành upload file tracks_list.json lên folder reference_data\nChọn Object Chọn Upload Chọn Add file, chọn file đã tải Chọn file tracks_list.json Chọn Upload Upload file thành công "
+},
+{
+	"uri": "http://localhost:1313/vi/2-preparation/2.2-policy/",
+	"title": "Tạo policy",
+	"tags": [],
+	"description": "",
+	"content": "Tạo policy Tiếp theo, ta sẽ tạo 1 policy.\nTại giao diện IAM\nChọn Policy Chọn Create policy Tại giao diện Create policy, ở bước Specify permission\nChọn JSON Paste đoạn code sau vào Policy Editor, chú ý để AccountID là account ID của bạn. Sau đó chọn Next { \u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;, \u0026#34;Statement\u0026#34;: [ { \u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;, \u0026#34;Action\u0026#34;: \u0026#34;iam:PassRole\u0026#34;, \u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:iam::AccountID:role/AWSGlueServiceRoleDefault\u0026#34; } ] } Tại giao diện Create policy, ở bước Review and create\nĐặt Policy name là AWSGlueServicePolicy Review lại các thông số và chọn Create policy Tạo policy thành công "
+},
+{
+	"uri": "http://localhost:1313/vi/6-analysis-visualize/6.2-quicksight/",
+	"title": "Visualize với QuickSight",
+	"tags": [],
+	"description": "",
+	"content": "Visualize với QuickSight Chúng ta sẽ dùng QuickSight để trực quan hóa dữ liệu từ table processed_data\nTrước tiên, ta sẽ tạo tài khoản Quicksight\nNếu bạn đã có tài khoản QuickSight thì có thể bỏ qua bước này\nTạo tài khoản QuickSight Tìm kiếm và chọn dịch vụ QuickSight Sign up for QuickSight Nhập email của bạn, chọn Authentication Method và chọn region Asia Pacific (Singapore) Ở Account info Nhập demo-visualize làm QuickSight account name IAM role: chọn Use QuickSight-managed role (default) Chọn Finish Sau khi đăng ký thành công, ta vào được giao diện QuickSight Thực hiện trực quan hóa dữ liệu Tại giao diện QuickSight, chọn Manage QuickSight Chọn Security \u0026amp; permissions, chọn Manage Tick chọn các service Đối với Amazon S3: chọn S3 Buckets Linked To QuickSight Account, chọn bucket asg-datalake-demo-2024, sau đó chọn Finish Tick chọn các dịch vụ còn lại, sau đó chọn Save Trở lại giao diện QuickSight Chọn Dataset Chọn New dataset Tạo data source Chọn Athena Nhập Data source name là summitdemo Chọn Validate Connection. Nếu kết nối thành công, sẽ hiển thị SSL is enabled Chọn Create data source Chọn Table: Catalog, chọn AwsDataCatalog Database, nhập summitdb Table, chọn processed_data Chọn Select Trong bước Finish dataset creation: Chọn Directly query your data Chọn Visualize Sử dụng Amazon Quick Sight để visualize các dữ liệu đã được chuyển đổi (transform): Tạo 1 Tree map của users và số tracks nhạc mà họ nghe. Click vào chọn Tree Map Kết quả Tree map Ta có thể sử dung với các Visual types khác, chẳng hạn Pie chart "
+},
+{
+	"uri": "http://localhost:1313/vi/2-preparation/2.3-attach-policy-to-role/",
+	"title": "Gắn policy vào role",
+	"tags": [],
+	"description": "",
+	"content": "Gắn policy vào role Ở phần này, ta gắn policy vào role đã tạo trước, để đảm bảo role có các quyền tương ứng được định nghĩa trong policy\nTrong IAM Dashboard\nChọn Role Chọn vào role AWSGlueServiceRoleDefault Trong chi tiết role AWSGlueServiceRoleDefault, chọn Attach policy\nChọn AWSGlueServicePolicy, click Add permission\nAttach policy vào role thành công\n"
+},
+{
+	"uri": "http://localhost:1313/vi/3-collection-storage/3.3-kinesis-firehose-stream/",
+	"title": "Tạo Firehose Stream",
+	"tags": [],
+	"description": "",
+	"content": "Tạo Firehose Stream Tìm kiếm và chọn dịch vụ Kinesis\nChọn Amazon Data Firehose\nChọn Create Firehose Stream\nTại giao diện Create Firehose Stream\nTại Source chọn Direct PUT Tại Destination chọn Amazon S3 Tại Firehose stream name đặt tên FCJ-FirehoseStream Kiểm tra các giá trị ở Transform and convert records Ở Destination Setting\nChọn Browse Chọn bucket asg-datalake-demo-2024\nChọn Create\nKiểm tra Ở S3 bucket prefix, nhập data/raw\nỞ S3 bucket error output prefix, nhập data/error\nChọn Create Firehose stream\nTạo Firehose stream thành công "
+},
+{
+	"uri": "http://localhost:1313/vi/3-collection-storage/",
+	"title": "Thu thập và lưu trữ dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Trong hướng dẫn này, chúng ta sẽ tạo một S3 bucket để lưu trữ dữ liệu và tạo một Firehose stream để thu thập dữ liệu. Trong quá trình này, ta sẽ dùng ta sử dụng Kinesis Data Generator để tạo dữ liệu mẫu thông qua CloudFormation\nNội dung: Tạo S3 bucket Tạo các object trong bucket Tạo Firehose Stream Tạo dữ liệu mẫu "
+},
+{
+	"uri": "http://localhost:1313/vi/4-data-catalog/",
+	"title": "Tạo Data Catalog",
+	"tags": [],
+	"description": "",
+	"content": "Nội dung: Tạo Glue Crawler Kiểm tra dữ liệu "
+},
+{
+	"uri": "http://localhost:1313/vi/3-collection-storage/3.4-sample-data/",
+	"title": "Tạo dữ liệu mẫu",
+	"tags": [],
+	"description": "",
+	"content": "Tạo dữ liệu mẫu Truy cập vào amazon-kinesis-data-generator-link, sẽ hiển thị giao diện sau: Click vào Help Chọn Create a Cognito User with CloudFormation Sau đó, sẽ dẫn đến giao diện Create stack Lưu ý chuyển sang region Singapore (ap-southeast-1).\nKiểm tra các cấu hình, sau đó chọn Next Ở bước Specify stack details Stack name, nhập Kinesis-Data-Generator-Cognito-User Trong phần Parameters: Username: Nhập admin Password: Nhập password bạn muốn đặt Lưu ý theo như template của CloudFormation mà ta đang dùng, password phải có ít nhất 6 ký tự gồm chữ và số, trong đó chứa ít nhất một số\nỞ bước Configure stack options Để nguyên các giá trị mặc định Chọn I acknowledge that AWS CloudFormation might create IAM resources. Chọn Next Ở bước Review and create Kiểm tra lại stack\nSau đó chọn Submit\nĐợi quá trình Stack được tạo\nSau khi tạo thành công, kiểm tra phần Output Click vào đường link ở phần Output, ta được dẫn đến giao diện Amazon Kinesis Data Generator. Ta tiến hành đăng nhập với thông tin username và password đã tạo ở stack trước đó\nSetup các giá trị sau:\nRegion: ap-southeast-1 Stream/delivery stream: FCJ-FirehoseStream Records per second: 2000 Record template: Template 1 Nhập vào Template 1: { \u0026#34;uuid\u0026#34;: \u0026#34;{{random.uuid}}\u0026#34;, \u0026#34;device_ts\u0026#34;: \u0026#34;{{date.utc(\u0026#34;YYYY-MM-DD HH:mm:ss.SSS\u0026#34;)}}\u0026#34;, \u0026#34;device_id\u0026#34;: {{random.number(50)}}, \u0026#34;device_temp\u0026#34;: {{random.weightedArrayElement( {\u0026#34;weights\u0026#34;:[0.30, 0.30, 0.20, 0.20],\u0026#34;data\u0026#34;:[32, 34, 28, 40]} )}}, \u0026#34;track_id\u0026#34;: {{random.number(30)}}, \u0026#34;activity_type\u0026#34;: {{random.weightedArrayElement( { \u0026#34;weights\u0026#34;: [0.1, 0.2, 0.2, 0.3, 0.2], \u0026#34;data\u0026#34;: [\u0026#34;\\\u0026#34;Running\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Working\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Walking\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Traveling\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Sitting\\\u0026#34;\u0026#34;] } )}} } Chọn Send Đợi quá trình generate cho tới khi nhận được khoảng 100.000 records thì chọn Stop Sending Data to Kinesis Tìm và chọn S3. Ta kiểm tra xem dữ liệu vừa generate đã đi tới S3 hay chưa. Kiểm tra dữ liệu đã đi tới S3 thành công "
+},
+{
+	"uri": "http://localhost:1313/vi/5-data-transform/",
+	"title": "Chuyển đổi dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Chuyển đổi dữ liệu Tìm kiếm và chọn dịch vụ Glue Chọn Notebook Tải file notebook.ipynb\nỞ form Notebook\nChọn Upload Notebook Chọn Choose file Chọn file notebook đã tải IAM role: chọn AWSGlueServiceRoleDefault Chọn Create notebook Đợi notebook start, ta chạy từng cell notebook và xem kết quả Đầu tiên, chúng ta sẽ run cell để tạo session Khởi tạo session thành công Vào Interactive Session, kiểm tra thấy session đã được tạo thành công Ở cell [2]: Import các libraries SparkContext, GlueContext, boto3, awsglue và khởi tạo session Ở cell [3]: Câu lệnh khởi tạo GlueContext để sử dụng các tính năng ETL của AWS Glue và lấy SparkSession để xử lý dữ liệu bằng Apache Spark. Ở cell [4]: tạo hai DynamicFrames raw_data và reference_data bằng cách truy xuất dữ liệu từ các bảng raw2024 và reference_data trong cơ sở dữ liệu summitdb trong AWS Glue Data Catalog. Ở cell [5]: Câu lệnh raw_data.printSchema() hiển thị cấu trúc lược đồ (schema) của DynamicFrame raw_data, bao gồm các cột, kiểu dữ liệu và cấu trúc lồng nhau (nếu có). Ở cell [6]: Câu lệnh reference_data.printSchema() hiển thị cấu trúc lược đồ (schema) của DynamicFrame reference_data, bao gồm các cột và kiểu dữ liệu tương ứng. Ở cell [7]: Các câu lệnh này sẽ in ra số lượng bản ghi của hai DynamicFrames raw_data và reference_data. Ở cell [8]: xem nhanh 5 bản ghi đầu tiên trong raw_data dưới dạng DataFrame Spark. Ở cell [9]: xem nhanh 5 bản ghi đầu tiên trong reference_data dưới dạng DataFrame Spark. Ở cell [10]: tạo một bảng tạm thời từ raw_data, truy vấn các bản ghi có activity_type là \u0026ldquo;Running\u0026rdquo; và hiển thị số lượng cũng như 5 dòng đầu tiên của kết quả. Ở cell [11]: truy vấn các bản ghi có activity_type là \u0026ldquo;Working\u0026rdquo; từ bảng tạm thời temp_raw_data, hiển thị số lượng kết quả và 5 dòng đầu tiên của chúng. Ở cell [12]: áp dụng một hàm lọc để chỉ giữ lại các bản ghi có activity_type là \u0026ldquo;Running\u0026rdquo; từ raw_data và sau đó đếm số lượng bản ghi này. Ở cell [13]: giữ lại các bản ghi có activity_type là \u0026ldquo;Working\u0026rdquo; từ raw_data và sau đó in ra số lượng bản ghi này. Ở cell [14]: thực hiện phép nối giữa raw_data và reference_data dựa trên trường track_id, tạo ra một DynamicFrame mới có tên là joined_data Ở cell [15]: cho cái nhìn tổng quan về các trường và kiểu dữ liệu sau khi hai DynamicFrame được nối lại với nhau. Ở cell [16]: loại bỏ các trường không cần thiết (partition_0, partition_1, partition_2, partition_3) khỏi joined_data và lưu kết quả vào joined_data_clean Ở cell [17]: hiển thị lược đồ của joined_data_clean sau khi đã làm sạch dữ liệu bằng cách loại bỏ các trường không mong muốn Ở cell [18]: xem nhanh 5 bản ghi đầu tiên trong joined_data_clean dưới dạng DataFrame Spark. Ở cell [19]: ghi dữ liệu từ joined_data_clean vào S3 trong định dạng Parquet, và nếu có lỗi xảy ra trong quá trình ghi, thông báo lỗi sẽ được in ra. Ở cell [20]: sử dụng Boto3 để khởi chạy summitcrawler, sau đó kiểm tra trạng thái của crawler trong một vòng lặp cho đến khi crawler dừng lại. Khi crawler dừng, chương trình in ra thông báo và kết thúc. Ở cell [21]: sử dụng AWS Glue client để lấy danh sách các bảng trong cơ sở dữ liệu summitdb và in ra tên của từng bảng. Kiểm tra dữ liệu đã được nạp vào S3 hay chưa, tìm kiếm và chọn dịch vụ S3 Kiểm tra tại asg-datalake-demo-2024/data Kiểm tra các object có trong processed-data "
+},
+{
+	"uri": "http://localhost:1313/vi/6-analysis-visualize/",
+	"title": "Phân tích và trực quan hóa",
+	"tags": [],
+	"description": "",
+	"content": "Amazon Athena Amazon Athena là một dịch vụ truy vấn tương tác được sử dụng để phân tích dữ liệu trong Amazon S3 bằng SQL tiêu chuẩn. Chúng ta chỉ cần trỏ đến dữ liệu của bạn trong Amazon S3, xác định schema và bắt đầu truy vấn bằng trình chỉnh sửa truy vấn tích hợp. Amazon Athena cho phép chúng ta khai thác tất cả dữ liệu của mình trong Amazon S3 mà không cần phải thiết lập các quy trình ETL phức tạp. Amazon Athena tính tiền dựa trên số lượng truy vấn được chạy.\nAmazon Athena sử dụng Presto với hỗ trợ SQL ANSI và làm việc với nhiều định dạng dữ liệu tiêu chuẩn, bao gồm CSV, JSON, ORC, Avro, và Parquet. Athena được khuyến nghị cho các nhu cầu truy vấn nhanh, nhưng cũng có khả năng xử lý phân tích phức tạp, bao gồm các phép join với lượng dữ liệu lớn, các window function và mảng.\nAmazon QuickSight Amazon QuickSight là một dịch vụ biểu diễn dữ liệu được quản lý hoàn toàn bởi AWS.\nData source là một kho lưu trữ dữ liệu bên ngoài và bạn cần cấu hình việc truy cập dữ liệu trong kho dữ liệu bên ngoài này, ví dụ Amazon S3, Amazon Athena, Salesforce, v.v.\nDataset xác định dữ liệu cụ thể trong Data source mà bạn muốn sử dụng. Ví dụ: Data source có thể là một bảng nếu bạn đang kết nối với cơ sở dữ liệu. Nó có thể là một file nếu bạn đang kết nối với Amazon S3.\nAnalysis là nơi chứa một tập hợp các Visual và câu chuyện liên quan, ví dụ như tất cả các câu chuyện áp dụng cho một mục tiêu kinh doanh nhất định hoặc KPI.\nVisual là một biểu diễn đồ họa của dữ liệu bạn. Bạn có thể tạo nhiều loại Visual khác nhau trong một Analysis, sử dụng các bộ dữ liệu và loại Visual khác nhau.\nDashboard là một trang bao gồm một hoặc nhiều Analysis chỉ cho phép xem, mà bạn có thể chia sẻ với người dùng Amazon QuickSight khác cho mục đích báo cáo. Dashboard giữ cấu hình của bản Analysis tại thời điểm bạn xuất bản nó, bao gồm các yếu tố như lọc, tham số, điều khiển và thứ tự sắp xếp.\nNội dung: Phân tích với Athena Visualize với QuickSight "
+},
+{
+	"uri": "http://localhost:1313/vi/7-clean-up/",
+	"title": "Dọn dẹp tài nguyên",
+	"tags": [],
+	"description": "",
+	"content": "Chúng ta sẽ dọn dẹp các tài nguyên sau:\nDọn dẹp tài nguyên ở Visual QuickSight: Xóa Pie chart sheet Xóa Analyses QuickSight: Chọn Analyses. Chọn Analysis cần xóa. Chọn Delete. Delete done Xóa Dataset QuickSight: Bạn cũng có thể xóa tài khoản QuickSight nếu không sử dụng Tại giao diện QuickSight, chọn Manage QuickSight Tại Account settings, chọn Manage Thực hiện xóa tài khoản Hủy đăng ký QuickSight thành công Dọn dẹp tài nguyên ở AWS Glue: Truy cập vào AWS Glue.\nXóa các tables Chọn Tables. Chọn các table cần xóa. Chọn Delete để xác nhận xóa Table. Xóa Interactive Sessions Chọn Interactive Sessions. Chọn các session cần xóa. Chọn Delete để xác nhận xóa session. Xóa crawler Chọn Crawler. Chọn các crawler cần xóa. Chọn Action Chọn Delete crawler để xác nhận xóa crawler. Dọn dẹp tài nguyên ở CloudFormation: Vào giao diện CloudFormation Chọn Stack Chọn stack name cần xóa Chọn Delete Nếu delete stack fail Chọn Retry delete Chọn Force delete this entire stack Dọn dẹp tài nguyên ở Kinesis: Vào Amazon Data Firehose Chọn Firehose stream cần xóa Chọn Delete Dọn dẹp tài nguyên ở CloudWatch: Vào giao diện CloudWatch Chọn Log groups Chọn tất cả Log groups Chọn Action Chọn Delete log group(s) Dọn dẹp tài nguyên ở S3: Xóa tất cả các bucket liên quan tới bài lab\nChọn bucket\nEmpty bucket\nChọn lại bucket vừa empty Chọn Delete Thực hiện tương tự với các bucket còn lại\nDọn dẹp tài nguyên ở IAM: Vào giao diện IAM\n1. Xóa Policy\nChọn Policies Chọn policy liên quan đến bài lab Chọn Delete Xóa policy thành công 2. Xóa Role\nChọn Roles Chọn role liên quan đến bài lab Chọn Delete Xóa role thành công "
+},
+{
+	"uri": "http://localhost:1313/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://localhost:1313/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

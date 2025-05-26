@@ -1,0 +1,148 @@
+[
+{
+	"uri": "http://localhost:1313/2-preparation/2.1-iam-role/",
+	"title": "Create IAM Role",
+	"tags": [],
+	"description": "",
+	"content": "Creating an IAM Role In this step, we will navigate to the IAM Console and create a role for the Glue service. This role will allow AWS Glue to access data stored in S3 and create necessary objects in the Glue Catalog.\nAccess the AWS Management Console\nSearch for IAM Select IAM to open the IAM Dashboard In the IAM Dashboard\nSelect Roles Click Create role In the Create role interface, under Select trusted entity\nChoose AWS Service Under Service or use case, select Glue Click Next In the Create role interface, under Add Permission\nSearch for and select AmazonS3FullAccess Search for and select AWSGlueServiceRole Click Next In the Create role interface, under Name, review and create\nIn Role name, enter AWSGlueServiceRoleDefault Review the role details under Select trusted entity and Add Permission Click Create role Successful role creation interface: "
+},
+{
+	"uri": "http://localhost:1313/",
+	"title": "Data Lake",
+	"tags": [],
+	"description": "",
+	"content": "Exploring Data Lake on AWS Introduction to Data Lake A Data Lake is a centralized storage system that allows the storage of data in any format—structured, semi-structured, or unstructured. Unlike traditional databases that require data to be formatted before storage, a Data Lake enables the storage of raw data, which can later be processed or analyzed when needed.\nBenefits of Data Lake Flexible Storage: Supports data from multiple sources and in various formats. Comprehensive Analytics: Facilitates big data analysis and AI/ML applications. Cost-Efficiency: Uses low-cost storage solutions like Amazon S3. Easy Integration: Seamlessly connects with analytics and reporting tools like Amazon Athena and QuickSight. Challenges in Implementing a Data Lake Data Management: How to organize and manage data effectively? Security: How to prevent unauthorized access to data? Scalability: The system must scale to handle the increasing volume of data. Performance: It is necessary to optimize for data querying and processing. Data Quality: Ensuring the accuracy and reliability of data is crucial. Workshop Architecture Overview of the Architecture The following diagram illustrates the architecture of the Data Lake system we will deploy in this workshop:\nArchitecture Description Data Collection:\nData from multiple sources is collected via Kinesis. Kinesis Firehose Stream processes and transfers the data to Amazon S3. Storing Raw Data:\nRaw data is stored in the \u0026ldquo;raw data\u0026rdquo; folder in S3. CloudFormation automatically deploys the necessary resources. AWS Glue:\nAWS Glue Crawler scans the raw data in S3 to create metadata. Metadata is stored in the AWS Glue Data Catalog. An ETL Job (Extract, Transform, Load) processes and transforms the raw data into processed data. Storing Processed Data:\nThe transformed data is stored in another S3 bucket under the \u0026ldquo;processed-data\u0026rdquo; folder. Data Analysis and Visualization:\nAWS Glue Crawler scans the processed data and updates the Glue Data Catalog. Amazon Athena is used to query data in S3. Amazon QuickSight connects to the data for visualization and reporting. Goals of the Workshop Understand the components of the Data Lake architecture. Deploy a simple Data Lake system using AWS services. Integrate analytics and visualization tools to extract meaningful insights from the data. Workshop Content Introduction Preparation Steps Data Collection and Storage Create Data Catalog Data Transformation Data Analysis and Visualization Clean Up Resources "
+},
+{
+	"uri": "http://localhost:1313/6-analysis-visualize/6.1-athena/",
+	"title": "Analysis with Athena",
+	"tags": [],
+	"description": "",
+	"content": "Analysis with Athena Search for and select the Athena service Execute the query with: Data source: AwsDataCatalog Database: summitdb Execute the query: SELECT artist_name, count(artist_name) AS count FROM processed_data GROUP BY artist_name ORDER BY count DESC Select Run query The result of the above query: Next, execute the following query: SELECT device_id, track_name, count(track_name) AS count FROM processed_data GROUP BY device_id, track_name ORDER BY count DESC Select Run query The result of the above query: "
+},
+{
+	"uri": "http://localhost:1313/4-data-catalog/4.1-glue-crawler/",
+	"title": "Create Glue Crawler",
+	"tags": [],
+	"description": "",
+	"content": "Create Glue Crawler Search and select AWS Glue\nIn the AWS Glue interface\nSelect Crawler Click Create crawler In the Add new crawler interface In the Set crawler properties step\nEnter Name as summitcrawler Click Next In the Choose data sources and classifiers step\nClick Add a data source Select Data source S3 Click Browse S3 Select S3 path (as shown in the image) Choose Crawler new sub-folders only Click Add an S3 data source Then click Next In the Configure security settings step\nChoose IAM role: AWSGlueServiceRoleDefault Click Next In the Set output and scheduling step\nClick Add database In the Create database interface:\nName the database: summitdb Click Create database Return to the Set output and scheduling interface\nSelect target database: summitdb Click Next If summitdb does not appear, click the reload button next to the Target database text field.\nIn the Review and create step\nReview the configurations Click Create crawler After successfully creating the crawler, click Run crawler Wait for the crawler to run. Once it completes, the crawler will be in Complete status Select Tables in the AWS Glue interface, we will see 2 data tables. Data in raw2024 Data in reference_data "
+},
+{
+	"uri": "http://localhost:1313/3-collection-storage/3.1-s3-bucket/",
+	"title": "Create S3 Bucket",
+	"tags": [],
+	"description": "",
+	"content": "Create S3 Bucket Search for and select the S3 service.\nIn the S3 interface, select Create bucket.\nIn the Bucket name field, enter asg-datalake-demo-2024.\nReview the configuration settings as shown below:\nClick Create bucket.\nBucket created successfully.\n"
+},
+{
+	"uri": "http://localhost:1313/1-introduce/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Understanding Data Lake on AWS Introduction to Data Lake Data Lake is a centralized storage system that allows storing data in any format—structured, semi-structured, or unstructured. Unlike traditional databases requiring data formatting before storage, Data Lake stores raw data and processes or analyzes it when needed.\nBenefits of Data Lake Flexible Storage: Supports data from various sources and formats.\nComprehensive Analysis: Enables big data analysis and AI/ML applications.\nCost Efficiency: Utilizes low-cost storage solutions like Amazon S3.\nSeamless Integration: Connects smoothly with analysis and reporting tools like Amazon Athena and QuickSight.\nChallenges of Data Lake Implementation Data Management: How to organize and manage data efficiently?\nSecurity: How to prevent unauthorized access to data?\nScalability: The system must scale to handle data growth.\nPerformance: Optimization is needed for querying and data processing.\nData Quality: Ensuring data accuracy and reliability is crucial.\nWorkshop Architecture Architecture Overview The diagram below illustrates the Data Lake system architecture we will deploy in this workshop: Architecture Description Data Collection:\nData from various sources is collected through Kinesis. Kinesis Firehose Stream processes and transfers data to Amazon S3. Raw Data Storage:\nRaw data is stored in S3 under the \u0026ldquo;raw data\u0026rdquo; folder. CloudFormation automatically deploys required resources. AWS Glue:\nAWS Glue Crawler scans raw data in S3 to create metadata. Metadata is stored in the AWS Glue Data Catalog. An ETL Job (Extract, Transform, Load) processes and transforms raw data. Processed Data Storage:\nTransformed data is stored in another S3 bucket under the \u0026ldquo;processed-data\u0026rdquo; folder. Data Analysis and Visualization:\nAWS Glue Crawler scans processed data and updates the Glue Data Catalog. Amazon Athena queries data in S3. Amazon QuickSight connects to the data for visualization and reporting. Workshop Objectives Understand the components of the Data Lake architecture. Deploy a simple Data Lake system using AWS services. Integrate analysis and visualization tools to extract useful insights from the data. This lab is conducted in the Singapore region (ap-southeast-1).\n"
+},
+{
+	"uri": "http://localhost:1313/2-preparation/",
+	"title": "Preparation Steps",
+	"tags": [],
+	"description": "",
+	"content": "Preparation Steps We will prepare by creating an IAM role and attaching necessary policies to ensure AWS Glue has access to Amazon S3 data and can perform ETL tasks securely and efficiently.\nContents: Create IAM Role Create Policy Attach Policy to Role "
+},
+{
+	"uri": "http://localhost:1313/4-data-catalog/4.2-test-data/",
+	"title": "Check Data",
+	"tags": [],
+	"description": "",
+	"content": "Check Data Search and select the S3 service Select the bucket asg-datalake-demo-2024 Click Create folder Name the folder Athena, then click Create folder The result is as follows: Next, we will use Athena with SQL queries to check the data structure.\nSearch and select the Athena service In the Query editor, click Settings, then select Manage In the Manage settings Click Browse S3 Select the path to the Athena folder Click Save Run a query with: Data source: AwsDataCatalog Database: summitdb Run the query: retrieve 10 rows from the table raw2024 SELECT * FROM \u0026#34;summitdb\u0026#34;.\u0026#34;raw2024\u0026#34; limit 10 Click Run query The result of the query is: Continue running a query with: Data source: AwsDataCatalog Database: summitdb Run the query: SELECT activity_type, count(activity_type) FROM raw2024 GROUP BY activity_type ORDER BY activity_type Click Run query The result of the query is: "
+},
+{
+	"uri": "http://localhost:1313/3-collection-storage/3.2-object-in-bucket/",
+	"title": "Create Object for S3 Bucket",
+	"tags": [],
+	"description": "",
+	"content": "Create Object for S3 Bucket Next, click on the bucket you just created. In the Objects tab, select Create folder.\nIn the Create folder interface, enter data as the Folder name.\nReview the configuration settings and click Create folder.\nSimilarly, create a folder reference_data inside the data folder.\nThe reference_data folder was created successfully.\nDownload the tracks_list.json file here.\nCtrl + S to save the file. Upload the tracks_list.json file to the reference_data folder.\nSelect Object\nClick Upload\nClick Add files, select the downloaded file\nChoose the file tracks_list.json\nClick Upload\nThe file was uploaded successfully.\n"
+},
+{
+	"uri": "http://localhost:1313/2-preparation/2.2-policy/",
+	"title": "Create Policy",
+	"tags": [],
+	"description": "",
+	"content": "Creating a Policy Next, we will create a policy.\nIn the IAM interface\nSelect Policies Click Create policy In the Create policy interface, under Specify permission\nSelect JSON Paste the following code into the Policy Editor, replacing AccountID with your actual AWS account ID. Click Next { \u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;, \u0026#34;Statement\u0026#34;: [ { \u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;, \u0026#34;Action\u0026#34;: \u0026#34;iam:PassRole\u0026#34;, \u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:iam::AccountID:role/AWSGlueServiceRoleDefault\u0026#34; } ] } In the Create policy interface, under Review and create\nSet Policy name to AWSGlueServicePolicy Review the settings and click Create policy Policy created successfully: "
+},
+{
+	"uri": "http://localhost:1313/6-analysis-visualize/6.2-quicksight/",
+	"title": "Visualize with QuickSight",
+	"tags": [],
+	"description": "",
+	"content": "Visualize with QuickSight We will use QuickSight to visualize data from the processed_data table.\nFirst, we will create a QuickSight account.\nIf you already have a QuickSight account, you can skip this step.\nCreate a QuickSight Account Search for and select the QuickSight service Sign up for QuickSight Enter your email, select Authentication Method, and choose the region Asia Pacific (Singapore) In Account info: Enter demo-visualize as the QuickSight account name IAM role: select Use QuickSight-managed role (default) Select Finish After successfully signing up, you will be redirected to the QuickSight dashboard. Visualize Data On the QuickSight dashboard, select Manage QuickSight Select Security \u0026amp; permissions, then select Manage Check the services For Amazon S3: select S3 Buckets Linked To QuickSight Account, choose the bucket asg-datalake-demo-2024, and then select Finish Check the other services and then select Save Return to the QuickSight dashboard Select Dataset Select New dataset Create a data source Select Athena Enter Data source name as summitdemo Select Validate Connection. If the connection is successful, it will display SSL is enabled Select Create data source Select Table: Catalog, select AwsDataCatalog Database, enter summitdb Table, select processed_data Select Select In the Finish dataset creation step: Select Directly query your data Select Visualize Use Amazon QuickSight to visualize the transformed data: Create a Tree map of users and the number of tracks they listened to. Click to select Tree Map Result of the Tree map You can also use other Visual types, such as Pie chart "
+},
+{
+	"uri": "http://localhost:1313/2-preparation/2.3-attach-policy-to-role/",
+	"title": "Attach Policy to Role",
+	"tags": [],
+	"description": "",
+	"content": "Attach Policy to Role In this section, we attach the policy to the previously created role to ensure the role has the appropriate permissions defined in the policy.\nIn the IAM Dashboard\nSelect Role Click on the role AWSGlueServiceRoleDefault In the AWSGlueServiceRoleDefault role details, select Attach policy\nSelect AWSGlueServicePolicy, then click Add permission\nPolicy successfully attached to the role\n"
+},
+{
+	"uri": "http://localhost:1313/3-collection-storage/3.3-kinesis-firehose-stream/",
+	"title": "Create Firehose Stream",
+	"tags": [],
+	"description": "",
+	"content": "Create Firehose Stream Search for and select the Kinesis service.\nSelect Amazon Data Firehose.\nClick Create Firehose Stream.\nIn the Create Firehose Stream interface:\nFor Source, choose Direct PUT. For Destination, choose Amazon S3. For Firehose stream name, enter FCJ-FirehoseStream. Review the values in Transform and convert records. In Destination Settings:\nClick Browse. Select the asg-datalake-demo-2024 bucket.\nClick Create.\nVerify the settings. In S3 bucket prefix, enter data/raw.\nIn S3 bucket error output prefix, enter data/error.\nClick Create Firehose stream.\nThe Firehose stream was created successfully.\n"
+},
+{
+	"uri": "http://localhost:1313/3-collection-storage/",
+	"title": "Collecting and Storing Data",
+	"tags": [],
+	"description": "",
+	"content": "In this guide, we will create an S3 bucket for data storage and set up a Firehose stream to collect data. During this process, we will use Kinesis Data Generator to generate sample data through CloudFormation.\nContents: Create S3 bucket Create objects in the bucket Create Firehose Stream Create sample data "
+},
+{
+	"uri": "http://localhost:1313/4-data-catalog/",
+	"title": "Create Data Catalog",
+	"tags": [],
+	"description": "",
+	"content": "Content: Create Glue Crawler Check Data "
+},
+{
+	"uri": "http://localhost:1313/3-collection-storage/3.4-sample-data/",
+	"title": "Create Sample Data",
+	"tags": [],
+	"description": "",
+	"content": "Create Sample Data Access amazon-kinesis-data-generator-link, the following interface will be displayed: Click on Help. Select Create a Cognito User with CloudFormation. This will take you to the Create stack interface. Note: Switch to the Singapore region (ap-southeast-1).\nReview the configurations and select Next. In the Specify stack details step: Enter Stack name as Kinesis-Data-Generator-Cognito-User. In the Parameters section: Username: Enter admin. Password: Enter the password you want to set. Note: According to the CloudFormation template being used, the password must be at least 6 characters long, including both letters and numbers, and contain at least one number.\nIn the Configure stack options step: Leave the default values.\nSelect I acknowledge that AWS CloudFormation might create IAM resources.\nSelect Next.\nIn the Review and create step: Review the stack details.\nThen, select Submit.\nWait for the stack creation process to complete.\nOnce successfully created, check the Output section.\nClick on the link in the Output section, which will redirect you to the Amazon Kinesis Data Generator interface. Log in using the username and password created in the previous stack.\nSetup the following values:\nRegion: ap-southeast-1.\nStream/delivery stream: FCJ-FirehoseStream.\nRecords per second: 2000.\nRecord template: Template 1.\nEnter the following in Template 1:\n{ \u0026#34;uuid\u0026#34;: \u0026#34;{{random.uuid}}\u0026#34;, \u0026#34;device_ts\u0026#34;: \u0026#34;{{date.utc(\u0026#34;YYYY-MM-DD HH:mm:ss.SSS\u0026#34;)}}\u0026#34;, \u0026#34;device_id\u0026#34;: {{random.number(50)}}, \u0026#34;device_temp\u0026#34;: {{random.weightedArrayElement( {\u0026#34;weights\u0026#34;:[0.30, 0.30, 0.20, 0.20],\u0026#34;data\u0026#34;:[32, 34, 28, 40]} )}}, \u0026#34;track_id\u0026#34;: {{random.number(30)}}, \u0026#34;activity_type\u0026#34;: {{random.weightedArrayElement( { \u0026#34;weights\u0026#34;: [0.1, 0.2, 0.2, 0.3, 0.2], \u0026#34;data\u0026#34;: [\u0026#34;\\\u0026#34;Running\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Working\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Walking\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Traveling\\\u0026#34;\u0026#34;, \u0026#34;\\\u0026#34;Sitting\\\u0026#34;\u0026#34;] } )}} } Select Send. Wait for the generation process to complete and send about 100,000 records, then select Stop Sending Data to Kinesis.\nFind and select S3. Check if the generated data has been sent to S3.\nVerify the data has been successfully sent to S3.\n"
+},
+{
+	"uri": "http://localhost:1313/5-data-transform/",
+	"title": "Data Transformation",
+	"tags": [],
+	"description": "",
+	"content": "Data Transformation Search for and select the Glue service Select Notebook Download the file notebook.ipynb\nIn the Notebook form:\nSelect Upload Notebook Choose Choose file Select the downloaded notebook file IAM role: select AWSGlueServiceRoleDefault Select Create notebook Wait for the notebook to start, then run each cell of the notebook and view the results First, run the cell to create the session Session initialized successfully Go to Interactive Session, check and see the session has been successfully created In cell [2]: Import SparkContext, GlueContext, boto3, awsglue, and initialize the session In cell [3]: The GlueContext initialization command is used to access ETL features of AWS Glue and retrieve SparkSession for data processing with Apache Spark. In cell [4]: Create two DynamicFrames raw_data and reference_data by retrieving data from the raw2024 and reference_data tables in the summitdb database in the AWS Glue Data Catalog. In cell [5]: The command raw_data.printSchema() displays the schema of the DynamicFrame raw_data, including the columns, data types, and nested structures (if any). In cell [6]: The command reference_data.printSchema() displays the schema of the DynamicFrame reference_data, including the columns and corresponding data types. In cell [7]: These commands display the number of records in both DynamicFrames raw_data and reference_data. In cell [8]: View the first 5 records in raw_data as a Spark DataFrame. In cell [9]: View the first 5 records in reference_data as a Spark DataFrame. In cell [10]: Create a temporary table from raw_data, query records with activity_type equal to \u0026ldquo;Running\u0026rdquo; and display the count and the first 5 records of the result. In cell [11]: Query records with activity_type equal to \u0026ldquo;Working\u0026rdquo; from the temporary table temp_raw_data, display the count and the first 5 records. In cell [12]: Apply a filter to keep only the records with activity_type equal to \u0026ldquo;Running\u0026rdquo; from raw_data, then count these records. In cell [13]: Keep only the records with activity_type equal to \u0026ldquo;Working\u0026rdquo; from raw_data, then display the count of these records. In cell [14]: Perform a join between raw_data and reference_data based on the track_id field, creating a new DynamicFrame called joined_data In cell [15]: View an overview of the fields and data types after the two DynamicFrames are joined. In cell [16]: Remove unnecessary fields (partition_0, partition_1, partition_2, partition_3) from joined_data and store the result in joined_data_clean In cell [17]: Display the schema of joined_data_clean after cleaning the data by removing unwanted fields. In cell [18]: View the first 5 records in joined_data_clean as a Spark DataFrame. In cell [19]: Write the data from joined_data_clean to S3 in Parquet format, and if an error occurs during the write, print the error message. In cell [20]: Use Boto3 to trigger summitcrawler, then check the crawler status in a loop until it stops. When the crawler stops, print a message and exit. In cell [21]: Use the AWS Glue client to retrieve a list of tables in the summitdb database and print the name of each table. Check if the data has been loaded into S3, search for and select the S3 service Check in asg-datalake-demo-2024/data Check the objects in processed-data "
+},
+{
+	"uri": "http://localhost:1313/6-analysis-visualize/",
+	"title": "Analysis and Visualization",
+	"tags": [],
+	"description": "",
+	"content": "Amazon Athena Amazon Athena is an interactive query service used for analyzing data in Amazon S3 using standard SQL. We just need to point to your data in Amazon S3, define the schema, and start querying using the integrated query editor. Amazon Athena allows us to analyze all of our data in Amazon S3 without needing to set up complex ETL processes. Amazon Athena charges based on the amount of queries run.\nAmazon Athena uses Presto with ANSI SQL support and works with many standard data formats, including CSV, JSON, ORC, Avro, and Parquet. Athena is recommended for quick query needs but is also capable of handling complex analysis, including joins on large datasets, window functions, and arrays.\nAmazon QuickSight Amazon QuickSight is a fully managed data visualization service provided by AWS.\nData source is an external data repository, and you need to configure access to the data in this external data store, such as Amazon S3, Amazon Athena, Salesforce, etc.\nDataset defines the specific data within the Data source that you want to use. For example, the Data source could be a table if you are connecting to a database. It could be a file if you are connecting to Amazon S3.\nAnalysis is where a set of visuals and related stories are kept, such as all stories applying to a certain business objective or KPI.\nVisual is a graphical representation of your data. You can create different types of visuals in an analysis using different datasets and visual types.\nDashboard is a page that contains one or more analyses for viewing purposes, which you can share with other Amazon QuickSight users for reporting. The dashboard retains the configuration of the analysis at the time you publish it, including elements such as filters, parameters, controls, and sorting order.\nContents: Analysis with Athena Visualize with QuickSight "
+},
+{
+	"uri": "http://localhost:1313/7-clean-up/",
+	"title": "Cleanup Resources",
+	"tags": [],
+	"description": "",
+	"content": "We will clean up the following resources:\nClean up resources in Visual QuickSight: Delete Pie Chart Sheet Delete QuickSight Analyses: Select Analyses. Select the Analysis you want to delete. Click Delete. Delete done Delete QuickSight Dataset: You can also delete your QuickSight account if not using it. In the QuickSight interface, click Manage QuickSight Under Account settings, click Manage Proceed to delete the account QuickSight unsubscription successful Clean up resources in AWS Glue: Access AWS Glue.\nDelete Tables Select Tables. Choose the tables to delete. Click Delete to confirm table deletion. Delete Interactive Sessions Select Interactive Sessions. Choose the sessions to delete. Click Delete to confirm session deletion. Delete Crawlers Select Crawler. Choose the crawlers to delete. Click Action Select Delete crawler to confirm crawler deletion. Clean up resources in CloudFormation: Go to the CloudFormation interface. Select Stack Choose the stack name you want to delete. Click Delete If the stack deletion fails Click Retry delete Click Force delete this entire stack Clean up resources in Kinesis: Go to Amazon Data Firehose Select the Firehose stream to delete. Click Delete Clean up resources in CloudWatch: Go to the CloudWatch interface. Select Log groups Select all Log groups Click Action Select Delete log group(s) Clean up resources in S3: Delete all buckets related to the lab\nSelect bucket\nClick Empty bucket\nSelect the emptied bucket Click Delete Perform the same action for the remaining buckets\nClean up resources in IAM: Go to the IAM interface\n1. Delete Policy\nSelect Policies Choose the policy related to the lab Click Delete Policy deleted successfully 2. Delete Role\nSelect Roles Choose the role related to the lab Click Delete Role deleted successfully "
+},
+{
+	"uri": "http://localhost:1313/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://localhost:1313/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
