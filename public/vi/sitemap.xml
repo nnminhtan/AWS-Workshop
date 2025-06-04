@@ -67,17 +67,17 @@
                 href="http://localhost:1313/vi/4-data-catalog/4.1-glue-crawler/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-collection-storage/3.1-s3-bucket/</loc>
+    <loc>http://localhost:1313/vi/3-configure-response/3.1-s3-bucket/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-collection-storage/3.1-s3-bucket/"
+                href="http://localhost:1313/3-configure-response/3.1-s3-bucket/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-collection-storage/3.1-s3-bucket/"
+                href="http://localhost:1313/vi/3-configure-response/3.1-s3-bucket/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/2-preparation/</loc>
@@ -106,17 +106,17 @@
                 href="http://localhost:1313/vi/4-data-catalog/4.2-test-data/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-collection-storage/3.2-object-in-bucket/</loc>
+    <loc>http://localhost:1313/vi/3-configure-response/3.2-object-in-bucket/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-collection-storage/3.2-object-in-bucket/"
+                href="http://localhost:1313/3-configure-response/3.2-object-in-bucket/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-collection-storage/3.2-object-in-bucket/"
+                href="http://localhost:1313/vi/3-configure-response/3.2-object-in-bucket/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/2-preparation/2.2-set-up-security-group/</loc>
@@ -158,30 +158,30 @@
                 href="http://localhost:1313/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-collection-storage/3.3-kinesis-firehose-stream/</loc>
+    <loc>http://localhost:1313/vi/3-configure-response/3.3-kinesis-firehose-stream/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-collection-storage/3.3-kinesis-firehose-stream/"
+                href="http://localhost:1313/3-configure-response/3.3-kinesis-firehose-stream/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-collection-storage/3.3-kinesis-firehose-stream/"
+                href="http://localhost:1313/vi/3-configure-response/3.3-kinesis-firehose-stream/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-collection-storage/</loc>
+    <loc>http://localhost:1313/vi/3-configure-response/</loc>
     <lastmod>1970-01-01T08:33:41+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-collection-storage/"
+                href="http://localhost:1313/3-configure-response/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-collection-storage/"
+                href="http://localhost:1313/vi/3-configure-response/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/4-data-catalog/</loc>
@@ -197,17 +197,17 @@
                 href="http://localhost:1313/vi/4-data-catalog/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-collection-storage/3.4-sample-data/</loc>
+    <loc>http://localhost:1313/vi/3-configure-response/3.4-sample-data/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-collection-storage/3.4-sample-data/"
+                href="http://localhost:1313/3-configure-response/3.4-sample-data/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-collection-storage/3.4-sample-data/"
+                href="http://localhost:1313/vi/3-configure-response/3.4-sample-data/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/5-data-transform/</loc>

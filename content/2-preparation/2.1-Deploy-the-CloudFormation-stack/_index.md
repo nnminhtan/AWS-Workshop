@@ -20,23 +20,23 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
    - Search for **CloudFormation**
    - Select **CloudFormation** to open the **CloudFormation Dashboard**
 
-   ![CloudFormation](/images/1/CloudFormation.png)
+   ![CloudFormation](/images/1/1.1/CloudFormation.png)
 
-2. In the CloudFormation Dashboard
+2. In the **CloudFormation** Dashboard
 
    - Select **Stacks**
    - Click **Create stack**
 
-   ![CloudFormation](/images/1/Stack.png?width=90pc)
+   ![CloudFormation](/images/1/1.1/Stack.png?width=90pc)
 
 3. In the **Create stack** interface, under **Create stack**
 
    - Choose **Choose an existing template**
    - Under _Specify template_, select **Upload a template file**
-   - Click **Choose file** and upload the cfn.json file above
+   - Click **Choose file** and upload the _cfn.json_ file above
    - Click **Next**
 
-   ![CloudFormation](/images/1/Create_stack.png?width=90pc)
+   ![CloudFormation](/images/1/1.1/Create_stack.png?width=90pc)
 
 4. In the **Specify stack details** interface, under **Specify stack details**
 
@@ -44,12 +44,12 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
    - Under _Parameters_, In **Automatically enable GuardDuty?** Select Yes-Enable GuardDuty 
    - Leave the other settings unchanged, Click **Next**
 
-   ![CloudFormation](/images/1/Specify_stack_details.png?width=90pc)
+   ![CloudFormation](/images/1/1.1/Specify_stack_details.png?width=90pc)
 
 5. In the **Configure stack options** interface, under **Capabilities**
 
    - **Check yes** for 2 of the box below
-     ![CloudFormation](/images/1/Capabilities.png?width=90pc)
+     ![CloudFormation](/images/1/1.1/Capabilities.png?width=90pc)
 
 6. In the **Review and create**:
    - If you follow the steps It's should be right so scroll down and click the **Submit** button
@@ -59,6 +59,6 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
 This should take a couple minutes, so go grab a coffee while at it.
 {{% /notice %}}
 
-   ![CloudFormation](/images/1/Stack_create_complete.png?width=90pc)
+   ![CloudFormation](/images/1/1.1/Stack_create_complete.png?width=90pc)
 
    - If the stack status is **CREATE_COMPLETE** go to the next step [Set up Security Group](../2.2-Set-up-Security-Group)
