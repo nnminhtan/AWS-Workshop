@@ -2,21 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/2-preparation/2.1-iam-role/</loc>
-    <lastmod>1970-01-01T08:33:44+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/2-preparation/2.1-iam-role/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/2-preparation/2.1-iam-role/"
-                />
-  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>1970-01-01T08:33:41+08:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -26,6 +13,32 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/2-preparation/2.1-deploy-the-cloudformation-stack/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/2-preparation/2.1-deploy-the-cloudformation-stack/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/2-preparation/2.1-deploy-the-cloudformation-stack/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/1-introduction/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-introduction/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-introduction/"
                 />
   </url><url>
     <loc>http://localhost:1313/6-analysis-visualize/6.1-athena/</loc>
@@ -67,21 +80,8 @@
                 href="http://localhost:1313/3-collection-storage/3.1-s3-bucket/"
                 />
   </url><url>
-    <loc>http://localhost:1313/1-introduce/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/1-introduce/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/1-introduce/"
-                />
-  </url><url>
     <loc>http://localhost:1313/2-preparation/</loc>
-    <lastmod>1970-01-01T08:33:44+08:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -119,17 +119,17 @@
                 href="http://localhost:1313/3-collection-storage/3.2-object-in-bucket/"
                 />
   </url><url>
-    <loc>http://localhost:1313/2-preparation/2.2-policy/</loc>
+    <loc>http://localhost:1313/2-preparation/2.2-set-up-security-group/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/2-preparation/2.2-policy/"
+                href="http://localhost:1313/vi/2-preparation/2.2-set-up-security-group/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/2-preparation/2.2-policy/"
+                href="http://localhost:1313/2-preparation/2.2-set-up-security-group/"
                 />
   </url><url>
     <loc>http://localhost:1313/6-analysis-visualize/6.2-quicksight/</loc>
@@ -145,17 +145,17 @@
                 href="http://localhost:1313/6-analysis-visualize/6.2-quicksight/"
                 />
   </url><url>
-    <loc>http://localhost:1313/2-preparation/2.3-attach-policy-to-role/</loc>
+    <loc>http://localhost:1313/2-preparation/2.3-create-an-iam-user-for-testing/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/2-preparation/2.3-attach-policy-to-role/"
+                href="http://localhost:1313/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/2-preparation/2.3-attach-policy-to-role/"
+                href="http://localhost:1313/2-preparation/2.3-create-an-iam-user-for-testing/"
                 />
   </url><url>
     <loc>http://localhost:1313/3-collection-storage/3.3-kinesis-firehose-stream/</loc>

@@ -1,20 +1,20 @@
 [
 {
-	"uri": "http://localhost:1313/vi/2-preparation/2.1-iam-role/",
+	"uri": "http://localhost:1313/vi/",
+	"title": "Automating Incident Response",
+	"tags": [],
+	"description": "",
+	"content": "Tìm hiểu về Data Lake trên AWS Giới thiệu Data Lake Data Lake là một hệ thống lưu trữ tập trung cho phép lưu trữ dữ liệu dưới mọi định dạng - có cấu trúc, bán cấu trúc hoặc không cấu trúc. Không giống như các cơ sở dữ liệu truyền thống yêu cầu định dạng dữ liệu trước khi lưu trữ, Data Lake cho phép lưu trữ dữ liệu thô và xử lý hoặc phân tích khi cần.\nLợi ích của Data Lake Lưu trữ linh hoạt: Hỗ trợ dữ liệu từ nhiều nguồn và dưới nhiều định dạng khác nhau.\nPhân tích toàn diện: Tạo điều kiện cho phân tích dữ liệu lớn và các ứng dụng AI/ML.\nTiết kiệm chi phí: Sử dụng các giải pháp lưu trữ chi phí thấp như Amazon S3.\nTích hợp dễ dàng: Kết nối mượt mà với các công cụ phân tích và báo cáo như Amazon Athena và QuickSight.\nThách thức khi triển khai Data Lake Quản Lý Dữ Liệu: Làm thế nào để tổ chức và quản lý dữ liệu hiệu quả?\nBảo Mật: Làm sao để ngăn chặn truy cập trái phép vào dữ liệu?\nKhả Năng Mở Rộng: Hệ thống phải có khả năng mở rộng để xử lý sự gia tăng dữ liệu.\nHiệu Suất: Cần tối ưu hóa cho việc truy vấn và xử lý dữ liệu.\nChất Lượng Dữ Liệu: Đảm bảo tính chính xác và độ tin cậy của dữ liệu là rất quan trọng.\nKiến trúc Workshop Tổng quan về kiến trúc Hình dưới đây minh họa kiến trúc hệ thống Data Lake mà chúng ta sẽ triển khai trong workshop này: Mô tả kiến trúc Thu thập dữ liệu:\nDữ liệu từ nhiều nguồn khác nhau được thu thập qua Kinesis. Kinesis Firehose Stream xử lý và chuyển dữ liệu đến Amazon S3. Lưu trữ dữ liệu thô:\nDữ liệu thô được lưu trữ trong S3 ở thư mục \u0026ldquo;raw data\u0026rdquo;. CloudFormation tự động triển khai các tài nguyên cần thiết. AWS Glue:\nAWS Glue Crawler quét dữ liệu thô trong S3 để tạo metadata. Metadata được lưu trữ trong AWS Glue Data Catalog. Một ETL Job (Extract, Transform, Load) xử lý và chuyển đổi dữ liệu thô thành dữ liệu đã qua xử lý. Lưu trữ dữ liệu đã xử lý:\nDữ liệu đã được chuyển đổi được lưu trong một bucket S3 khác dưới thư mục \u0026ldquo;processed-data\u0026rdquo;. Phân tích và trực quan hóa dữ liệu:\nAWS Glue Crawler quét dữ liệu đã qua xử lý và cập nhật Glue Data Catalog. Amazon Athena được sử dụng để truy vấn dữ liệu trong S3. Amazon QuickSight kết nối đến dữ liệu để trực quan hóa và báo cáo. Mục tiêu của workshop Hiểu các thành phần của kiến trúc Data Lake. Triển khai một hệ thống Data Lake đơn giản bằng các dịch vụ AWS. Tích hợp các công cụ phân tích và trực quan hóa để trích xuất thông tin hữu ích từ dữ liệu. Nội dung: Giới thiệu Các bước chuẩn bị Thu thập và lưu trữ dữ liệu Tạo Data Catalog Chuyển đổi dữ liệu Phân tích và trực quan hóa Dọn dẹp tài nguyên "
+},
+{
+	"uri": "http://localhost:1313/vi/2-preparation/2.1-deploy-the-cloudformation-stack/",
 	"title": "Tạo IAM role",
 	"tags": [],
 	"description": "",
 	"content": "Tạo IAM Role Trong bước này, chúng ta sẽ chuyển tới giao diện IAM Console và tạo role cho dịch vụ Glue. Role này sẽ cho phép AWS Glue truy cập tới dữ liệu nằm trong S3 và tạo các đối tượng cần thiết trong Glue Catalog.\nTruy cập vào giao diện AWS Management Console\nTìm IAM Chọn IAM để vào IAM Dashboard Trong IAM Dashboard\nChọn Role Chọn Create role Trong giao diện Create role, ở bước Select trusted entity\nChọn AWS Service Ở phần Service or use case chọn Glue Chọn Next Trong giao diện Create role, ở bước Add Permission\nTìm và chọn AmazonS3FullAccess Tìm và chọn AWSGlueServiceRole Chọn Next Trong giao diện Create role, ở bước Name, review and create\nỞ Role name, đặt tên AWSGlueServiceRoleDefault Xem lại thông tin role tại Select trusted entity và Add Permission Chọn Create role Giao diện tạo role thành công: "
 },
 {
-	"uri": "http://localhost:1313/vi/",
-	"title": "Data Lake",
-	"tags": [],
-	"description": "",
-	"content": "Tìm hiểu về Data Lake trên AWS Giới thiệu Data Lake Data Lake là một hệ thống lưu trữ tập trung cho phép lưu trữ dữ liệu dưới mọi định dạng - có cấu trúc, bán cấu trúc hoặc không cấu trúc. Không giống như các cơ sở dữ liệu truyền thống yêu cầu định dạng dữ liệu trước khi lưu trữ, Data Lake cho phép lưu trữ dữ liệu thô và xử lý hoặc phân tích khi cần.\nLợi ích của Data Lake Lưu trữ linh hoạt: Hỗ trợ dữ liệu từ nhiều nguồn và dưới nhiều định dạng khác nhau.\nPhân tích toàn diện: Tạo điều kiện cho phân tích dữ liệu lớn và các ứng dụng AI/ML.\nTiết kiệm chi phí: Sử dụng các giải pháp lưu trữ chi phí thấp như Amazon S3.\nTích hợp dễ dàng: Kết nối mượt mà với các công cụ phân tích và báo cáo như Amazon Athena và QuickSight.\nThách thức khi triển khai Data Lake Quản Lý Dữ Liệu: Làm thế nào để tổ chức và quản lý dữ liệu hiệu quả?\nBảo Mật: Làm sao để ngăn chặn truy cập trái phép vào dữ liệu?\nKhả Năng Mở Rộng: Hệ thống phải có khả năng mở rộng để xử lý sự gia tăng dữ liệu.\nHiệu Suất: Cần tối ưu hóa cho việc truy vấn và xử lý dữ liệu.\nChất Lượng Dữ Liệu: Đảm bảo tính chính xác và độ tin cậy của dữ liệu là rất quan trọng.\nKiến trúc Workshop Tổng quan về kiến trúc Hình dưới đây minh họa kiến trúc hệ thống Data Lake mà chúng ta sẽ triển khai trong workshop này: Mô tả kiến trúc Thu thập dữ liệu:\nDữ liệu từ nhiều nguồn khác nhau được thu thập qua Kinesis. Kinesis Firehose Stream xử lý và chuyển dữ liệu đến Amazon S3. Lưu trữ dữ liệu thô:\nDữ liệu thô được lưu trữ trong S3 ở thư mục \u0026ldquo;raw data\u0026rdquo;. CloudFormation tự động triển khai các tài nguyên cần thiết. AWS Glue:\nAWS Glue Crawler quét dữ liệu thô trong S3 để tạo metadata. Metadata được lưu trữ trong AWS Glue Data Catalog. Một ETL Job (Extract, Transform, Load) xử lý và chuyển đổi dữ liệu thô thành dữ liệu đã qua xử lý. Lưu trữ dữ liệu đã xử lý:\nDữ liệu đã được chuyển đổi được lưu trong một bucket S3 khác dưới thư mục \u0026ldquo;processed-data\u0026rdquo;. Phân tích và trực quan hóa dữ liệu:\nAWS Glue Crawler quét dữ liệu đã qua xử lý và cập nhật Glue Data Catalog. Amazon Athena được sử dụng để truy vấn dữ liệu trong S3. Amazon QuickSight kết nối đến dữ liệu để trực quan hóa và báo cáo. Mục tiêu của workshop Hiểu các thành phần của kiến trúc Data Lake. Triển khai một hệ thống Data Lake đơn giản bằng các dịch vụ AWS. Tích hợp các công cụ phân tích và trực quan hóa để trích xuất thông tin hữu ích từ dữ liệu. Nội dung: Giới thiệu Các bước chuẩn bị Thu thập và lưu trữ dữ liệu Tạo Data Catalog Chuyển đổi dữ liệu Phân tích và trực quan hóa Dọn dẹp tài nguyên "
-},
-{
-	"uri": "http://localhost:1313/vi/1-introduce/",
+	"uri": "http://localhost:1313/vi/1-introduction/",
 	"title": "Giới thiệu",
 	"tags": [],
 	"description": "",
@@ -63,7 +63,7 @@
 	"content": "Tạo object cho S3 bucket Tiếp theo, click vào bucket vừa tạo. Tại tab Object chọn Create folder\nTrong giao diện Create bucket, đặt Folder name là data\nKiểm tra các cấu hình và chọn Create folder\nTương tự với cách tạo folder, ta sẽ tạo folder reference_data ở trong folder data\nTạo folder reference_data thành công\nTiến hành download file tracks_list.json tại đây\nCtrl + S để lưu file Tiến hành upload file tracks_list.json lên folder reference_data\nChọn Object Chọn Upload Chọn Add file, chọn file đã tải Chọn file tracks_list.json Chọn Upload Upload file thành công "
 },
 {
-	"uri": "http://localhost:1313/vi/2-preparation/2.2-policy/",
+	"uri": "http://localhost:1313/vi/2-preparation/2.2-set-up-security-group/",
 	"title": "Tạo policy",
 	"tags": [],
 	"description": "",
@@ -77,7 +77,7 @@
 	"content": "Visualize với QuickSight Chúng ta sẽ dùng QuickSight để trực quan hóa dữ liệu từ table processed_data\nTrước tiên, ta sẽ tạo tài khoản Quicksight\nNếu bạn đã có tài khoản QuickSight thì có thể bỏ qua bước này\nTạo tài khoản QuickSight Tìm kiếm và chọn dịch vụ QuickSight Sign up for QuickSight Nhập email của bạn, chọn Authentication Method và chọn region Asia Pacific (Singapore) Ở Account info Nhập demo-visualize làm QuickSight account name IAM role: chọn Use QuickSight-managed role (default) Chọn Finish Sau khi đăng ký thành công, ta vào được giao diện QuickSight Thực hiện trực quan hóa dữ liệu Tại giao diện QuickSight, chọn Manage QuickSight Chọn Security \u0026amp; permissions, chọn Manage Tick chọn các service Đối với Amazon S3: chọn S3 Buckets Linked To QuickSight Account, chọn bucket asg-datalake-demo-2024, sau đó chọn Finish Tick chọn các dịch vụ còn lại, sau đó chọn Save Trở lại giao diện QuickSight Chọn Dataset Chọn New dataset Tạo data source Chọn Athena Nhập Data source name là summitdemo Chọn Validate Connection. Nếu kết nối thành công, sẽ hiển thị SSL is enabled Chọn Create data source Chọn Table: Catalog, chọn AwsDataCatalog Database, nhập summitdb Table, chọn processed_data Chọn Select Trong bước Finish dataset creation: Chọn Directly query your data Chọn Visualize Sử dụng Amazon Quick Sight để visualize các dữ liệu đã được chuyển đổi (transform): Tạo 1 Tree map của users và số tracks nhạc mà họ nghe. Click vào chọn Tree Map Kết quả Tree map Ta có thể sử dung với các Visual types khác, chẳng hạn Pie chart "
 },
 {
-	"uri": "http://localhost:1313/vi/2-preparation/2.3-attach-policy-to-role/",
+	"uri": "http://localhost:1313/vi/2-preparation/2.3-create-an-iam-user-for-testing/",
 	"title": "Gắn policy vào role",
 	"tags": [],
 	"description": "",

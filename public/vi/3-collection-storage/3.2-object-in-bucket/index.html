@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tạo object cho S3 bucket :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
+    <title>Tạo object cho S3 bucket :: Tự động hóa quá trình phản ứng sự cố</title>
 
     
-    <link href="/css/nucleus.css?1748251647" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1748251647" rel="stylesheet">
-    <link href="/css/hybrid.css?1748251647" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1748251647" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1748251647" rel="stylesheet">
-    <link href="/css/auto-complete.css?1748251647" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1748251647" rel="stylesheet">
-    <link href="/css/theme.css?1748251647" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1748251647" rel="stylesheet">
+    <link href="/css/nucleus.css?1749010098" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1749010098" rel="stylesheet">
+    <link href="/css/hybrid.css?1749010098" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1749010098" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1749010098" rel="stylesheet">
+    <link href="/css/auto-complete.css?1749010098" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1749010098" rel="stylesheet">
+    <link href="/css/theme.css?1749010098" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1749010098" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1748251647" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1749010098" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1748251647"></script>
+    <script src="/js/jquery-3.3.1.min.js?1749010098"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1748251647"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1748251647"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1749010098"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1749010098"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1748251647"></script>
+<script type="text/javascript" src="/js/search.js?1749010098"></script>
  
   </div>
 
@@ -70,7 +70,7 @@
     <ul class="topics">
                
 <li
-  data-nav-id="/vi/1-introduce/"
+  data-nav-id="/vi/1-introduction/"
   title="Giới thiệu"
   class="dd-item 
         
@@ -78,7 +78,7 @@
         
         "
 >
-  <a href="/vi/1-introduce/">
+  <a href="/vi/1-introduction/">
     <b>1. </b>Giới thiệu 
     <i class="fas fa-check read-icon"></i>
     
@@ -105,7 +105,7 @@
           
             
 <li
-  data-nav-id="/vi/2-preparation/2.1-iam-role/"
+  data-nav-id="/vi/2-preparation/2.1-deploy-the-cloudformation-stack/"
   title="Tạo IAM role"
   class="dd-item 
         
@@ -113,7 +113,7 @@
         
         "
 >
-  <a href="/vi/2-preparation/2.1-iam-role/">
+  <a href="/vi/2-preparation/2.1-deploy-the-cloudformation-stack/">
     <b>2.1. </b>Tạo IAM role 
     <i class="fas fa-check read-icon"></i>
     
@@ -123,7 +123,7 @@
     
             
 <li
-  data-nav-id="/vi/2-preparation/2.2-policy/"
+  data-nav-id="/vi/2-preparation/2.2-set-up-security-group/"
   title="Tạo policy"
   class="dd-item 
         
@@ -131,7 +131,7 @@
         
         "
 >
-  <a href="/vi/2-preparation/2.2-policy/">
+  <a href="/vi/2-preparation/2.2-set-up-security-group/">
     <b>2.2. </b>Tạo policy 
     <i class="fas fa-check read-icon"></i>
     
@@ -141,7 +141,7 @@
     
             
 <li
-  data-nav-id="/vi/2-preparation/2.3-attach-policy-to-role/"
+  data-nav-id="/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
   title="Gắn policy vào role"
   class="dd-item 
         
@@ -149,7 +149,7 @@
         
         "
 >
-  <a href="/vi/2-preparation/2.3-attach-policy-to-role/">
+  <a href="/vi/2-preparation/2.3-create-an-iam-user-for-testing/">
     <b>2.3. </b>Gắn policy vào role 
     <i class="fas fa-check read-icon"></i>
     
@@ -495,7 +495,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>11-11-2024</font></i>
+        <i><font color=orange>14-06-2025</font></i>
     </left>
     <left>
         <br>
@@ -503,7 +503,7 @@
             <b> Team </b> <br>
            
             <i>
-                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Ngọc Uyển</a>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hung</a>
         </i>
         </left>
 
@@ -546,7 +546,7 @@
             
           
           
-            <a href='/vi/'>Data Lake</a> > <a href='/vi/3-collection-storage/'>Thu thập và lưu trữ dữ liệu</a> > Tạo object cho S3 bucket
+            <a href='/vi/'>Automating Incident Response</a> > <a href='/vi/3-collection-storage/'>Thu thập và lưu trữ dữ liệu</a> > Tạo object cho S3 bucket
           
         
           
@@ -996,19 +996,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1748251647"></script>
-    <script src="/js/perfect-scrollbar.min.js?1748251647"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1748251647"></script>
-    <script src="/js/jquery.sticky.js?1748251647"></script>
-    <script src="/js/featherlight.min.js?1748251647"></script>
-    <script src="/js/highlight.pack.js?1748251647"></script>
+    <script src="/js/clipboard.min.js?1749010098"></script>
+    <script src="/js/perfect-scrollbar.min.js?1749010098"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1749010098"></script>
+    <script src="/js/jquery.sticky.js?1749010098"></script>
+    <script src="/js/featherlight.min.js?1749010098"></script>
+    <script src="/js/highlight.pack.js?1749010098"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1748251647"></script>
-    <script src="/js/learn.js?1748251647"></script>
-    <script src="/js/hugo-learn.js?1748251647"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1749010098"></script>
+    <script src="/js/learn.js?1749010098"></script>
+    <script src="/js/hugo-learn.js?1749010098"></script>
 
-    <link href="/mermaid/mermaid.css?1748251647" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1748251647"></script>
+    <link href="/mermaid/mermaid.css?1749010098" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1749010098"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

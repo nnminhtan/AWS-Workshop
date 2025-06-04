@@ -1,6 +1,6 @@
 +++
 title = "Preparation Steps"
-date = 2024
+date = 2025
 weight = 2
 chapter = false
 pre = "<b>2. </b>"
@@ -8,10 +8,14 @@ pre = "<b>2. </b>"
 
 ## Preparation Steps
 
-We will prepare by creating an IAM role and attaching necessary policies to ensure AWS Glue has access to Amazon S3 data and can perform ETL tasks securely and efficiently.
+We will prepare by creating an IAM user for testing and attaching necessary policies. You will enable Amazon GuardDuty, and deploy a CloudFormation template to create a sample infrastructure to simulate an attacker and a target.
+
+{{% notice warning %}}
+Make sure the account being use for this workshop it's NOT a production account.
+{{% /notice %}}
 
 #### Contents:
 
-1. [Create IAM Role](2.1-IAM-role)
-2. [Create Policy](2.2-policy)
-3. [Attach Policy to Role](2.3-attach-policy-to-role/)
+1. [Deploy the CloudFormation stack](2.1-Deploy-the-CloudFormation-stack)
+2. [Set up Security Group](2.2-Set-up-Security-Group)
+3. [Create an IAM user for Testing](2.3-Create-an-IAM-user-for-Testing)

@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Data Lake :: Deploy ShareNote Application on Auto Scaling Group</title>
+    <title>Automating Incident Response :: Automating Incident Response</title>
 
     
-    <link href="/css/nucleus.css?1748251647" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1748251647" rel="stylesheet">
-    <link href="/css/hybrid.css?1748251647" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1748251647" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1748251647" rel="stylesheet">
-    <link href="/css/auto-complete.css?1748251647" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1748251647" rel="stylesheet">
-    <link href="/css/theme.css?1748251647" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1748251647" rel="stylesheet">
+    <link href="/css/nucleus.css?1749011598" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1749011598" rel="stylesheet">
+    <link href="/css/hybrid.css?1749011598" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1749011598" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1749011598" rel="stylesheet">
+    <link href="/css/auto-complete.css?1749011598" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1749011598" rel="stylesheet">
+    <link href="/css/theme.css?1749011598" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1749011598" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1748251647" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1749011598" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1748251647"></script>
+    <script src="/js/jquery-3.3.1.min.js?1749011598"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1748251647"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1748251647"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1749011598"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1749011598"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1748251647"></script>
+<script type="text/javascript" src="/js/search.js?1749011598"></script>
  
   </div>
 
@@ -70,7 +70,7 @@
     <ul class="topics">
                
 <li
-  data-nav-id="/1-introduce/"
+  data-nav-id="/1-introduction/"
   title="Introduction"
   class="dd-item 
         
@@ -78,7 +78,7 @@
         
         "
 >
-  <a href="/1-introduce/">
+  <a href="/1-introduction/">
     <b>1. </b>Introduction 
     <i class="fas fa-check read-icon"></i>
     
@@ -105,16 +105,16 @@
           
             
 <li
-  data-nav-id="/2-preparation/2.1-iam-role/"
-  title="Create IAM Role"
+  data-nav-id="/2-preparation/2.1-deploy-the-cloudformation-stack/"
+  title="Deploy the CloudFormation stack"
   class="dd-item 
         
         
         
         "
 >
-  <a href="/2-preparation/2.1-iam-role/">
-    <b>2.1. </b>Create IAM Role 
+  <a href="/2-preparation/2.1-deploy-the-cloudformation-stack/">
+    <b>2.1. </b>Deploy the CloudFormation stack 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -123,16 +123,16 @@
     
             
 <li
-  data-nav-id="/2-preparation/2.2-policy/"
-  title="Create Policy"
+  data-nav-id="/2-preparation/2.2-set-up-security-group/"
+  title="Set up Security Group"
   class="dd-item 
         
         
         
         "
 >
-  <a href="/2-preparation/2.2-policy/">
-    <b>2.2. </b>Create Policy 
+  <a href="/2-preparation/2.2-set-up-security-group/">
+    <b>2.2. </b>Set up Security Group 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -141,16 +141,16 @@
     
             
 <li
-  data-nav-id="/2-preparation/2.3-attach-policy-to-role/"
-  title="Attach Policy to Role"
+  data-nav-id="/2-preparation/2.3-create-an-iam-user-for-testing/"
+  title="Create an IAM user for Testing"
   class="dd-item 
         
         
         
         "
 >
-  <a href="/2-preparation/2.3-attach-policy-to-role/">
-    <b>2.3. </b>Attach Policy to Role 
+  <a href="/2-preparation/2.3-create-an-iam-user-for-testing/">
+    <b>2.3. </b>Create an IAM user for Testing 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -495,7 +495,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>11-11-2024</font></i>
+        <i><font color=orange>14-06-2025</font></i>
     </left>
     <left>
         <br>
@@ -503,7 +503,7 @@
             <b> Team </b> <br>
            
             <i>
-                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Ngọc Uyển</a>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hung</a>
         </i>
         </left>
 
@@ -533,76 +533,44 @@
 </span>
 
  
-<h1 id="exploring-data-lake-on-aws">Exploring Data Lake on AWS</h1>
-<h4 id="introduction-to-data-lake">Introduction to Data Lake</h4>
-<p>A <strong>Data Lake</strong> is a centralized storage system that allows the storage of data in any format—structured, semi-structured, or unstructured. Unlike traditional databases that require data to be formatted before storage, a Data Lake enables the storage of raw data, which can later be processed or analyzed when needed.</p>
-<h4 id="benefits-of-data-lake">Benefits of Data Lake</h4>
+<h1 id="automating-incident-response">Automating Incident Response</h1>
+<h4 id="overview">Overview</h4>
+<p>This lab is designed to simulate and respond to a real-world cloud security incident involving a compromised EC2 instance within the AWS environment. The focus is on building and executing <strong>automated incident response (IR)</strong> playbooks to detect and remediate malicious activity without manual intervention, leveraging AWS-native tools and services.</p>
+<h4 id="scenario-summary">Scenario Summary</h4>
+<p>An adversary has successfully compromised an EC2 instance, potentially via a vulnerability such as an <strong>OS command injection</strong>. After gaining unauthorized access, the attacker:</p>
 <ul>
-<li><strong>Flexible Storage</strong>: Supports data from multiple sources and in various formats.</li>
-<li><strong>Comprehensive Analytics</strong>: Facilitates big data analysis and AI/ML applications.</li>
-<li><strong>Cost-Efficiency</strong>: Uses low-cost storage solutions like Amazon S3.</li>
-<li><strong>Easy Integration</strong>: Seamlessly connects with analytics and reporting tools like Amazon Athena and QuickSight.</li>
+<li>Installs a <strong>TOR client</strong> to communicate anonymously with an external command-and-control (C2) server.</li>
+<li>Attempts to perform <strong>Bitcoin mining</strong> and establish a connection to <strong>a known malicious IP address</strong>.</li>
 </ul>
-<h4 id="challenges-in-implementing-a-data-lake">Challenges in Implementing a Data Lake</h4>
+<h4 id="automated-incident-response-playbook-approaches">Automated Incident Response Playbook Approaches</h4>
+<p>In this lab, we will implement two types of automated incident response (IR) playbooks using AWS-native services. Each approach provides distinct advantages and trade-offs depending on the complexity and duration of the remediation tasks.</p>
+<h5 id="1-lambda-based-ir-playbook">1. Lambda-based IR Playbook</h5>
+<p>This approach uses a <strong>single AWS Lambda function</strong> to execute remediation actions as soon as an incident is detected. It is the <strong>simplest and fastest method</strong> to deploy. However, it comes with an important limitation:</p>
 <ul>
-<li><strong>Data Management</strong>: How to organize and manage data effectively?</li>
-<li><strong>Security</strong>: How to prevent unauthorized access to data?</li>
-<li><strong>Scalability</strong>: The system must scale to handle the increasing volume of data.</li>
-<li><strong>Performance</strong>: It is necessary to optimize for data querying and processing.</li>
-<li><strong>Data Quality</strong>: Ensuring the accuracy and reliability of data is crucial.</li>
+<li><strong>Execution time is capped at 15 minutes</strong>, which means it <strong>cannot accommodate long-running tasks</strong>, such as waiting for an EBS snapshot to complete or performing detailed forensic collection.</li>
+<li>Best suited for <strong>immediate and lightweight actions</strong>, such as tagging, isolating the instance via security group changes, or sending alerts.</li>
 </ul>
-<h4 id="workshop-architecture">Workshop Architecture</h4>
-<h5 id="overview-of-the-architecture">Overview of the Architecture</h5>
-<p>The following diagram illustrates the architecture of the Data Lake system we will deploy in this workshop:</p>
-<p><img src="/images/1/workshop.jpg" alt="Workshop"></p>
-<h5 id="architecture-description">Architecture Description</h5>
+<h5 id="2-step-functions-based-ir-playbook">2. Step Functions-based IR Playbook</h5>
+<p>This method uses <strong>AWS Step Functions</strong> to orchestrate the incident response as a <strong>modular state machine</strong>, enabling a more flexible and robust IR process.</p>
 <ul>
-<li>
-<p><strong>Data Collection</strong>:</p>
+<li>Unlike Lambda, <strong>there is no strict execution timeout</strong>, allowing for <strong>complex, multi-step workflows</strong> that may span several minutes or even hours.</li>
+<li>Tasks can be broken into <strong>independent, manageable states</strong>, including parallel execution, retries, wait conditions, and failure handling logic.</li>
+<li>Ideal for scenarios requiring <strong>sequenced actions</strong>, such as taking snapshots, gathering forensic data, notifying multiple systems, and then terminating or quarantining the instance.</li>
+</ul>
+<p>By comparing both approaches, this lab highlights how AWS automation tools can be tailored to meet different response needs — from rapid reaction to comprehensive remediation pipelines.</p>
+<h4 id="goals-of-the-workshop">Goals of the Workshop</h4>
+<p>By the end of this workshop, you will have learned how to:</p>
 <ul>
-<li>Data from multiple sources is collected via Kinesis.</li>
-<li>Kinesis Firehose Stream processes and transfers the data to Amazon S3.</li>
+<li>Perform automated basic incident response tasks focused on <strong>containment</strong> and <strong>forensic data collection</strong>.</li>
+<li>Understand the range of possible remediation actions and the effort involved in executing them.</li>
 </ul>
-</li>
-<li>
-<p><strong>Storing Raw Data</strong>:</p>
-<ul>
-<li>Raw data is stored in the &ldquo;raw data&rdquo; folder in S3.</li>
-<li>CloudFormation automatically deploys the necessary resources.</li>
-</ul>
-</li>
-<li>
-<p><strong>AWS Glue</strong>:</p>
-<ul>
-<li>AWS Glue Crawler scans the raw data in S3 to create metadata.</li>
-<li>Metadata is stored in the AWS Glue Data Catalog.</li>
-<li>An ETL Job (Extract, Transform, Load) processes and transforms the raw data into processed data.</li>
-</ul>
-</li>
-<li>
-<p><strong>Storing Processed Data</strong>:</p>
-<ul>
-<li>The transformed data is stored in another S3 bucket under the &ldquo;processed-data&rdquo; folder.</li>
-</ul>
-</li>
-<li>
-<p><strong>Data Analysis and Visualization</strong>:</p>
-<ul>
-<li>AWS Glue Crawler scans the processed data and updates the Glue Data Catalog.</li>
-<li>Amazon Athena is used to query data in S3.</li>
-<li>Amazon QuickSight connects to the data for visualization and reporting.</li>
-</ul>
-</li>
-</ul>
-<h5 id="goals-of-the-workshop">Goals of the Workshop</h5>
-<ul>
-<li>Understand the components of the Data Lake architecture.</li>
-<li>Deploy a simple Data Lake system using AWS services.</li>
-<li>Integrate analytics and visualization tools to extract meaningful insights from the data.</li>
-</ul>
+
+<div class="notices info" ><p>This workshop length is around 3hrs, even if you dont complete it visit the <strong>clean up resources</strong> part to avoid the fees.</p>
+</div>
+
 <h4 id="workshop-content">Workshop Content</h4>
 <ol>
-<li><a href="/1-introduce/">Introduction</a></li>
+<li><a href="1-introduce">Introduction</a></li>
 <li><a href="/2-preparation/">Preparation Steps</a></li>
 <li><a href="/3-collection-storage/">Data Collection and Storage</a></li>
 <li><a href="/4-data-catalog/">Create Data Catalog</a></li>
@@ -946,8 +914,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/7-clean-up/" title="Cleanup Resources"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/1-introduce/" title="Introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/1-introduction/" title="Introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -957,19 +927,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1748251647"></script>
-    <script src="/js/perfect-scrollbar.min.js?1748251647"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1748251647"></script>
-    <script src="/js/jquery.sticky.js?1748251647"></script>
-    <script src="/js/featherlight.min.js?1748251647"></script>
-    <script src="/js/highlight.pack.js?1748251647"></script>
+    <script src="/js/clipboard.min.js?1749011598"></script>
+    <script src="/js/perfect-scrollbar.min.js?1749011598"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1749011598"></script>
+    <script src="/js/jquery.sticky.js?1749011598"></script>
+    <script src="/js/featherlight.min.js?1749011598"></script>
+    <script src="/js/highlight.pack.js?1749011598"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1748251647"></script>
-    <script src="/js/learn.js?1748251647"></script>
-    <script src="/js/hugo-learn.js?1748251647"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1749011598"></script>
+    <script src="/js/learn.js?1749011598"></script>
+    <script src="/js/hugo-learn.js?1749011598"></script>
 
-    <link href="/mermaid/mermaid.css?1748251647" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1748251647"></script>
+    <link href="/mermaid/mermaid.css?1749011598" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1749011598"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

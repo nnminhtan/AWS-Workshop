@@ -1,0 +1,401 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Security Automations Workshop template.  Sets up VPC, EC2 instances, turns on GuardDuty and GuardDuty-Tester",
+    "Metadata": {
+        "AWS::CloudFormation::Interface": {
+            "ParameterGroups": [
+                {
+                    "Label" : {"default": "Workshop Service Configuration"},
+                    "Parameters": ["EnableGuardDuty"]
+                },
+                {
+                    "Label" : {"default": "Workshop Parameters"},
+                    "Parameters": ["LatestAMZNLinuxAMI", "LatestAMZNLinux2AMI", "LatestWindows2016AMI"]
+                }
+            ],
+            "ParameterLabels": {
+                "EnableGuardDuty": {"default" : "Automatically enable GuardDuty?"}            
+            }
+        }
+    },
+    "Parameters": {
+        "LatestAMZNLinuxAMI": {
+            "Description": "DO NOT CHANGE: The latest AMI ID for Amazon Linux",
+            "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+            "Default": "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2"
+        },
+        "LatestAMZNLinux2AMI": {
+            "Description": "DO NOT CHANGE: The latest AMI ID for Amazon Linux2",
+            "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+            "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+        },
+        "LatestWindows2016AMI": {
+            "Description": "DO NOT CHANGE: The latest AMI ID for Windows 2016",
+            "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+            "Default": "/aws/service/ami-windows-latest/EC2LaunchV2-Windows_Server-2016-English-Full-Base"
+        },
+        "EnableGuardDuty": {
+            "Description": "Choose Yes if GuardDuty is not yet enabled in the account and region this template will be deployed to, otherwise choose No.",
+            "Type": "String",
+            "AllowedValues": ["Yes-Enable GuardDuty", "No-GuardDuty is already enabled"],
+            "Default": "Yes-Enable GuardDuty"
+        }
+    },
+    "Mappings": {
+        "AWSRegionAMIMap": {
+            "ap-south-1": {"HVM64": "ami-b46f48db"},
+            "eu-west-3": {"HVM64": "ami-cae150b7"},
+            "eu-west-2": {"HVM64": "ami-c12dcda6"},
+            "eu-west-1": {"HVM64": "ami-9cbe9be5"},
+            "ap-northeast-3": {"HVM64": "ami-68c1cf15"},
+            "ap-northeast-2": {"HVM64": "ami-efaf0181"},
+            "ap-northeast-1": {"HVM64": "ami-28ddc154"},
+            "sa-east-1": {"HVM64": "ami-f09dcc9c"},
+            "ca-central-1": {"HVM64": "ami-2f39bf4b"},
+            "ap-southeast-1": {"HVM64": "ami-64260718"},
+            "ap-southeast-2": {"HVM64": "ami-60a26a02"},
+            "eu-central-1": {"HVM64": "ami-1b316af0"},
+            "us-east-1": {"HVM64": "ami-467ca739"},
+            "us-east-2": {"HVM64": "ami-976152f2"},
+            "us-west-1": {"HVM64": "ami-46e1f226"},
+            "us-west-2": {"HVM64": "ami-6b8cef13"}
+            }
+    },
+
+    "Conditions": {
+        "EnableGuardDuty": {"Fn::Equals": [{"Ref": "EnableGuardDuty"}, "Yes-Enable GuardDuty"]}
+    },
+
+    "Resources": {
+        "SSMInstanceRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "ssm.amazonaws.com",
+                                    "ec2.amazonaws.com"
+                                ]
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyName": "S3andSSMAccess",
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ssm:DescribeAssociation",
+                                        "ssm:GetDeployablePatchSnapshotForInstance",
+                                        "ssm:GetDocument",
+                                        "ssm:DescribeDocument",
+                                        "ssm:GetManifest",
+                                        "ssm:GetParameters",
+                                        "ssm:GetParameter",
+                                        "ssm:ListAssociations",
+                                        "ssm:ListInstanceAssociations",
+                                        "ssm:PutInventory",
+                                        "ssm:PutComplianceItems",
+                                        "ssm:PutConfigurePackageResult",
+                                        "ssm:UpdateAssociationStatus",
+                                        "ssm:UpdateInstanceAssociationStatus",
+                                        "ssm:UpdateInstanceInformation"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ssmmessages:CreateControlChannel",
+                                        "ssmmessages:CreateDataChannel",
+                                        "ssmmessages:OpenControlChannel",
+                                        "ssmmessages:OpenDataChannel"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ec2messages:AcknowledgeMessage",
+                                        "ec2messages:DeleteMessage",
+                                        "ec2messages:FailMessage",
+                                        "ec2messages:GetEndpoint",
+                                        "ec2messages:GetMessages",
+                                        "ec2messages:SendReply"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "cloudwatch:PutMetricData"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ec2:DescribeInstanceStatus"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ds:CreateComputer",
+                                        "ds:DescribeDirectories"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "logs:CreateLogGroup",
+                                        "logs:CreateLogStream",
+                                        "logs:DescribeLogGroups",
+                                        "logs:DescribeLogStreams",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "s3:GetBucketLocation",
+                                        "s3:PutObject",
+                                        "s3:GetObject",
+                                        "s3:GetEncryptionConfiguration",
+                                        "s3:AbortMultipartUpload",
+                                        "s3:ListMultipartUploadParts",
+                                        "s3:ListBucket",
+                                        "s3:ListBucketMultipartUploads"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Sid": "S3ListBuckets",
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "s3:ListAllMyBuckets"
+                                    ],
+                                    "Resource": "arn:aws:s3:::*"
+                                },
+                                {
+                                    "Sid": "S3GetObjects",
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "s3:ListBucket",
+                                        "s3:GetBucketLocation",
+                                        "s3:GetObject"
+                                    ],
+                                    "Resource": {
+                                        "Fn::Join": [
+                                            "",
+                                            [
+                                                "arn:aws:s3:::",
+                                                "agentbucket-",
+                                                {
+                                                    "Ref": "AWS::AccountId"
+                                                },
+                                                "/*"
+                                            ]
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "Path": "/"
+            }
+        },
+        "VPC": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "10.0.0.0/16",
+                "EnableDnsSupport": "true",
+                "EnableDnsHostnames": "true",
+                "Tags": [
+                    {
+                        "Key": "Application",
+                        "Value": {
+                            "Ref": "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    "VPC",
+                                    {
+                                        "Ref": "AWS::StackName"
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "PublicSubnet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "CidrBlock": "10.0.1.0/24",
+                "MapPublicIpOnLaunch": "true",
+                "AvailabilityZone": {
+                    "Fn::Select": [
+                        "0",
+                        {
+                            "Fn::GetAZs": {
+                                "Ref": "AWS::Region"
+                            }
+                        }
+                    ]
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    "Pub1",
+                                    {
+                                        "Ref": "AWS::StackName"
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "IGW": {
+            "Type": "AWS::EC2::InternetGateway",
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Application",
+                        "Value": {
+                            "Ref": "AWS::StackName"
+                        }
+                    }
+                ]
+            }
+        },
+        "AttachGateway": {
+            "Type": "AWS::EC2::VPCGatewayAttachment",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "InternetGatewayId": {
+                    "Ref": "IGW"
+                }
+            }
+        },
+        "PublicRouteTable": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "Tags": [
+                    {
+                        "Key": "Application",
+                        "Value": {
+                            "Ref": "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key": "Network",
+                        "Value": "Public"
+                    }
+                ]
+            }
+        },
+        "PublicRoute": {
+            "Type": "AWS::EC2::Route",
+            "DependsOn": [
+                "AttachGateway"
+            ],
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "PublicRouteTable"
+                },
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "IGW"
+                }
+            }
+        },
+        "PublicSubnetRouteAssociation": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "PublicSubnet"
+                },
+                "RouteTableId": {
+                    "Ref": "PublicRouteTable"
+                }
+            }
+        },
+        "GDdetector": {
+            "Type": "AWS::GuardDuty::Detector",
+            "Condition": "EnableGuardDuty",
+            "Properties": {
+                "Enable": true,
+                "FindingPublishingFrequency": "FIFTEEN_MINUTES"
+            }
+        },
+        "GuardDutyTesterTemplate": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL":{
+                    "Fn::Join": [
+                            "",
+                            [
+                                "https://sa-security-specialist-workshops-",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                ".s3.",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                ".amazonaws.com/security-hub-workshop/templates/guardduty-tester-template.json"
+                            ]
+                        ]
+                    },
+                "Parameters": {
+                    "InstanceSubnetId": {
+                        "Ref": "PublicSubnet"
+                    },
+                    "DeployVPC": {
+                        "Ref": "VPC"
+                    },
+                    "DeployVPCCidr": {
+                        "Fn::GetAtt": [
+                            "VPC",
+                            "CidrBlock"
+                        ]
+                    },
+                    "LatestWindows2012R2AMI":  "/aws/service/ami-windows-latest/EC2LaunchV2-Windows_Server-2016-English-Full-Base"
+                }
+            }
+        }
+    }
+}
