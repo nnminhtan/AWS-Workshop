@@ -12,21 +12,21 @@
     <title>Create an IAM user for Testing :: Automating Incident Response</title>
 
     
-    <link href="/css/nucleus.css?1749028946" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1749028946" rel="stylesheet">
-    <link href="/css/hybrid.css?1749028946" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1749028946" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1749028946" rel="stylesheet">
-    <link href="/css/auto-complete.css?1749028946" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1749028946" rel="stylesheet">
-    <link href="/css/theme.css?1749028946" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1749028946" rel="stylesheet">
+    <link href="/css/nucleus.css?1749117123" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1749117123" rel="stylesheet">
+    <link href="/css/hybrid.css?1749117123" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1749117123" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1749117123" rel="stylesheet">
+    <link href="/css/auto-complete.css?1749117123" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1749117123" rel="stylesheet">
+    <link href="/css/theme.css?1749117123" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1749117123" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1749028946" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1749117123" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1749028946"></script>
+    <script src="/js/jquery-3.3.1.min.js?1749117123"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1749028946"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1749028946"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1749117123"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1749117123"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1749028946"></script>
+<script type="text/javascript" src="/js/search.js?1749117123"></script>
  
   </div>
 
@@ -180,16 +180,34 @@
           
             
 <li
-  data-nav-id="/3-configure-response/3.1-s3-bucket/"
-  title="Create S3 Bucket"
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/"
+  title="Single Lambda response"
   class="dd-item 
         
         
         
         "
 >
-  <a href="/3-configure-response/3.1-s3-bucket/">
-    <b>3.1. </b>Create S3 Bucket 
+  <a href="/3-configure-response/3.1-single-lambda-response/">
+    <b>3.1 </b>Single Lambda response 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/"
+  title="Create IAM Policies and Roles"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/">
+    <b>3.1.1 </b>Create IAM Policies and Roles 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -198,7 +216,65 @@
     
             
 <li
-  data-nav-id="/3-configure-response/3.2-object-in-bucket/"
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+  title="Create Lambda Function"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/">
+    <b>3.1.2 </b>Create Lambda Function 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/"
+  title="Test Lambda Function"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/">
+    <b>3.1.3 </b>Test Lambda Function 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
+  title="Create EventBridge Rule"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/">
+    <b>3.1.4 </b>Create EventBridge Rule 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/3-configure-response/3.2-step-function-response/"
   title="Create Object for S3 Bucket"
   class="dd-item 
         
@@ -206,44 +282,8 @@
         
         "
 >
-  <a href="/3-configure-response/3.2-object-in-bucket/">
+  <a href="/3-configure-response/3.2-step-function-response/">
     <b>3.2. </b>Create Object for S3 Bucket 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
-    
-            
-<li
-  data-nav-id="/3-configure-response/3.3-kinesis-firehose-stream/"
-  title="Create Firehose Stream"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/3-configure-response/3.3-kinesis-firehose-stream/">
-    <b>3.3. </b>Create Firehose Stream 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
-    
-            
-<li
-  data-nav-id="/3-configure-response/3.4-sample-data/"
-  title="Create Sample Data"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/3-configure-response/3.4-sample-data/">
-    <b>3.4. </b>Create Sample Data 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -596,14 +636,14 @@
 <li>Search for the <strong>IAM</strong></li>
 <li>Click it to access <strong>IAM Dashboard</strong></li>
 </ul>
-<p><img src="/images/1/1.3/IAM_Dashboard.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/IAM_Dashboard.png?width=90pc" alt="IAM"></p>
 </li>
 <li>
 <p>Create a IAM policy in <strong>IAM Dashboard</strong></p>
 <ul>
 <li>Look for <strong>Policies</strong> in the side panel, select <strong>Create policy</strong></li>
 </ul>
-<p><img src="/images/1/1.3/Create_policy.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_policy.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>Under <strong>Specify permission</strong> within the <strong>Policy editor</strong> click the <strong>JSON</strong> to switch to <strong>JSON</strong> format and then paste the JSON below into the editor</li>
 </ul>
@@ -629,17 +669,17 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img src="/images/1/1.3/Create_policy_add_policy.png?width=90pc" alt="IAM"></p>
+</span></span></code></pre></div><p><img src="/images/2/2.3/Create_policy_add_policy.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>After that click <strong>Next</strong></li>
 <li>In the <strong>Review and create</strong> under <em>Policy details</em>, name the policy : <code>Deny-termination-of-isolated-instances</code>.</li>
 </ul>
-<p><img src="/images/1/1.3/Create_policy_naming.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_policy_naming.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>Leaves the rest unchanged, click the <strong>Create policy</strong>. This should take you back to the <strong>Policy</strong> Interface</li>
 </ul>
 
-<div class="notices info" ><p>In real life scenario we recommend using <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html">Service control policies (SCP)</a></p>
+<div class="notices info" ><p>In real life scenario the authors recommend using <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html">Service control policies (SCP)</a></p>
 </div>
 
 <ol start="3">
@@ -649,7 +689,7 @@
 <li>In the <strong>Policy</strong> Interface, In the side panel you should see <strong>User groups</strong> access it.</li>
 <li>Click <strong>Create Group</strong></li>
 </ul>
-<p><img src="/images/1/1.3/Create_group.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_group.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>Under <strong>Create user group</strong>, <strong>name</strong> the group : <code>ec2-user</code></li>
 <li>Under <strong>Attach permissions policies</strong>, attach these policies to the group :
@@ -659,31 +699,31 @@
 </ul>
 </li>
 </ul>
-<p><img src="/images/1/1.3/Create_group_naming.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_group_naming.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>Click <strong>Create group</strong>, the results should be like this.</li>
 </ul>
-<p><img src="/images/1/1.3/Create_group_result.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_group_result.png?width=90pc" alt="IAM"></p>
 </li>
 <li>
 <p>Create a <strong>user</strong></p>
 <ul>
 <li>Head back in the side panel click the <strong>Users</strong> and click <strong>Create user</strong></li>
 </ul>
-<p><img src="/images/1/1.3/Create_user.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_user.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>Under <em>Specify user details</em>, name the <strong>User name</strong> is : <code>testuser</code></li>
 <li>Select <strong>yes</strong> for the <em>Provide user access to the AWS Management console</em></li>
 <li>Select <em>I want to create an IAM user</em>, You can choose <strong>autogenerated password</strong> or <strong>custom password</strong></li>
 <li>You can unselect <em>User must create a new password at next sign-in</em> as shown below</li>
 </ul>
-<p><img src="/images/1/1.3/Create_user_details.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_user_details.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>Click <strong>next</strong> to go to the <strong>Set permission</strong> interface</li>
 <li>Under <em>Permissions options</em> leave it as <strong>Add a user to group</strong></li>
 <li>Under <em>User groups</em> add the user to the <strong>prior created ec2-users</strong></li>
 </ul>
-<p><img src="/images/1/1.3/Create_user_set_permission.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_user_set_permission.png?width=90pc" alt="IAM"></p>
 <ul>
 <li>Proceed next to <strong>Create user</strong>.</li>
 </ul>
@@ -696,7 +736,7 @@
 <ul>
 <li>After the <em>user creation</em>, the user should have permission like below</li>
 </ul>
-<p><img src="/images/1/1.3/Create_user_result.png?width=90pc" alt="IAM"></p>
+<p><img src="/images/2/2.3/Create_user_result.png?width=90pc" alt="IAM"></p>
 
 <div class="notices info" ><p>This is just for demo purposes, to show that once the instance is tagged as isolated,
 the regular users with this policy will not be able to terminate the instance.
@@ -860,6 +900,37 @@ as per Well-Architected-Framework&rsquo;s <a href="https://docs.aws.amazon.com/e
 
                     
                     
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
                     
 
                     
@@ -894,6 +965,9 @@ as per Well-Architected-Framework&rsquo;s <a href="https://docs.aws.amazon.com/e
                     
                     
 
+                    
+            
+        
                     
             
         
@@ -1071,19 +1145,19 @@ as per Well-Architected-Framework&rsquo;s <a href="https://docs.aws.amazon.com/e
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1749028946"></script>
-    <script src="/js/perfect-scrollbar.min.js?1749028946"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1749028946"></script>
-    <script src="/js/jquery.sticky.js?1749028946"></script>
-    <script src="/js/featherlight.min.js?1749028946"></script>
-    <script src="/js/highlight.pack.js?1749028946"></script>
+    <script src="/js/clipboard.min.js?1749117123"></script>
+    <script src="/js/perfect-scrollbar.min.js?1749117123"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1749117123"></script>
+    <script src="/js/jquery.sticky.js?1749117123"></script>
+    <script src="/js/featherlight.min.js?1749117123"></script>
+    <script src="/js/highlight.pack.js?1749117123"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1749028946"></script>
-    <script src="/js/learn.js?1749028946"></script>
-    <script src="/js/hugo-learn.js?1749028946"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1749117123"></script>
+    <script src="/js/learn.js?1749117123"></script>
+    <script src="/js/hugo-learn.js?1749117123"></script>
 
-    <link href="/mermaid/mermaid.css?1749028946" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1749028946"></script>
+    <link href="/mermaid/mermaid.css?1749117123" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1749117123"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

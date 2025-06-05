@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.147.5">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Create Lambda Function :: Automating Incident Response</title>
+
+    
+    <link href="/css/nucleus.css?1749117237" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1749117237" rel="stylesheet">
+    <link href="/css/hybrid.css?1749117237" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1749117237" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1749117237" rel="stylesheet">
+    <link href="/css/auto-complete.css?1749117237" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1749117237" rel="stylesheet">
+    <link href="/css/theme.css?1749117237" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1749117237" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1749117237" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1749117237"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1749117237"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1749117237"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1749117237"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+               
+<li
+  data-nav-id="/1-introduction/"
+  title="Introduction"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/1-introduction/">
+    <b>1. </b>Introduction 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/2-preparation/"
+  title="Preparation Steps"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/2-preparation/">
+    <b>2. </b>Preparation Steps 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/2-preparation/2.1-deploy-the-cloudformation-stack/"
+  title="Deploy the CloudFormation stack"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/2-preparation/2.1-deploy-the-cloudformation-stack/">
+    <b>2.1. </b>Deploy the CloudFormation stack 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/2-preparation/2.2-set-up-security-group/"
+  title="Set up Security Group"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/2-preparation/2.2-set-up-security-group/">
+    <b>2.2. </b>Set up Security Group 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/2-preparation/2.3-create-an-iam-user-for-testing/"
+  title="Create an IAM user for Testing"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/2-preparation/2.3-create-an-iam-user-for-testing/">
+    <b>2.3. </b>Create an IAM user for Testing 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/3-configure-response/"
+  title="Configure-Response"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="/3-configure-response/">
+    <b>3. </b>Configure-Response 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/"
+  title="Single Lambda response"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/">
+    <b>3.1. </b>Single Lambda response 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/"
+  title="Create IAM Policies and Roles"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/">
+    <b>3.1.1. </b>Create IAM Policies and Roles 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+  title="Create Lambda Function"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/">
+    <b>3.1.2. </b>Create Lambda Function 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/"
+  title="Test Lambda Function"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/">
+    <b>3.1.3. </b>Test Lambda Function 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
+  title="Create EventBridge Rule"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/">
+    <b>3.1.4. </b>Create EventBridge Rule 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/3-configure-response/3.2-step-function-response/"
+  title="Create Object for S3 Bucket"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/3-configure-response/3.2-step-function-response/">
+    <b>3.2. </b>Create Object for S3 Bucket 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/4-data-catalog/"
+  title="Create Data Catalog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/4-data-catalog/">
+    <b>4. </b>Create Data Catalog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/4-data-catalog/4.1-glue-crawler/"
+  title="Create Glue Crawler"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/4-data-catalog/4.1-glue-crawler/">
+    <b>4.1. </b>Create Glue Crawler 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/4-data-catalog/4.2-test-data/"
+  title="Check Data"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/4-data-catalog/4.2-test-data/">
+    <b>4.2. </b>Check Data 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/5-data-transform/"
+  title="Data Transformation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/5-data-transform/">
+    <b>5. </b>Data Transformation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/6-analysis-visualize/"
+  title="Analysis and Visualization"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/6-analysis-visualize/">
+    <b>6. </b>Analysis and Visualization 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/6-analysis-visualize/6.1-athena/"
+  title="Analysis with Athena"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/6-analysis-visualize/6.1-athena/">
+    <b>6.1. </b>Analysis with Athena 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/6-analysis-visualize/6.2-quicksight/"
+  title="Visualize with QuickSight"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/6-analysis-visualize/6.2-quicksight/">
+    <b>6.2. </b>Visualize with QuickSight 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/7-clean-up/"
+  title="Cleanup Resources"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/7-clean-up/">
+    <b>7. </b>Cleanup Resources 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="http://awsstudygroup.com"
+            ><i class='fab fa-aws'></i> AWS Study Group - Blog</a
+          >
+        </li>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/660548818043427/"
+            ><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = this.value;">
+                       
+                <option
+                  id="en"
+                  value="http://localhost:1313/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+                  selected
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><left>
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7831210&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>14-06-2025</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hung</a>
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+</section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Automating Incident Response</a> > <a href='/3-configure-response/'>Configure-Response</a> > <a href='/3-configure-response/3.1-single-lambda-response/'>Single Lambda response</a> > Create Lambda Function
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Create Lambda Function
+            </h1>
+          
+
+        
+
+
+
+	<ol>
+<li>
+<p>Create a <strong>Lambda Function</strong></p>
+<ul>
+<li>In the search bar look for <strong>Lambda</strong>, It should take we to the <em>Lambda begin page</em></li>
+</ul>
+<p><img src="/images/3/3.1/3.1.2/Lambda.png?width=90pc" alt="Lambda"></p>
+<ul>
+<li>Click <strong>Create a function</strong></li>
+</ul>
+<p><img src="/images/3/3.1/3.1.2/Create_function.png?width=90pc" alt="Lambda"></p>
+<ul>
+<li>Name the function : <code>ec2instance-containment-with-forensics</code>.</li>
+<li>Select the Runtime as : <strong>Python 3.9</strong>.</li>
+<li>Expand the <em>Change default execution role</em>, choose <strong>Use a existing role</strong>.</li>
+<li>Select the <code>ec2instance-containment-with-forensics-role</code> as execution role.</li>
+<li>The result should be like this, then click <strong>Create function</strong>
+<img src="/images/3/3.1/3.1.2/Create_function_settings.png?width=90pc" alt="Lambda"></li>
+</ul>
+</li>
+<li>
+<p>Modify the prior created <strong>Lambda function</strong></p>
+<ul>
+<li>Click the <em>Configuration</em>, then click the <em>Edit</em> button.</li>
+</ul>
+<p><img src="/images/3/3.1/3.1.2/Configure_function_runtime1.png?width=90pc" alt="Lambda"></p>
+<ul>
+<li>Change the <strong>Timeout</strong> to 15 min, then save.</li>
+</ul>
+<p><img src="/images/3/3.1/3.1.2/Configure_function_runtime2.png?width=90pc" alt="Lambda"></p>
+<ul>
+<li>Now we will create the <strong>environment variables</strong> to the <strong>lambda function</strong></li>
+<li>Still in the <em>Configuration</em>, select the <strong>Environment variables</strong> and click <em>Edit</em>.</li>
+</ul>
+<p><img src="/images/3/3.1/3.1.2/Configure_function_create_env_var.png?width=90pc" alt="Lambda"></p>
+<ul>
+<li>Select <strong>Add environment variable</strong>.
+<ul>
+<li>Key: ForensicsSG</li>
+<li>Value: sg-&hellip;(the ID of your Forensics SG)</li>
+</ul>
+</li>
+<li>They should be like as below.</li>
+</ul>
+<p><img src="/images/3/3.1/3.1.2/Configure_function_add_env_var.png?width=90pc" alt="Lambda"></p>
+<ul>
+<li>Then click save.</li>
+</ul>
+</li>
+<li>
+<p>Add the code for the <strong>Lambda Function</strong></p>
+<ul>
+<li>Click the <em>Code</em> next to the <em>Configuration</em>.
+<img src="/images/3/3.1/3.1.2/Add_code_Lambda.png?width=90pc" alt="Lambda"></li>
+<li>In the code editor, paste the <em>following code</em>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>     <span style="color:#f92672">import</span> boto3<span style="color:#f92672">,</span> json
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">from</span> botocore.exceptions <span style="color:#f92672">import</span> ClientError
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lambda_handler</span>(event, context):
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># Copyright 2022 - Amazon Web Services</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># Permission is hereby granted, free of charge, to any person obtaining a copy of this</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># software and associated documentation files (the &#34;Software&#34;), to deal in the Software</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># without restriction, including without limitation the rights to use, copy, modify,</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># merge, publish, distribute, sublicense, and/or sell copies of the Software, and to</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># permit persons to whom the Software is furnished to do so.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># THE SOFTWARE IS PROVIDED &#34;AS IS&#34;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># print(&#39;## ENVIRONMENT VARIABLES&#39;)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># print(os.environ)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># print(&#39;## EVENT&#39;)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># print(event)</span>
+</span></span><span style="display:flex;"><span>     response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Error remediating the security finding.&#39;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Gather Instance ID from CloudWatch event</span>
+</span></span><span style="display:flex;"><span>          instanceID <span style="color:#f92672">=</span> event[<span style="color:#e6db74">&#39;detail&#39;</span>][<span style="color:#e6db74">&#39;resource&#39;</span>][<span style="color:#e6db74">&#39;instanceDetails&#39;</span>][<span style="color:#e6db74">&#39;instanceId&#39;</span>]
+</span></span><span style="display:flex;"><span>          print(<span style="color:#e6db74">&#39;## INSTANCE ID: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (instanceID))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Get instance details</span>
+</span></span><span style="display:flex;"><span>          client <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#39;ec2&#39;</span>)
+</span></span><span style="display:flex;"><span>          ec2 <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>resource(<span style="color:#e6db74">&#39;ec2&#39;</span>)
+</span></span><span style="display:flex;"><span>          instance <span style="color:#f92672">=</span> ec2<span style="color:#f92672">.</span>Instance(instanceID)
+</span></span><span style="display:flex;"><span>          instance_description <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>describe_instances(InstanceIds<span style="color:#f92672">=</span>[instanceID])
+</span></span><span style="display:flex;"><span>          print(<span style="color:#e6db74">&#39;## INSTANCE DESCRIPTION: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (instance_description))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#-------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Protect instance from termination</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#-------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>          ec2<span style="color:#f92672">.</span>Instance(instanceID)<span style="color:#f92672">.</span>modify_attribute(
+</span></span><span style="display:flex;"><span>          DisableApiTermination<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>               <span style="color:#e6db74">&#39;Value&#39;</span>: <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>          })
+</span></span><span style="display:flex;"><span>          ec2<span style="color:#f92672">.</span>Instance(instanceID)<span style="color:#f92672">.</span>modify_attribute(
+</span></span><span style="display:flex;"><span>          InstanceInitiatedShutdownBehavior<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>               <span style="color:#e6db74">&#39;Value&#39;</span>: <span style="color:#e6db74">&#39;stop&#39;</span>
+</span></span><span style="display:flex;"><span>          })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#-------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Create tags to avoid accidental deletion of forensics evidence</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#-------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>          ec2<span style="color:#f92672">.</span>create_tags(Resources<span style="color:#f92672">=</span>[instanceID], Tags<span style="color:#f92672">=</span>[{<span style="color:#e6db74">&#39;Key&#39;</span>:<span style="color:#e6db74">&#39;status&#39;</span>, <span style="color:#e6db74">&#39;Value&#39;</span>:<span style="color:#e6db74">&#39;isolated&#39;</span>}])
+</span></span><span style="display:flex;"><span>          print(<span style="color:#e6db74">&#39;## INSTANCE TAGS: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (instance<span style="color:#f92672">.</span>tags))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#------------------------------------</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">## Isolate Instance</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#------------------------------------</span>
+</span></span><span style="display:flex;"><span>          print(<span style="color:#e6db74">&#39;quarantining instance -- </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">, </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (instance<span style="color:#f92672">.</span>id, instance<span style="color:#f92672">.</span>instance_type))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Change instance Security Group attribute to terminate connections and allow Forensics Team&#39;s access</span>
+</span></span><span style="display:flex;"><span>          instance<span style="color:#f92672">.</span>modify_attribute(Groups<span style="color:#f92672">=</span>[os<span style="color:#f92672">.</span>environ[<span style="color:#e6db74">&#39;ForensicsSG&#39;</span>]])
+</span></span><span style="display:flex;"><span>          print(<span style="color:#e6db74">&#39;Instance ready for root cause analysis -- </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">, </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (instance<span style="color:#f92672">.</span>id,  instance<span style="color:#f92672">.</span>security_groups))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#------------------------------------</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">## Create snapshots of EBS volumes </span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#------------------------------------</span>
+</span></span><span style="display:flex;"><span>          description<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Isolated Instance:&#39;</span> <span style="color:#f92672">+</span> instance<span style="color:#f92672">.</span>id <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; on account: &#39;</span> <span style="color:#f92672">+</span> event[<span style="color:#e6db74">&#39;detail&#39;</span>][<span style="color:#e6db74">&#39;accountId&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; on &#39;</span> <span style="color:#f92672">+</span> date<span style="color:#f92672">.</span>today()<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">  %H:%M:%S&#34;</span>)
+</span></span><span style="display:flex;"><span>          SnapShotDetails <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>create_snapshots(
+</span></span><span style="display:flex;"><span>               Description<span style="color:#f92672">=</span>description,
+</span></span><span style="display:flex;"><span>               InstanceSpecification <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;InstanceId&#39;</span>: instanceID,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;ExcludeBootVolume&#39;</span>: <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>               }
+</span></span><span style="display:flex;"><span>          )
+</span></span><span style="display:flex;"><span>          print(<span style="color:#e6db74">&#39;Snapshot Created -- </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (SnapShotDetails))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Instance &#39;</span> <span style="color:#f92672">+</span> instance<span style="color:#f92672">.</span>id <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; auto-remediated&#39;</span>        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">except</span> ClientError <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>          print(e)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> response
+</span></span></code></pre></div><ul>
+<li>Then click on <strong>deploy</strong>, as shown below.
+<img src="/images/3/3.1/3.1.2/Deploy_code_Lambda.png?width=90pc" alt="Lambda"></li>
+</ul>
+</li>
+</ol>
+
+<div class="notices note" ><p>You can review comments on the code to understand what it&rsquo;s doing.</p>
+</div>
+
+<p>If you done with that, the next step which we will <a href="/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/">Test the Lambda Function</a>.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/" title="Create IAM Policies and Roles"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/" title="Test Lambda Function" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1749117237"></script>
+    <script src="/js/perfect-scrollbar.min.js?1749117237"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1749117237"></script>
+    <script src="/js/jquery.sticky.js?1749117237"></script>
+    <script src="/js/featherlight.min.js?1749117237"></script>
+    <script src="/js/highlight.pack.js?1749117237"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1749117237"></script>
+    <script src="/js/learn.js?1749117237"></script>
+    <script src="/js/hugo-learn.js?1749117237"></script>
+
+    <link href="/mermaid/mermaid.css?1749117237" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1749117237"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

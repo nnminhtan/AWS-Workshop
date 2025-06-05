@@ -6,7 +6,7 @@ chapter = false
 pre = "<b>2. </b>"
 +++
 
-## Preparation Steps
+<!-- ## Preparation Steps -->
 
 We will prepare by creating an IAM user for testing and attaching necessary policies. You will enable Amazon GuardDuty, and deploy a CloudFormation template to create a sample infrastructure to simulate an attacker and a target.
 
