@@ -12,21 +12,21 @@
     <title>Test Lambda Function :: Automating Incident Response</title>
 
     
-    <link href="/css/nucleus.css?1749117237" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1749117237" rel="stylesheet">
-    <link href="/css/hybrid.css?1749117237" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1749117237" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1749117237" rel="stylesheet">
-    <link href="/css/auto-complete.css?1749117237" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1749117237" rel="stylesheet">
-    <link href="/css/theme.css?1749117237" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1749117237" rel="stylesheet">
+    <link href="/css/nucleus.css?1749199965" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1749199965" rel="stylesheet">
+    <link href="/css/hybrid.css?1749199965" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1749199965" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1749199965" rel="stylesheet">
+    <link href="/css/auto-complete.css?1749199965" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1749199965" rel="stylesheet">
+    <link href="/css/theme.css?1749199965" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1749199965" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1749117237" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1749199965" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1749117237"></script>
+    <script src="/js/jquery-3.3.1.min.js?1749199965"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1749117237"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1749117237"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1749199965"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1749199965"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1749117237"></script>
+<script type="text/javascript" src="/js/search.js?1749199965"></script>
  
   </div>
 
@@ -642,13 +642,83 @@
 <p>Create <strong>test event</strong> for Lambda function</p>
 <ul>
 <li>In the same <em>Function code editor</em>,</li>
-<li>Select <strong>Analyses</strong>.</li>
-<li>Select the <strong>Analysis</strong> you want to delete.</li>
-<li>Click <strong>Delete</strong>.</li>
+<li>Select <strong>Test</strong> this will open a <strong>Create new test event</strong> on the top, click on it.</li>
 </ul>
-<p><img src="/images/7/delete_qs_ana.png?width=90pc" alt="QuickSight"></p>
+<p><img src="/images/3/3.1/3.1.3/Create_test_event.png?width=90pc" alt="Test Lambda"></p>
+<ul>
+<li>The panel <em>Create new test event</em> will open, name the <em>test event</em> : <code>GuardDutyViaCWE</code>.</li>
+<li>Copy this JSON below and paste in <em>Event JSON</em>, this JSON will need some modifications before you can run it.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;cd2d702e-ab31-411b-9344-793ce56b1bc7&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;detail-type&#34;</span>: <span style="color:#e6db74">&#34;GuardDuty Finding&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;aws.guardduty&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;&lt;&lt;Account ID&gt;&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#e6db74">&#34;1970-01-01T00:00:00Z&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;us-east-1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;resources&#34;</span>: [],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;detail&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;schemaVersion&#34;</span>: <span style="color:#e6db74">&#34;2.0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;&lt;&lt;Account ID&gt;&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;us-east-1&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;partition&#34;</span>: <span style="color:#e6db74">&#34;aws&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;b0baa89de4ab301f8d0a8c9a3dfd5726&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:guardduty:us-east-1:&lt;&lt;Account ID&gt;&gt;:detector/feb3c048238f682b8902532ec100b3fb/finding/b0baa89de4ab301f8d0a8c9a3dfd5726&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;UnauthorizedAccess:EC2/TorClient&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;resource&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;instanceDetails&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;instanceId&#34;</span>: <span style="color:#e6db74">&#34;&lt;&lt;Instance ID&gt;&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Replace the <strong>AccountID</strong> for yours.</li>
+<li>Replace the <strong>Instance ID</strong> with the ID of the BasicLinuxTarget instance deployed by the CloudFormation template (below is how you can find the <em>Instance ID</em>).</li>
+</ul>
+<p><img src="/images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc" alt="Test Lambda"></p>
+<ul>
+<li>After replace all the Account ID and Instance ID, then save.</li>
+</ul>
+<p><img src="/images/3/3.1/3.1.3/Create_test_event_modification.png?width=90pc" alt="Test Lambda"></p>
+<ul>
+<li>Verify status <em>before execution</em> : check on the EC2 console what is the current status of the instance <strong>&ldquo;BasicLinuxTarget&rdquo;</strong></li>
+</ul>
+
+<div class="notices note" ><pre><code>Can you answer the following questions?
+
+    • Which Security Group does it have?
+    • Which tags does it have ?
+    • Is there any snapshot related to the instance?
+</code></pre>
+</div>
+
+<ul>
+<li>Press the test event just created, and verify the status <em>after execution</em>: of the instance <strong>&ldquo;BasicLinuxTarget&rdquo;</strong></li>
+</ul>
+<p><img src="/images/3/3.1/3.1.3/Test_event.png?width=90pc" alt="Test Lambda"></p>
+<p>
+<div class="notices note" ><pre><code>Can you answer the following questions?
+
+    • Has the Security Group changed?
+    • Have the tags changed?
+    • Has any new Snapshot been created?
+    • Log in with a different Internet browser or using private mode, use the link on the IAM Dashboard 
+    (as seen below) and verify if you can delete the EC2 with the IAM user testuser that you created during the Setup steps.
+        
+        • Are you able to delete the instance?
+</code></pre>
+</div>
+
+<img src="/images/3/3.1/3.1.3/testuser_signin.png?width=90pc" alt="Test Lambda"></p>
+<ul>
+<li>When you use the <em>testuser</em> and try to delete the instance <strong>&ldquo;BasicLinuxTarget&rdquo;</strong> it should have this error.</li>
+</ul>
+<p><img src="/images/3/3.1/3.1.3/testuser_delete.png?width=90pc" alt="Test Lambda"></p>
 </li>
 </ol>
+<p>When you are done with all the steps, head to the next part of the Workshop which is <a href="/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/">Create a EventBridge Rule</a></p>
 
 
 
@@ -1048,19 +1118,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1749117237"></script>
-    <script src="/js/perfect-scrollbar.min.js?1749117237"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1749117237"></script>
-    <script src="/js/jquery.sticky.js?1749117237"></script>
-    <script src="/js/featherlight.min.js?1749117237"></script>
-    <script src="/js/highlight.pack.js?1749117237"></script>
+    <script src="/js/clipboard.min.js?1749199965"></script>
+    <script src="/js/perfect-scrollbar.min.js?1749199965"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1749199965"></script>
+    <script src="/js/jquery.sticky.js?1749199965"></script>
+    <script src="/js/featherlight.min.js?1749199965"></script>
+    <script src="/js/highlight.pack.js?1749199965"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1749117237"></script>
-    <script src="/js/learn.js?1749117237"></script>
-    <script src="/js/hugo-learn.js?1749117237"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1749199965"></script>
+    <script src="/js/learn.js?1749199965"></script>
+    <script src="/js/hugo-learn.js?1749199965"></script>
 
-    <link href="/mermaid/mermaid.css?1749117237" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1749117237"></script>
+    <link href="/mermaid/mermaid.css?1749199965" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1749199965"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

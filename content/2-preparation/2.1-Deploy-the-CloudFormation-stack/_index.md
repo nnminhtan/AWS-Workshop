@@ -14,7 +14,6 @@ To initiate the scenario and create the infrastructure we need to deploy a Cloud
 You can download the example file here: [The CloudFormation JSON file](files/cfn.json)
 {{% /notice %}}
 
-
 1. Access the [CloudFormation](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create)
 
    - Search for **CloudFormation**
@@ -41,7 +40,7 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
 4. In the **Specify stack details** interface, under **Specify stack details**
 
    - Under _Provide a stack name_, Enter Stack name: `AutomatedIncidentResponseWorkshop`
-   - Under _Parameters_, In **Automatically enable GuardDuty?** Select Yes-Enable GuardDuty 
+   - Under _Parameters_, In _Automatically enable GuardDuty?_ select **Yes-Enable GuardDuty** 
    - Leave the other settings unchanged, Click **Next**
 
    ![CloudFormation](/images/2/2.1/Specify_stack_details.png?width=90pc)
@@ -61,4 +60,4 @@ This should take a couple minutes, so go grab a coffee while at it.
 
    ![CloudFormation](/images/2/2.1/Stack_create_complete.png?width=90pc)
 
-   - If the stack status is **CREATE_COMPLETE** go to the next step [Set up Security Group](../2.2-Set-up-Security-Group)
+If the stack status is **CREATE_COMPLETE** go to the next step [Set up Security Group](../2.2-Set-up-Security-Group)

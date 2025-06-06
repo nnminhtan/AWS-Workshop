@@ -23,6 +23,7 @@ pre = "<b>3.1.2. </b>"
      - Expand the _Change default execution role_, choose **Use a existing role**.
      - Select the `ec2instance-containment-with-forensics-role` as execution role.
      - The result should be like this, then click **Create function**
+     
      ![Lambda](/images/3/3.1/3.1.2/Create_function_settings.png?width=90pc)
 
 2. Modify the prior created **Lambda function**
@@ -48,9 +49,11 @@ pre = "<b>3.1.2. </b>"
 
      - Then click save. 
 
-1. Add the code for the **Lambda Function**
+3. Add the code for the **Lambda Function**
      - Click the _Code_ next to the _Configuration_.
+     
      ![Lambda](/images/3/3.1/3.1.2/Add_code_Lambda.png?width=90pc)
+     
      - In the code editor, paste the _following code_.
      
      ```python
@@ -143,6 +146,7 @@ pre = "<b>3.1.2. </b>"
     ```
 
      - Then click on **deploy**, as shown below.
+     
      ![Lambda](/images/3/3.1/3.1.2/Deploy_code_Lambda.png?width=90pc)
 
 {{% notice note %}}

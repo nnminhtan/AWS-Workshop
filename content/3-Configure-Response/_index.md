@@ -14,7 +14,6 @@ In this section you will learn how to implement an automated incident response a
 
 #### Contents:
 
-1. [Create S3 bucket](3.1-s3-bucket)
-2. [Create objects in the bucket](3.2-object-in-bucket/)
-3. [Create Firehose Stream](3.3-kinesis-firehose-stream)
-4. [Create sample data](3.4-sample-data)
+1. [Single Lambda response](3.1-Single-Lambda-response)
+2. [Step Function response](3.2-Step-Function-response)
+

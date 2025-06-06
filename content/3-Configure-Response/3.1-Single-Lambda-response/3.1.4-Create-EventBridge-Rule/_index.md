@@ -6,19 +6,40 @@ chapter = false
 pre = "<b>3.1.4. </b>"
 +++
 
-We will clean up the following resources:
+In this step we will create a EventBridge Rule for create a snapshot for the **BasicLinuxTarget**.
 
-#### **Clean up resources in Visual QuickSight**:
+<!-- #### **Create EventBridge Rule**: -->
 
-1.  **Delete Pie Chart Sheet**
+#### Create EventBridge Rule
+- Search for the EventBridge. This will take you to the EventBridge home, click on Create Rule.
 
-    ![QuickSight](/images/7/delete_piechart.png?width=90pc)
+![EventBridge](/images/3/3.1/3.1.4/Create_rule.png?width=90pc)
 
-2. **Delete QuickSight Analyses:**
+- Name the rule is : `gd-compromised-instance-remediation`, the description is optional, then foward to the creation.
+![EventBridge](/images/3/3.1/3.1.4/Create_rule_naming.png?width=90pc)
 
-    - Select **Analyses**.
-    - Select the **Analysis** you want to delete.
-    - Click **Delete**.
+- Under _Event pattern_, _Creation method_ click the Custom pattern(JSON editor) and paste the **Json** below into the editor.
+```json
+{
+    "source": ["aws.guardduty"],
+    "detail": {
+        "type": ["UnauthorizedAccess:EC2/TorClient", "Backdoor:EC2/C&CActivity.B!DNS", "Trojan:EC2/DNSDataExfiltration", "CryptoCurrency:EC2/BitcoinTool.B", "CryptoCurrency:EC2/BitcoinTool.B!DNS"]
+    }
+}
+```
+- The result should be like this then click _Next_.
 
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
+![EventBridge](/images/3/3.1/3.1.4/Create_rule_event_pattern.png?width=90pc)
+
+1. Select **Lambda function** as the target.
+2. Select the **ec2instance-containment-with-forensics** as the Function. (The result should be like this)
+
+![EventBridge](/images/3/3.1/3.1.4/Create_rule_event_target.png?width=90pc)
+
+3. Leave every unchanged and create the Rule.
+
+{{% notice note %}}
+Make sure the instance is already isolated before taking snapshots otherwise you may end up with many snapshots created every 15 minutes 
+(or 6H depending your GuardDuty setting). The authors recommend disabling this rule once you've completed the testing.
+{{% /notice %}}
 

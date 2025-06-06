@@ -42,5 +42,5 @@ Next, we will create a Security group.
 4. Policy created successfully:
    ![Policy](/images/2/2.2/Create_SG_success.png)
    
-   - After Security group creation is complete, copy the **Security group ID** and go to the next step [Create an IAM user for Testing](../2.3-Create-an-IAM-user-for-Testing)
+After Security group creation is complete, copy the **Security group ID** and go to the next step [Create an IAM user for Testing](../2.3-Create-an-IAM-user-for-Testing)
    

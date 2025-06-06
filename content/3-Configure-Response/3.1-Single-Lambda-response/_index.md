@@ -19,3 +19,10 @@ The steps we will be performing are:
 
 The architecture for this alternative is the following:
    ![Lambda](/images/1/Workshop_Lambda.jpg?width=90pc)
+
+#### Contents:
+
+1. [Create IAM Policies and Roles](3.1.1-Create-IAM-Policies-and-Roles)
+2. [Create Lambda Function](3.1.2-Create-Lambda-Function)
+3. [Test Lambda Function](3.1.3-Test-Lambda-Function)
+4. [Create EventBridge Rule](3.1.4-Create-EventBridge-Rule)
