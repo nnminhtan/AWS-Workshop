@@ -2,301 +2,301 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/</loc>
     <lastmod>2021-06-08T18:57:03+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/"
+                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/</loc>
     <lastmod>2021-06-08T18:57:03+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
+                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/</loc>
+    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/"
+                />
+  </url><url>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/</loc>
+    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
+                />
+  </url><url>
+    <loc>https://nnminhtan.github.io/vi/</loc>
     <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/"
+                href="https://nnminhtan.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/"
+                href="https://nnminhtan.github.io/vi/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/2-preparation/2.1-deploy-the-cloudformation-stack/</loc>
+    <loc>https://nnminhtan.github.io/vi/2-preparation/2.1-deploy-the-cloudformation-stack/</loc>
     <lastmod>1970-01-01T08:33:44+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/2-preparation/2.1-deploy-the-cloudformation-stack/"
+                href="https://nnminhtan.github.io/2-preparation/2.1-deploy-the-cloudformation-stack/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/2-preparation/2.1-deploy-the-cloudformation-stack/"
+                href="https://nnminhtan.github.io/vi/2-preparation/2.1-deploy-the-cloudformation-stack/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/1-introduction/</loc>
+    <loc>https://nnminhtan.github.io/vi/1-introduction/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/1-introduction/"
+                href="https://nnminhtan.github.io/1-introduction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/1-introduction/"
+                href="https://nnminhtan.github.io/vi/1-introduction/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/6-analysis-visualize/6.1-athena/</loc>
+    <loc>https://nnminhtan.github.io/vi/4-data-catalog/4.1-glue-crawler/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/6-analysis-visualize/6.1-athena/"
+                href="https://nnminhtan.github.io/4-data-catalog/4.1-glue-crawler/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/6-analysis-visualize/6.1-athena/"
+                href="https://nnminhtan.github.io/vi/4-data-catalog/4.1-glue-crawler/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/4-data-catalog/4.1-glue-crawler/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/4-data-catalog/4.1-glue-crawler/"
+                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/4-data-catalog/4.1-glue-crawler/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/3-configure-response/3.1-single-lambda-response/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/</loc>
     <lastmod>2021-06-08T18:57:03+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/2-preparation/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/</loc>
+    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/"
+                />
+  </url><url>
+    <loc>https://nnminhtan.github.io/vi/2-preparation/</loc>
     <lastmod>1970-01-01T08:33:44+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/2-preparation/"
+                href="https://nnminhtan.github.io/2-preparation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/2-preparation/"
+                href="https://nnminhtan.github.io/vi/2-preparation/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/4-data-catalog/4.2-test-data/</loc>
+    <loc>https://nnminhtan.github.io/vi/4-data-catalog/4.2-test-data/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/4-data-catalog/4.2-test-data/"
+                href="https://nnminhtan.github.io/4-data-catalog/4.2-test-data/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/4-data-catalog/4.2-test-data/"
+                href="https://nnminhtan.github.io/vi/4-data-catalog/4.2-test-data/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-configure-response/3.2-step-function-response/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-configure-response/3.2-step-function-response/"
+                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-configure-response/3.2-step-function-response/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/2-preparation/2.2-set-up-security-group/</loc>
+    <loc>https://nnminhtan.github.io/vi/2-preparation/2.2-set-up-security-group/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/2-preparation/2.2-set-up-security-group/"
+                href="https://nnminhtan.github.io/2-preparation/2.2-set-up-security-group/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/2-preparation/2.2-set-up-security-group/"
+                href="https://nnminhtan.github.io/vi/2-preparation/2.2-set-up-security-group/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/6-analysis-visualize/6.2-quicksight/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/6-analysis-visualize/6.2-quicksight/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/6-analysis-visualize/6.2-quicksight/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/</loc>
     <lastmod>2021-06-08T18:57:03+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/"
+                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/2-preparation/2.3-create-an-iam-user-for-testing/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/</loc>
+    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/"
+                />
+  </url><url>
+    <loc>https://nnminhtan.github.io/vi/2-preparation/2.3-create-an-iam-user-for-testing/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/2-preparation/2.3-create-an-iam-user-for-testing/"
+                href="https://nnminhtan.github.io/2-preparation/2.3-create-an-iam-user-for-testing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
+                href="https://nnminhtan.github.io/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-configure-response/</loc>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/</loc>
     <lastmod>1970-01-01T08:33:41+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-configure-response/"
+                href="https://nnminhtan.github.io/3-configure-response/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-configure-response/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/4-data-catalog/</loc>
+    <loc>https://nnminhtan.github.io/vi/4-data-catalog/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/4-data-catalog/"
+                href="https://nnminhtan.github.io/4-data-catalog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/4-data-catalog/"
+                href="https://nnminhtan.github.io/vi/4-data-catalog/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/5-data-transform/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/5-data-transform/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/5-data-transform/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/6-analysis-visualize/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/6-analysis-visualize/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/6-analysis-visualize/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/7-clean-up/</loc>
+    <loc>https://nnminhtan.github.io/vi/5-clean-up/</loc>
     <lastmod>2021-06-08T18:57:03+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/7-clean-up/"
+                href="https://nnminhtan.github.io/5-clean-up/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/7-clean-up/"
+                href="https://nnminhtan.github.io/vi/5-clean-up/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/categories/</loc>
+    <loc>https://nnminhtan.github.io/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/"
+                href="https://nnminhtan.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/categories/"
+                href="https://nnminhtan.github.io/vi/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/tags/</loc>
+    <loc>https://nnminhtan.github.io/vi/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/tags/"
+                href="https://nnminhtan.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/tags/"
+                href="https://nnminhtan.github.io/vi/tags/"
                 />
   </url>
 </urlset>

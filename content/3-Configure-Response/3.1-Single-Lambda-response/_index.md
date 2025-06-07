@@ -6,7 +6,7 @@ chapter = false
 pre = "<b>3.1. </b>"
 +++
 
-## Configure for single Lambda response
+### Configure for single Lambda response
 
 In this section you will learn how to implement an automated incident response action on a single AWS Lambda Function. This function will perform all the necessary actions in the same code.
 

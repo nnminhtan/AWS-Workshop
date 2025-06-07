@@ -1,0 +1,630 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Security Automations Workshop: deploys all the necessary resources for the Step Functions Automated IR alternative.
+
+Parameters:
+  Email:
+    Type: String
+    AllowedPattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+    Description: "Email to receive alerts and approval notifications"
+    ConstraintDescription: Must be a valid email address
+  ResourcesPrefix:
+    Type: String
+    AllowedPattern: "^[a-zA-Z0-9_-]*$"
+    Description: "OPTIONAL - Must be a valid prefix: alphanumeric and '-_' characters allowed"
+    ConstraintDescription: "Must be a valid prefix: alphanumeric and '-_' characters allowed"
+
+Resources:
+  # Begin API Gateway Resources
+  ExecutionApi:
+    Type: "AWS::ApiGateway::RestApi"
+    Properties:
+      Name: !Sub
+        - "${Prefix}Human approval endpoint"
+        - Prefix: !Ref ResourcesPrefix
+      Description: "HTTP Endpoint backed by API Gateway and Lambda"
+      FailOnWarnings: true
+
+  ExecutionResource:
+    Type: 'AWS::ApiGateway::Resource'
+    Properties:
+      RestApiId: !Ref ExecutionApi
+      ParentId: !GetAtt "ExecutionApi.RootResourceId"
+      PathPart: execution
+
+  ExecutionMethod:
+    Type: "AWS::ApiGateway::Method"
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: GET
+      Integration:
+        Type: AWS
+        IntegrationHttpMethod: POST
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaApprovalFunction.Arn}/invocations"
+        IntegrationResponses:
+          - StatusCode: 302
+            ResponseParameters:
+              method.response.header.Location: "integration.response.body.headers.Location"
+        RequestTemplates:
+          application/json: |
+            {
+              "body" : $input.json('$'),
+              "headers": {
+                #foreach($header in $input.params().header.keySet())
+                "$header": "$util.escapeJavaScript($input.params().header.get($header))" #if($foreach.hasNext),#end
+
+                #end
+              },
+              "method": "$context.httpMethod",
+              "params": {
+                #foreach($param in $input.params().path.keySet())
+                "$param": "$util.escapeJavaScript($input.params().path.get($param))" #if($foreach.hasNext),#end
+
+                #end
+              },
+              "query": {
+                #foreach($queryParam in $input.params().querystring.keySet())
+                "$queryParam": "$util.escapeJavaScript($input.params().querystring.get($queryParam))" #if($foreach.hasNext),#end
+
+                #end
+              }  
+            }
+      ResourceId: !Ref ExecutionResource
+      RestApiId: !Ref ExecutionApi
+      MethodResponses:
+        - StatusCode: 302
+          ResponseParameters:
+            method.response.header.Location: true
+
+  ApiGatewayAccount:
+    Type: 'AWS::ApiGateway::Account'
+    Properties:
+      CloudWatchRoleArn: !GetAtt "ApiGatewayCloudWatchLogsRole.Arn"
+  
+  ApiGatewayCloudWatchLogsRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - apigateway.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Policies:
+        - PolicyName: !Sub
+            - "${Prefix}ApiGatewayLogsPolicy"
+            - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "logs:*"
+                Resource: !Sub "arn:${AWS::Partition}:logs:*:*:*"
+
+  ExecutionApiStage:
+    DependsOn:
+      - ApiGatewayAccount
+    Type: 'AWS::ApiGateway::Stage'
+    Properties:
+      DeploymentId: !Ref ApiDeployment
+      MethodSettings:
+        - DataTraceEnabled: true
+          HttpMethod: '*'
+          LoggingLevel: INFO
+          ResourcePath: /*
+      RestApiId: !Ref ExecutionApi
+      StageName: states
+
+  ApiDeployment:
+    Type: "AWS::ApiGateway::Deployment"
+    DependsOn:
+      - ExecutionMethod
+    Properties:
+      RestApiId: !Ref ExecutionApi
+      StageName: DummyStage
+  # End API Gateway Resources
+
+  # Begin Lambda that will be invoked by API Gateway
+  LambdaApprovalFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Code:
+        ZipFile:
+          Fn::Sub: |
+            const AWS = require('aws-sdk');
+            var redirectToStepFunctions = function(lambdaArn, statemachineName, executionName, callback) {
+              const lambdaArnTokens = lambdaArn.split(":");
+              const partition = lambdaArnTokens[1];
+              const region = lambdaArnTokens[3];
+              const accountId = lambdaArnTokens[4];
+
+              console.log("partition=" + partition);
+              console.log("region=" + region);
+              console.log("accountId=" + accountId);
+
+              const executionArn = "arn:" + partition + ":states:" + region + ":" + accountId + ":execution:" + statemachineName + ":" + executionName;
+              console.log("executionArn=" + executionArn);
+
+              const url = "https://console.aws.amazon.com/states/home?region=" + region + "#/executions/details/" + executionArn;
+              callback(null, {
+                  statusCode: 302,
+                  headers: {
+                    Location: url
+                  }
+              });
+            };
+
+            exports.handler = (event, context, callback) => {
+              console.log('Event= ' + JSON.stringify(event));
+              const action = event.query.action;
+              const taskToken = event.query.taskToken;
+              const statemachineName = event.query.sm;
+              const executionName = event.query.ex;
+
+              const stepfunctions = new AWS.StepFunctions();
+
+              var message = "";
+
+              if (action === "approve") {
+                message = { "Status": "Approved! Task approved by ${Email}" };
+              } else if (action === "reject") {
+                message = { "Status": "Rejected! Task rejected by ${Email}" };
+              } else {
+                console.error("Unrecognized action. Expected: approve, reject.");
+                callback({"Status": "Failed to process the request. Unrecognized Action."});
+              }
+
+              stepfunctions.sendTaskSuccess({
+                output: JSON.stringify(message),
+                taskToken: event.query.taskToken
+              })
+              .promise()
+              .then(function(data) {
+                redirectToStepFunctions(context.invokedFunctionArn, statemachineName, executionName, callback);
+              }).catch(function(err) {
+                console.error(err, err.stack);
+                callback(err);
+              });
+            }
+      Description: Lambda function that callback to AWS Step Functions
+      FunctionName: !Sub
+            - "${Prefix}LambdaApprovalFunction"
+            - Prefix: !Ref ResourcesPrefix
+      Handler: index.handler
+      Role: !GetAtt "LambdaApiGatewayIAMRole.Arn"
+      Runtime: nodejs18.x
+
+  LambdaApiGatewayInvoke:
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      Action: "lambda:InvokeFunction"
+      FunctionName: !GetAtt "LambdaApprovalFunction.Arn"
+      Principal: "apigateway.amazonaws.com"
+      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ExecutionApi}/*"
+
+  LambdaApiGatewayIAMRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Action:
+              - "sts:AssumeRole"
+            Effect: "Allow"
+            Principal:
+              Service:
+                - "lambda.amazonaws.com"
+      Policies:
+        - PolicyName: !Sub
+            - "${Prefix}CloudWatchLogsPolicy"
+            - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "logs:*"
+                Resource: !Sub "arn:${AWS::Partition}:logs:*:*:*"
+        - PolicyName: !Sub
+            - "${Prefix}StepFunctionsPolicy"
+            - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "states:SendTaskFailure"
+                  - "states:SendTaskSuccess"
+                Resource: "*"
+  # End Lambda that will be invoked by API Gateway
+
+  # Begin Step Functions Resources
+  StepFunctionsRole:
+    Type: "AWS::IAM::Role"
+    Properties: 
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "states.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Description: Role to be used by the IR Step Functions State Machine
+      Policies: 
+        - PolicyName: !Sub
+            - "${Prefix}CloudWatchLogsDeliveryStepFunctions"
+            - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Version : "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - "logs:CreateLogDelivery"
+                - "logs:GetLogDelivery"
+                - "logs:UpdateLogDelivery"
+                - "logs:DeleteLogDelivery"
+                - "logs:ListLogDeliveries"
+                - "logs:PutResourcePolicy"
+                - "logs:DescribeResourcePolicies"
+                - "logs:DescribeLogGroups"
+              Resource: "*"
+        - PolicyName: !Sub
+            - "${Prefix}SNSPublishStepFunction"
+            - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Version : "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - "sns:Publish"
+              Resource: "*"
+        - PolicyName: !Sub
+            - "${Prefix}InstanceActionsStepFunctions"
+            - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Version : "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - "ec2:CreateTags"
+                - "ec2:DescribeSecurityGroups"
+                - "ec2:CreateSnapshots"
+                - "ec2:ModifyInstanceAttribute"
+              Resource: "*"
+        - PolicyName: !Sub
+            - "${Prefix}InvokeCallbackStepFunctions"
+            - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "lambda:InvokeFunction"
+                Resource:
+                  - !Sub "${LambdaHumanApprovalSendEmailFunction.Arn}"
+      RoleName: !Sub
+            - "${Prefix}StepFunctionsRole"
+            - Prefix: !Ref ResourcesPrefix
+  
+  SNSTopic:
+    Type: AWS::SNS::Topic
+    Properties: 
+      FifoTopic: False
+      TopicName: !Sub
+            - "${Prefix}SNSTopic"
+            - Prefix: !Ref ResourcesPrefix
+      Subscription:
+        -
+           Endpoint: !Ref Email
+           Protocol: email
+
+  StepFunctionsStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    DependsOn:
+    - StepFunctionsRole
+    - SNSTopic
+    - ExecutionApi
+    Properties:
+      RoleArn: !GetAtt StepFunctionsRole.Arn
+      StateMachineName: !Sub
+            - "${Prefix}StateMachine"
+            - Prefix: !Ref ResourcesPrefix
+      StateMachineType: STANDARD
+      DefinitionString: !Sub 
+        - |
+          {
+            "Comment": "A description of my state machine",
+            "StartAt": "Instance information exists?",
+            "States": {
+              "Instance information exists?": {
+                "Type": "Choice",
+                "Choices": [
+                    {
+                    "Variable": "$.detail.resource.instanceDetails.instanceId",
+                    "IsPresent": true,
+                    "Next": "High severity finding?"
+                    }
+                ],
+                "Default": "No Action"
+              },
+              "High severity finding?": {
+                "Type": "Choice",
+                "Choices": [
+                  {
+                    "Variable": "$.detail.severity",
+                    "NumericGreaterThanEquals": 8,
+                    "Next": "Severity higher or equal to 8"
+                  },
+                  {
+                    "And": [
+                      {
+                        "Variable": "$.detail.severity",
+                        "NumericLessThan": 8
+                      },
+                      {
+                        "Variable": "$.detail.severity",
+                        "NumericGreaterThanEquals": 1
+                      }
+                    ],
+                    "Next": "Severity lower than 8"
+                  }
+                ],
+                "Default": "No Action"
+              },
+              "Severity lower than 8": {
+                "Type": "Pass",
+                "Next": "Request approval"
+              },
+              "Severity higher or equal to 8": {
+                "Type": "Pass",
+                "Next": "Notify High Severity"
+              },
+              "Notify High Severity": {
+                "Type": "Task",
+                "Resource": "arn:aws:states:::aws-sdk:sns:publish",
+                "Parameters": {
+                  "TopicArn": "${SNSTopic}",
+                  "Message.$": "States.Format('This is an automatic email to inform a high severity finding. Check the details below:\n\nOrigin: {}\nDescription: {}\nInstance: {}\n\nActions will be taken.', $['detail-type'], $.detail.title, $.detail.resource.instanceDetails.instanceId)",
+                  "Subject": "High severity finding"
+                },
+                "Next": "Disable termination",
+                "ResultPath": null
+              },
+              "Request approval": {
+                "Type": "Task",
+                "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+                "Parameters": {
+                  "FunctionName": "${Lambda}",
+                  "Payload": {
+                    "ExecutionContext.$": "$$",
+                    "APIGatewayEndpoint": "https://${ExecutionApi}.execute-api.${AWS::Region}.amazonaws.com/states"
+                  }
+                },
+                "Next": "Request approved?",
+                "ResultPath": "$.Approval"
+              },
+              "Request approved?": {
+                "Type": "Choice",
+                "Choices": [
+                  {
+                    "Variable": "$.Approval.Status",
+                    "StringEquals": "Approved! Task approved by ${Email}",
+                    "Next": "Approved"
+                  },
+                  {
+                    "Variable": "$.Approval.Status",
+                    "StringEquals": "Rejected! Task rejected by ${Email}",
+                    "Next": "Rejected"
+                  }
+                ]
+              },
+              "Approved": {
+                "Type": "Pass",
+                "Next": "Disable termination"
+              },
+              "Rejected": {
+                "Type": "Pass",
+                "End": true
+              },
+              "Disable termination": {
+                "Type": "Task",
+                "Parameters": {
+                  "InstanceId.$": "$.detail.resource.instanceDetails.instanceId",
+                  "DisableApiTermination": {
+                    "Value": true
+                  }
+                },
+                "Resource": "arn:aws:states:::aws-sdk:ec2:modifyInstanceAttribute",
+                "ResultPath": null,
+                "Next": "Change shutdown behavior"
+              },
+              "Change shutdown behavior": {
+                "Type": "Task",
+                "Parameters": {
+                  "InstanceId.$": "$.detail.resource.instanceDetails.instanceId",
+                  "InstanceInitiatedShutdownBehavior": {
+                    "Value": "stop"
+                  }
+                },
+                "Resource": "arn:aws:states:::aws-sdk:ec2:modifyInstanceAttribute",
+                "ResultPath": null,
+                "Next": "Describe Security Groups"
+              },
+              "Describe Security Groups": {
+                "Type": "Task",
+                "Parameters": {
+                  "Filters": [
+                    {
+                      "Name": "group-name",
+                      "Values": [
+                        "ForensicsSG"
+                      ]
+                    }
+                  ]
+                },
+                "Resource": "arn:aws:states:::aws-sdk:ec2:describeSecurityGroups",
+                "ResultSelector": {
+                  "GroupId.$": "$.SecurityGroups.*.GroupId"
+                },
+                "ResultPath": "$.SecurityGroups",
+                "Next": "Change Security Groups"
+              },
+              "Change Security Groups": {
+                "Type": "Task",
+                "Parameters": {
+                  "InstanceId.$": "$.detail.resource.instanceDetails.instanceId",
+                  "Groups.$": "$.SecurityGroups.GroupId"
+                },
+                "Resource": "arn:aws:states:::aws-sdk:ec2:modifyInstanceAttribute",
+                "ResultPath": null,
+                "Next": "Change tags"
+              },
+              "Change tags": {
+                "Type": "Task",
+                "Parameters": {
+                  "Resources.$": "States.Array($.detail.resource.instanceDetails.instanceId)",
+                  "Tags": [
+                    {
+                      "Key": "status",
+                      "Value": "isolated"
+                    }
+                  ]
+                },
+                "Resource": "arn:aws:states:::aws-sdk:ec2:createTags",
+                "ResultPath": null,
+                "Next": "Create Snapshots"
+              },
+              "Create Snapshots": {
+                "Type": "Task",
+                "Parameters": {
+                  "InstanceSpecification": {
+                    "InstanceId.$": "$.detail.resource.instanceDetails.instanceId",
+                    "ExcludeBootVolume": false
+                  },
+                  "Description.$": "States.Format('Isolated Instance: {} on account: {} on XXXX', $.detail.resource.instanceDetails.instanceId, $.account)"
+                },
+                "Resource": "arn:aws:states:::aws-sdk:ec2:createSnapshots",
+                "End": true
+              },
+              "No Action": {
+                "Type": "Pass",
+                "End": true
+              }
+            }
+          }
+        - Email: !Ref Email
+          SNSTopic: !Ref SNSTopic
+          Lambda: !GetAtt LambdaHumanApprovalSendEmailFunction.Arn
+  # End Step Functions Resources
+
+  # Begin Lambda that will be invoked to send approval email
+  LambdaHumanApprovalSendEmailFunction:
+    Type: "AWS::Lambda::Function"
+    Properties:
+      Handler: "index.lambda_handler"
+      Role: !GetAtt LambdaSendEmailExecutionRole.Arn
+      Runtime: "nodejs18.x"
+      Timeout: "25"
+      FunctionName: !Sub
+      - "${Prefix}LambdaHumanApprovalSendEmailFunction"
+      - Prefix: !Ref ResourcesPrefix
+      Code:
+        ZipFile:
+          Fn::Sub: |
+            console.log('Loading function');
+            const AWS = require('aws-sdk');
+            exports.lambda_handler = (event, context, callback) => {
+                console.log('event= ' + JSON.stringify(event));
+                console.log('context= ' + JSON.stringify(context));
+
+                const executionContext = event.ExecutionContext;
+                console.log('executionContext= ' + executionContext);
+
+                const executionName = executionContext.Execution.Name;
+                console.log('executionName= ' + executionName);
+
+                const statemachineName = executionContext.StateMachine.Name;
+                console.log('statemachineName= ' + statemachineName);
+
+                const taskToken = executionContext.Task.Token;
+                console.log('taskToken= ' + taskToken);
+
+                const apigwEndpint = event.APIGatewayEndpoint;
+                console.log('apigwEndpint = ' + apigwEndpint)
+
+                const approveEndpoint = apigwEndpint + "/execution?action=approve&ex=" + executionName + "&sm=" + statemachineName + "&taskToken=" + encodeURIComponent(taskToken);
+                console.log('approveEndpoint= ' + approveEndpoint);
+
+                const rejectEndpoint = apigwEndpint + "/execution?action=reject&ex=" + executionName + "&sm=" + statemachineName + "&taskToken=" + encodeURIComponent(taskToken);
+                console.log('rejectEndpoint= ' + rejectEndpoint);
+
+                const emailSnsTopic = "${SNSTopic}";
+                console.log('emailSnsTopic= ' + emailSnsTopic);
+
+                var emailMessage = 'Welcome! \n\n';
+                emailMessage += 'This is an email requiring an approval for a step functions execution. \n\n'
+                emailMessage += 'Please check the following information and click "Approve" link if you want to approve. \n\n'
+                emailMessage += 'Execution Name -> ' + executionName + '\n\n'
+                emailMessage += 'Approve ' + approveEndpoint + '\n\n'
+                emailMessage += 'Reject ' + rejectEndpoint + '\n\n'
+                emailMessage += 'Thanks for using Step functions!'
+                
+                const sns = new AWS.SNS();
+                var params = {
+                  Message: emailMessage,
+                  Subject: "Required approval from AWS Step Functions",
+                  TopicArn: emailSnsTopic
+                };
+
+                sns.publish(params)
+                  .promise()
+                  .then(function(data) {
+                    console.log("MessageID is " + data.MessageId);
+                    callback(null);
+                  }).catch(
+                    function(err) {
+                    console.error(err, err.stack);
+                    callback(err);
+                  });
+            }
+  
+  LambdaSendEmailExecutionRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: "sts:AssumeRole"
+      Policies:
+        - PolicyName: !Sub
+          - "${Prefix}CloudWatchLogsPolicy"
+          - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "logs:CreateLogGroup"
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                Resource: !Sub "arn:${AWS::Partition}:logs:*:*:*"
+        - PolicyName: !Sub
+          - "${Prefix}SNSSendEmailPolicy"
+          - Prefix: !Ref ResourcesPrefix
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "SNS:Publish"
+                Resource:
+                  - !Sub "${SNSTopic}"
+  # End Lambda that will be invoked to send approval email
+
+Outputs:
+  StepFunctionsStateMachineArn:
+    Value: !Ref StepFunctionsStateMachine
