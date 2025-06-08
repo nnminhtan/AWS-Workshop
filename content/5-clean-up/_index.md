@@ -6,171 +6,46 @@ chapter = false
 pre = "<b>5. </b>"
 +++
 
-We will clean up the following resources:
+#### Cleaning up resources
 
-#### **Clean up resources in Visual QuickSight**:
-
-1.  **Delete Pie Chart Sheet**
-
-![QuickSight](/images/7/delete_piechart.png?width=90pc)
-
-2. **Delete QuickSight Analyses:**
-
-- Select **Analyses**.
-- Select the **Analysis** you want to delete.
-- Click **Delete**.
-
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
-
-- Delete done
-
-![QuickSight](/images/7/delete_done.png?width=90pc)
-
-3. **Delete QuickSight Dataset:**
-
-![QuickSight](/images/7/delete_dataset.png?width=90pc)
-![QuickSight](/images/7/delete_cf_dataset.png?width=90pc)
-
-4. You can also delete your QuickSight account if not using it.
-
-- In the **QuickSight** interface, click **Manage QuickSight**
-
-![QuickSight](/images/6/6.2/manage_quicksight.png?width=90pc)
-
-- Under **Account settings**, click **Manage**
-
-![QuickSight](/images/7/delete_qs_acc.png?width=90pc)
-
-- Proceed to delete the account
-
-![QuickSight](/images/7/delete_acc_form.png?width=90pc)
-
-- QuickSight unsubscription successful
-
-![QuickSight](/images/7/delete_success.png?width=90pc)
-
----
-
-#### **Clean up resources in AWS Glue**:
-
-Access **AWS Glue**.
-
-1. **Delete Tables**
-
-- Select **Tables**.
-- Choose the tables to delete.
-- Click **Delete** to confirm table deletion.
-
-![QuickSight](/images/7/delete_tables.png?width=90pc)
-![QuickSight](/images/7/cf_delete_table.png?width=90pc)
-
-2. **Delete Interactive Sessions**
-
-- Select **Interactive Sessions**.
-- Choose the sessions to delete.
-- Click **Delete** to confirm session deletion.
-
-![QuickSight](/images/7/delete_session.png?width=90pc)
-
-3. **Delete Crawlers**
-
-- Select **Crawler**.
-- Choose the crawlers to delete.
-- Click **Action**
-- Select **Delete crawler** to confirm crawler deletion.
-
-![QuickSight](/images/7/delete_cwl.png?width=90pc)
-
----
-
-#### **Clean up resources in CloudFormation**:
-
-- Go to the **CloudFormation** interface.
-- Select **Stack**
-- Choose the **stack name** you want to delete.
-- Click **Delete**
-
-![QuickSight](/images/7/delete_cloudform.png?width=90pc)
-
-- If the stack deletion **fails**
-  - Click **Retry delete**
-  - Click **Force delete this entire stack**
-
-![QuickSight](/images/7/force_delete_stack.png?width=90pc)
-
----
-
-#### **Clean up resources in Kinesis**:
-
-- Go to **Amazon Data Firehose**
-- Select the **Firehose stream** to delete.
-- Click **Delete**
-
-![QuickSight](/images/7/delete_firehose.png?width=90pc)
-![QuickSight](/images/7/cf_delete_firehose.png?width=90pc)
-
----
-
-#### **Clean up resources in CloudWatch**:
-
-- Go to the **CloudWatch** interface.
-- Select **Log groups**
-- Select all **Log groups**
-- Click **Action**
-- Select **Delete log group(s)**
-
-![QuickSight](/images/7/delete_logs.png?width=90pc)
-![QuickSight](/images/7/cf_delete_logs.png?width=90pc)
-
----
-
-#### **Clean up resources in S3**:
-
-- Delete all buckets related to the lab
-
-- Select **bucket**
-- Click **Empty bucket**
-
-![QuickSight](/images/7/empty__bucket.png?width=90pc)
-![QuickSight](/images/7/cf_empty_s3.png?width=90pc)
-
-- Select the emptied bucket
-- Click **Delete**
-
-![QuickSight](/images/7/delete_s3_bucket.png?width=90pc)
-![QuickSight](/images/7/cf_delete_bucket.png?width=90pc)
+In order to prevent charges to your account we recommend cleaning up the infrastructure that was created during this workshop. If you plan to keep things running so you can examine the workshop later, remember to do the cleanup when you are done.
 
 {{% notice note %}}
-Perform the same action for the remaining buckets
+Please note that you will need to manually delete some resources before you delete the CloudFormation stacks, so please **_do the following steps in order_**.
 {{% /notice %}}
 
----
+1. Disable termination protection for the applicable **EC2 instances**.
+    - Open the **EC2 console**.
+    - Select the instance.
+    - Click on **Actions**, **Instance settings**, change **termination protection**.
 
-#### **Clean up resources in IAM**:
+    ![CleanUp](/images/5/Instance_delete_1.png?width=90pc)
 
-Go to the IAM interface
+    - Uncheck the **Enable checkbox**, click **Save**.
+    
+    ![CleanUp](/images/5/Instance_delete_2.png?width=90pc)
 
-**1. Delete Policy**
+2. Delete the **Cloudformation stack**.
+    - Go to the AWS **CloudFormation console**.
+    - Select the appropiate stack (remember that depending on the automated responses deployed you might have 2 stacks and 1 nested stack).
+    - Click **Delete**.
+    
+    ![CleanUp](/images/5/Delete_stack.png?width=90pc)
 
-- Select **Policies**
-- Choose the **policy** related to the lab
-- Click **Delete**
+{{% notice warning %}}
+Make sure the Stack delete status is **DELETE_COMPLETE**, this could take a while.
+{{% /notice %}}
 
-![QuickSight](/images/7/delete_policy.png?width=90pc)
-![QuickSight](/images/7/cf_delete_policy.png?width=90pc)
+1. Check if Amazon **GuardDuty** was disabled automatically or you need to disable it manually.
+    - Go to the **GuardDuty** console.
+    - Click on _Settings_ (on the left panel menu).
+    - Scroll down.
+    - Click **Disable GuardDuty**.
+    
+    ![CleanUp](/images/5/GuardDuty_disable.png?width=90pc)
 
-- Policy deleted successfully
+{{% notice note %}}
+Disabling GuardDuty will remove its data.
+{{% /notice %}}
 
-![QuickSight](/images/7/delete_policy_success.png?width=90pc)
-
-**2. Delete Role**
-
-- Select **Roles**
-- Choose the **role** related to the lab
-- Click **Delete**
-
-![QuickSight](/images/7/delete_role.png?width=90pc)
-
-- Role deleted successfully
-
-![QuickSight](/images/7/delete_role_success.png?width=90pc)
+4. Verify and delete any remaining **EC2 snapshots** generated.

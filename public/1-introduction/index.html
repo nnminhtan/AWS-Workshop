@@ -12,21 +12,21 @@
     <title>Introduction :: Automating Incident Response</title>
 
     
-    <link href="/css/nucleus.css?1749286621" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1749286621" rel="stylesheet">
-    <link href="/css/hybrid.css?1749286621" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1749286621" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1749286621" rel="stylesheet">
-    <link href="/css/auto-complete.css?1749286621" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1749286621" rel="stylesheet">
-    <link href="/css/theme.css?1749286621" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1749286621" rel="stylesheet">
+    <link href="/css/nucleus.css?1749367307" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1749367307" rel="stylesheet">
+    <link href="/css/hybrid.css?1749367307" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1749367307" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1749367307" rel="stylesheet">
+    <link href="/css/auto-complete.css?1749367307" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1749367307" rel="stylesheet">
+    <link href="/css/theme.css?1749367307" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1749367307" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1749286621" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1749367307" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1749286621"></script>
+    <script src="/js/jquery-3.3.1.min.js?1749367307"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1749286621"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1749286621"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1749367307"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1749367307"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/nnminhtan.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1749286621"></script>
+<script type="text/javascript" src="/js/search.js?1749367307"></script>
  
   </div>
 
@@ -371,60 +371,20 @@
 </li>
            
 <li
-  data-nav-id="/4-data-catalog/"
-  title="Create Data Catalog"
+  data-nav-id="/4-configure-automated-response/"
+  title="Configure Automated Response"
   class="dd-item 
         
         
         
         "
 >
-  <a href="/4-data-catalog/">
-    <b>4. </b>Create Data Catalog 
+  <a href="/4-configure-automated-response/">
+    <b>4. </b>Configure Automated Response 
     <i class="fas fa-check read-icon"></i>
     
   </a>
    
-  <ul>
-          
-            
-<li
-  data-nav-id="/4-data-catalog/4.1-glue-crawler/"
-  title="Create Glue Crawler"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/4-data-catalog/4.1-glue-crawler/">
-    <b>4.1. </b>Create Glue Crawler 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
-    
-            
-<li
-  data-nav-id="/4-data-catalog/4.2-test-data/"
-  title="Check Data"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/4-data-catalog/4.2-test-data/">
-    <b>4.2. </b>Check Data 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
-     
-  </ul>
-  
 </li>
            
 <li
@@ -650,55 +610,6 @@ This workshop length is around 3hrs, even if you dont complete it visit the <str
 <li>Ideal for scenarios requiring <strong>sequenced actions</strong>, such as taking snapshots, gathering forensic data, notifying multiple systems, and then terminating or quarantining the instance.</li>
 </ul>
 <p>By comparing both approaches, this lab highlights how AWS automation tools can be tailored to meet different response needs — from rapid reaction to comprehensive remediation pipelines.</p>
-<h4 id="workshop-architecture">Workshop Architecture</h4>
-<h5 id="architecture-overview">Architecture Overview</h5>
-<p>The diagram below illustrates the Data Lake system architecture we will deploy in this workshop:
-<img src="/images/1/workshop.jpg" alt="Workshop"></p>
-<h5 id="architecture-description">Architecture Description</h5>
-<ul>
-<li>
-<p><strong>Data Collection</strong>:</p>
-<ul>
-<li>Data from various sources is collected through Kinesis.</li>
-<li>Kinesis Firehose Stream processes and transfers data to Amazon S3.</li>
-</ul>
-</li>
-<li>
-<p><strong>Raw Data Storage</strong>:</p>
-<ul>
-<li>Raw data is stored in S3 under the &ldquo;raw data&rdquo; folder.</li>
-<li>CloudFormation automatically deploys required resources.</li>
-</ul>
-</li>
-<li>
-<p><strong>AWS Glue</strong>:</p>
-<ul>
-<li>AWS Glue Crawler scans raw data in S3 to create metadata.</li>
-<li>Metadata is stored in the AWS Glue Data Catalog.</li>
-<li>An ETL Job (Extract, Transform, Load) processes and transforms raw data.</li>
-</ul>
-</li>
-<li>
-<p><strong>Processed Data Storage</strong>:</p>
-<ul>
-<li>Transformed data is stored in another S3 bucket under the &ldquo;processed-data&rdquo; folder.</li>
-</ul>
-</li>
-<li>
-<p><strong>Data Analysis and Visualization</strong>:</p>
-<ul>
-<li>AWS Glue Crawler scans processed data and updates the Glue Data Catalog.</li>
-<li>Amazon Athena queries data in S3.</li>
-<li>Amazon QuickSight connects to the data for visualization and reporting.</li>
-</ul>
-</li>
-</ul>
-<h5 id="workshop-objectives">Workshop Objectives</h5>
-<ul>
-<li>Understand the components of the Data Lake architecture.</li>
-<li>Deploy a simple Data Lake system using AWS services.</li>
-<li>Integrate analysis and visualization tools to extract useful insights from the data.</li>
-</ul>
 
 
 
@@ -1012,42 +923,8 @@ This workshop length is around 3hrs, even if you dont complete it visit the <str
 
                     
                     
-                        
-                    
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
             
         
@@ -1090,19 +967,19 @@ This workshop length is around 3hrs, even if you dont complete it visit the <str
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1749286621"></script>
-    <script src="/js/perfect-scrollbar.min.js?1749286621"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1749286621"></script>
-    <script src="/js/jquery.sticky.js?1749286621"></script>
-    <script src="/js/featherlight.min.js?1749286621"></script>
-    <script src="/js/highlight.pack.js?1749286621"></script>
+    <script src="/js/clipboard.min.js?1749367308"></script>
+    <script src="/js/perfect-scrollbar.min.js?1749367308"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1749367308"></script>
+    <script src="/js/jquery.sticky.js?1749367308"></script>
+    <script src="/js/featherlight.min.js?1749367308"></script>
+    <script src="/js/highlight.pack.js?1749367308"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1749286621"></script>
-    <script src="/js/learn.js?1749286621"></script>
-    <script src="/js/hugo-learn.js?1749286621"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1749367308"></script>
+    <script src="/js/learn.js?1749367308"></script>
+    <script src="/js/hugo-learn.js?1749367308"></script>
 
-    <link href="/mermaid/mermaid.css?1749286621" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1749286621"></script>
+    <link href="/mermaid/mermaid.css?1749367308" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1749367308"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

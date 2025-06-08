@@ -51,10 +51,8 @@ This workshop length is around 3hrs, even if you dont complete it visit the **cl
 
 #### Workshop Content
 
-1. [Introduction](1-introduce)
-2. [Preparation Steps](2-preparation)
-3. [Data Collection and Storage](3-collection-storage)
-4. [Create Data Catalog](4-data-catalog)
-5. [Data Transformation](5-data-transform)
-6. [Data Analysis and Visualization](6-analysis-visualize)
-7. [Clean Up Resources](7-clean-up)
+1. [Introduction](1-Introduction)
+2. [Preparation Steps](2-Preparation)
+3. [Configure Response](3-Configure-Response)
+4. [Configure Automated Response](4-Configure-Automated-Response)
+5. [Clean Up Resources](5-Clean-up)

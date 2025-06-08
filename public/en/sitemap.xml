@@ -80,19 +80,6 @@
                 href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/"
                 />
   </url><url>
-    <loc>https://nnminhtan.github.io/4-data-catalog/4.1-glue-crawler/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://nnminhtan.github.io/vi/4-data-catalog/4.1-glue-crawler/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nnminhtan.github.io/4-data-catalog/4.1-glue-crawler/"
-                />
-  </url><url>
     <loc>https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/</loc>
     <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
@@ -156,19 +143,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/"
-                />
-  </url><url>
-    <loc>https://nnminhtan.github.io/4-data-catalog/4.2-test-data/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://nnminhtan.github.io/vi/4-data-catalog/4.2-test-data/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nnminhtan.github.io/4-data-catalog/4.2-test-data/"
                 />
   </url><url>
     <loc>https://nnminhtan.github.io/3-configure-response/</loc>
@@ -249,17 +223,17 @@
                 href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
                 />
   </url><url>
-    <loc>https://nnminhtan.github.io/4-data-catalog/</loc>
+    <loc>https://nnminhtan.github.io/4-configure-automated-response/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://nnminhtan.github.io/vi/4-data-catalog/"
+                href="https://nnminhtan.github.io/vi/4-configure-automated-response/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://nnminhtan.github.io/4-data-catalog/"
+                href="https://nnminhtan.github.io/4-configure-automated-response/"
                 />
   </url><url>
     <loc>https://nnminhtan.github.io/5-clean-up/</loc>

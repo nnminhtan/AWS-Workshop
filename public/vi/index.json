@@ -49,13 +49,6 @@
 	"content": "Tìm hiểu về Data Lake trên AWS Giới thiệu Data Lake Data Lake là một hệ thống lưu trữ tập trung cho phép lưu trữ dữ liệu dưới mọi định dạng - có cấu trúc, bán cấu trúc hoặc không cấu trúc. Không giống như các cơ sở dữ liệu truyền thống yêu cầu định dạng dữ liệu trước khi lưu trữ, Data Lake cho phép lưu trữ dữ liệu thô và xử lý hoặc phân tích khi cần.\nLợi ích của Data Lake Lưu trữ linh hoạt: Hỗ trợ dữ liệu từ nhiều nguồn và dưới nhiều định dạng khác nhau.\nPhân tích toàn diện: Tạo điều kiện cho phân tích dữ liệu lớn và các ứng dụng AI/ML.\nTiết kiệm chi phí: Sử dụng các giải pháp lưu trữ chi phí thấp như Amazon S3.\nTích hợp dễ dàng: Kết nối mượt mà với các công cụ phân tích và báo cáo như Amazon Athena và QuickSight.\nThách thức khi triển khai Data Lake Quản Lý Dữ Liệu: Làm thế nào để tổ chức và quản lý dữ liệu hiệu quả?\nBảo Mật: Làm sao để ngăn chặn truy cập trái phép vào dữ liệu?\nKhả Năng Mở Rộng: Hệ thống phải có khả năng mở rộng để xử lý sự gia tăng dữ liệu.\nHiệu Suất: Cần tối ưu hóa cho việc truy vấn và xử lý dữ liệu.\nChất Lượng Dữ Liệu: Đảm bảo tính chính xác và độ tin cậy của dữ liệu là rất quan trọng.\nKiến trúc Workshop Tổng quan về kiến trúc Hình dưới đây minh họa kiến trúc hệ thống Data Lake mà chúng ta sẽ triển khai trong workshop này: Mô tả kiến trúc Thu thập dữ liệu:\nDữ liệu từ nhiều nguồn khác nhau được thu thập qua Kinesis. Kinesis Firehose Stream xử lý và chuyển dữ liệu đến Amazon S3. Lưu trữ dữ liệu thô:\nDữ liệu thô được lưu trữ trong S3 ở thư mục \u0026ldquo;raw data\u0026rdquo;. CloudFormation tự động triển khai các tài nguyên cần thiết. AWS Glue:\nAWS Glue Crawler quét dữ liệu thô trong S3 để tạo metadata. Metadata được lưu trữ trong AWS Glue Data Catalog. Một ETL Job (Extract, Transform, Load) xử lý và chuyển đổi dữ liệu thô thành dữ liệu đã qua xử lý. Lưu trữ dữ liệu đã xử lý:\nDữ liệu đã được chuyển đổi được lưu trong một bucket S3 khác dưới thư mục \u0026ldquo;processed-data\u0026rdquo;. Phân tích và trực quan hóa dữ liệu:\nAWS Glue Crawler quét dữ liệu đã qua xử lý và cập nhật Glue Data Catalog. Amazon Athena được sử dụng để truy vấn dữ liệu trong S3. Amazon QuickSight kết nối đến dữ liệu để trực quan hóa và báo cáo. Mục tiêu của workshop Hiểu các thành phần của kiến trúc Data Lake. Triển khai một hệ thống Data Lake đơn giản bằng các dịch vụ AWS. Tích hợp các công cụ phân tích và trực quan hóa để trích xuất thông tin hữu ích từ dữ liệu. Bài lab này được thực hiện ở region Singapore (ap-southeast-1).\n"
 },
 {
-	"uri": "https://nnminhtan.github.io/vi/4-data-catalog/4.1-glue-crawler/",
-	"title": "Tạo Glue Crawler",
-	"tags": [],
-	"description": "",
-	"content": "Tạo Glue Crawler Tìm và chọn AWS Glue\nTrong giao diện AWS Glue\nChọn Crawler Chọn Create crawler Trong giao diện Add new crawler Ở bước Set crawler properties\nNhập Name là summitcrawler Chọn Next Ở bước Choose data sources and classifiers\nChọn Add a data source Chọn Data source S3 Chọn Browse S3 Chọn S3 path (như hình ảnh) Chọn Crawler new sub-folders only Chọn Add an S3 data source Sau đó chọn Next Ở bước Configure security settings\nChọn IAM role: AWSGlueServiceRoleDefault Chọn Next Ở bước Set output and scheduling\nChọn Add database Ở giao diện Create database:\nĐặt tên database: summitdb Chọn Create database Quay lại giao diện bước Set output and scheduling\nChọn target database: summitdb Chọn Next Nếu summitdb không hiển thị, bạn có thể bấm button reload bên cạnh textfield Target database\nỞ bước Review and create\nReview lại các cấu hình Chọn Create crawler Sau khi tạo crawler thành công, chọn Run crawler Đợi một khoảng thời gian để crawler run. Sau khi run thành công, crawler ở trạng thái Complete Chọn Tables ở giao diện AWS Glue, chúng ta sẽ thấy có 2 bảng dữ liệu. Dữ liệu ở raw2024 Dữ liệu ở reference_data "
-},
-{
 	"uri": "https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/",
 	"title": "Tạo S3 bucket",
 	"tags": [],
@@ -82,13 +75,6 @@
 	"tags": [],
 	"description": "",
 	"content": "Các bước chuẩn bị Chúng ta sẽ chuẩn bị để tạo IAM role và gắn các policy cần thiết để đảm bảo AWS Glue có quyền truy cập vào dữ liệu trong Amazon S3 và thực hiện các công việc ETL một cách an toàn và hiệu quả.\nNội dung: Tạo IAM role Tạo policy Attach policy vào role "
-},
-{
-	"uri": "https://nnminhtan.github.io/vi/4-data-catalog/4.2-test-data/",
-	"title": "Kiểm tra dữ liệu",
-	"tags": [],
-	"description": "",
-	"content": "Kiểm tra dữ liệu Tìm kiếm và chọn dịch vụ S3 Chọn vào bucket asg-datalake-demo-2024 Chọn Create folder Đặt tên cho folder là Athena, sau đó chọn Create folder Ta được kết quả Tiếp theo, ta sẽ sử dụng Athena cùng các câu truy vấn để kiểm tra cấu trúc dữ liệu\nTìm kiếm và chọn dịch vụ Athena Trong Query editor, chọn Settings, sau đó chọn Manage Trong Manage settings Chọn Browse S3 Chọn đường dẫn dẫn tới thư mục Athena Chọn Save Thực hiện query với: Data source: AwsDataCatalog Database: summitdb Thực hiện câu truy vấn: lấy 10 dòng của table raw2024 SELECT * FROM \u0026#34;summitdb\u0026#34;.\u0026#34;raw2024\u0026#34; limit 10 Chọn Run query Kết quả câu truy vấn trên: Tiếp tục thực hiện query với: Data source: AwsDataCatalog Database: summitdb Thực hiện câu truy vấn: SELECT activity_type, count(activity_type) FROM raw2024 GROUP BY activity_type ORDER BY activity_type Chọn Run query Kết quả câu truy vấn trên: "
 },
 {
 	"uri": "https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/",
@@ -133,7 +119,7 @@
 	"content": "Trong hướng dẫn này, chúng ta sẽ tạo một S3 bucket để lưu trữ dữ liệu và tạo một Firehose stream để thu thập dữ liệu. Trong quá trình này, ta sẽ dùng ta sử dụng Kinesis Data Generator để tạo dữ liệu mẫu thông qua CloudFormation\nNội dung: Tạo S3 bucket Tạo các object trong bucket Tạo Firehose Stream Tạo dữ liệu mẫu "
 },
 {
-	"uri": "https://nnminhtan.github.io/vi/4-data-catalog/",
+	"uri": "https://nnminhtan.github.io/vi/4-configure-automated-response/",
 	"title": "Tạo Data Catalog",
 	"tags": [],
 	"description": "",
