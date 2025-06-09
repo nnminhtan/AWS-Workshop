@@ -1,5 +1,5 @@
 # Change the default theme to be use when building the site with Hugo
-baseURL = "https://nnminhtan.github.io/"
+baseURL = "https://nnminhtan.github.io/AWS-Workshop/"
 theme = "hugo-theme-learn"
 
 # For search functionality
