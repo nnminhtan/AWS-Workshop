@@ -1,176 +1,156 @@
 +++
-title = "Dọn dẹp tài nguyên"
-date = 2021-06-08T18:57:03+07:00
+title = "Tạo Lambda Function"
+date = 2025
 weight = 2
 chapter = false
 pre = "<b>3.1.2. </b>"
 +++
 
-Chúng ta sẽ dọn dẹp các tài nguyên sau:
+<!-- #### Create Lambda Function -->
 
-#### **Dọn dẹp tài nguyên ở Visual QuickSight**:
+1. Tạo **Lambda Function**
 
-1.  **Xóa Pie chart sheet**
+   - Trong thanh tìm kiếm, nhập **Lambda**, bạn sẽ được chuyển tới trang bắt đầu của Lambda.
 
-![QuickSight](/images/7/delete_piechart.png?width=90pc)
+   ![Lambda](/images/3/3.1/3.1.2/Lambda.png?width=90pc)
 
-2. **Xóa Analyses QuickSight:**
+   - Nhấn **Create a function**
 
-- Chọn **Analyses**.
-- Chọn **Analysis** cần xóa.
-- Chọn **Delete**.
+   ![Lambda](/images/3/3.1/3.1.2/Create_function.png?width=90pc)
 
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
+   - Đặt tên function là: `ec2instance-containment-with-forensics`.
+   - Chọn Runtime: **Python 3.9**.
+   - Mở rộng phần _Change default execution role_, chọn **Use an existing role**.
+   - Chọn role `ec2instance-containment-with-forensics-role`.
+   - Kết quả sẽ như bên dưới, nhấn **Create function**.
 
-- Delete done
+   ![Lambda](/images/3/3.1/3.1.2/Create_function_settings.png?width=90pc)
 
-![QuickSight](/images/7/delete_done.png?width=90pc)
+2. Sửa đổi **Lambda function** đã tạo
 
-3. **Xóa Dataset QuickSight:**
+   - Vào tab _Configuration_, bấm nút _Edit_.
 
-![QuickSight](/images/7/delete_dataset.png?width=90pc)
-![QuickSight](/images/7/delete_cf_dataset.png?width=90pc)
+   ![Lambda](/images/3/3.1/3.1.2/Configure_function_runtime1.png?width=90pc)
 
-4. Bạn cũng có thể xóa tài khoản QuickSight nếu không sử dụng
+   - Thay đổi **Timeout** thành 15 phút, rồi lưu lại.
 
-- Tại giao diện **QuickSight**, chọn **Manage QuickSight**
+   ![Lambda](/images/3/3.1/3.1.2/Configure_function_runtime2.png?width=90pc)
 
-![QuickSight](/images/6/6.2/manage_quicksight.png?width=90pc)
+   - Tạo **environment variables** cho Lambda function.
+   - Vẫn trong _Configuration_, chọn **Environment variables** rồi bấm _Edit_.
 
-- Tại **Account settings**, chọn **Manage**
+   ![Lambda](/images/3/3.1/3.1.2/Configure_function_create_env_var.png?width=90pc)
 
-![QuickSight](/images/7/delete_qs_acc.png?width=90pc)
+   - Thêm biến môi trường:
+     - Key: `ForensicsSG`
+     - Value: `sg-...(ID của Security Group Forensics của bạn)`
+   - Kết quả như hình bên dưới.
 
-- Thực hiện xóa tài khoản
+   ![Lambda](/images/3/3.1/3.1.2/Configure_function_add_env_var.png?width=90pc)
 
-![QuickSight](/images/7/delete_acc_form.png?width=90pc)
+   - Nhấn **Save**.
 
-- Hủy đăng ký **QuickSight** thành công
+3. Thêm code cho **Lambda Function**
 
-![QuickSight](/images/7/delete_success.png?width=90pc)
+   - Chọn tab _Code_ bên cạnh _Configuration_.
 
----
+   ![Lambda](/images/3/3.1/3.1.2/Add_code_Lambda.png?width=90pc)
 
-#### **Dọn dẹp tài nguyên ở AWS Glue**:
+     ```python
+          import boto3, json
+          import time
+          from datetime import date
+          from botocore.exceptions import ClientError
+          import os
 
-Truy cập vào **AWS Glue**.
+          def lambda_handler(event, context):
+          # Copyright 2022 - Amazon Web Services
 
-1. **Xóa các tables**
+          # Permission is hereby granted, free of charge, to any person obtaining a copy of this
+          # software and associated documentation files (the "Software"), to deal in the Software
+          # without restriction, including without limitation the rights to use, copy, modify,
+          # merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+          # permit persons to whom the Software is furnished to do so.
 
-- Chọn **Tables**.
-- Chọn các table cần xóa.
-- Chọn **Delete** để xác nhận xóa Table.
+          # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+          # INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+          # PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+          # HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+          # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+          # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-![QuickSight](/images/7/delete_tables.png?width=90pc)
-![QuickSight](/images/7/cf_delete_table.png?width=90pc)
+          # print('## ENVIRONMENT VARIABLES')
+          # print(os.environ)
+          # print('## EVENT')
+          # print(event)
+          response = 'Error remediating the security finding.'
+          try:
+               # Gather Instance ID from CloudWatch event
+               instanceID = event['detail']['resource']['instanceDetails']['instanceId']
+               print('## INSTANCE ID: %s' % (instanceID))
+               
+               # Get instance details
+               client = boto3.client('ec2')
+               ec2 = boto3.resource('ec2')
+               instance = ec2.Instance(instanceID)
+               instance_description = client.describe_instances(InstanceIds=[instanceID])
+               print('## INSTANCE DESCRIPTION: %s' % (instance_description))
 
-2. **Xóa Interactive Sessions**
+               #-------------------------------------------------------------------
+               # Protect instance from termination
+               #-------------------------------------------------------------------
+               ec2.Instance(instanceID).modify_attribute(
+               DisableApiTermination={
+                    'Value': True
+               })
+               ec2.Instance(instanceID).modify_attribute(
+               InstanceInitiatedShutdownBehavior={
+                    'Value': 'stop'
+               })
+               
+               #-------------------------------------------------------------------
+               # Create tags to avoid accidental deletion of forensics evidence
+               #-------------------------------------------------------------------
+               ec2.create_tags(Resources=[instanceID], Tags=[{'Key':'status', 'Value':'isolated'}])
+               print('## INSTANCE TAGS: %s' % (instance.tags))
 
-- Chọn **Interactive Sessions**.
-- Chọn các session cần xóa.
-- Chọn **Delete** để xác nhận xóa session.
+               #------------------------------------
+               ## Isolate Instance
+               #------------------------------------
+               print('quarantining instance -- %s, %s' % (instance.id, instance.instance_type))
+               
+               # Change instance Security Group attribute to terminate connections and allow Forensics Team's access
+               instance.modify_attribute(Groups=[os.environ['ForensicsSG']])
+               print('Instance ready for root cause analysis -- %s, %s' % (instance.id,  instance.security_groups))
 
-![QuickSight](/images/7/delete_session.png?width=90pc)
+               #------------------------------------
+               ## Create snapshots of EBS volumes 
+               #------------------------------------
+               description= 'Isolated Instance:' + instance.id + ' on account: ' + event['detail']['accountId'] + ' on ' + date.today().strftime("%Y-%m-%d  %H:%M:%S")
+               SnapShotDetails = client.create_snapshots(
+                    Description=description,
+                    InstanceSpecification = {
+                         'InstanceId': instanceID,
+                         'ExcludeBootVolume': False
+                    }
+               )
+               print('Snapshot Created -- %s' % (SnapShotDetails))
 
-2. **Xóa crawler**
+               response = 'Instance ' + instance.id + ' auto-remediated'        
+               
+          except ClientError as e:
+               print(e)
+          
+          return response
 
-- Chọn **Crawler**.
-- Chọn các crawler cần xóa.
-- Chọn Action
-- Chọn **Delete crawler** để xác nhận xóa crawler.
+    ```
 
-![QuickSight](/images/7/delete_cwl.png?width=90pc)
+   - Nhấn **Deploy** để deploy function Lambda.
 
----
-
-#### **Dọn dẹp tài nguyên ở CloudFormation**:
-
-- Vào giao diện **CloudFormation**
-- Chọn **Stack**
-- Chọn **stack name** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_cloudform.png?width=90pc)
-
-- Nếu delete stack **fail**
-  - Chọn **Retry delete**
-  - Chọn **Force delete this entire stack**
-
-![QuickSight](/images/7/force_delete_stack.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở Kinesis**:
-
-- Vào **Amazon Data Firehose**
-- Chọn **Firehose stream** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_firehose.png?width=90pc)
-![QuickSight](/images/7/cf_delete_firehose.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudWatch**:
-
-- Vào giao diện **CloudWatch**
-- Chọn **Log groups**
-- Chọn tất cả **Log groups**
-- Chọn **Action**
-- Chọn **Delete log group(s)**
-
-![QuickSight](/images/7/delete_logs.png?width=90pc)
-![QuickSight](/images/7/cf_delete_logs.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở S3**:
-
-- Xóa tất cả các bucket liên quan tới bài lab
-
-- Chọn **bucket**
-- **Empty bucket**
-
-![QuickSight](/images/7/empty__bucket.png?width=90pc)
-![QuickSight](/images/7/cf_empty_s3.png?width=90pc)
-
-- Chọn lại bucket vừa empty
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_s3_bucket.png?width=90pc)
-![QuickSight](/images/7/cf_delete_bucket.png?width=90pc)
+   ![Lambda](/images/3/3.1/3.1.2/Deploy_code_Lambda.png?width=90pc)
 
 {{% notice note %}}
-Thực hiện tương tự với các bucket còn lại
+Bạn có thể xem các comment trong code để hiểu chức năng từng phần.
 {{% /notice %}}
 
----
-
-#### **Dọn dẹp tài nguyên ở IAM**:
-
-Vào giao diện IAM
-
-**1. Xóa Policy**
-
-- Chọn **Policies**
-- Chọn **policy** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_policy.png?width=90pc)
-![QuickSight](/images/7/cf_delete_policy.png?width=90pc)
-
-- Xóa policy thành công
-
-![QuickSight](/images/7/delete_policy_success.png?width=90pc)
-
-**2. Xóa Role**
-
-- Chọn **Roles**
-- Chọn **role** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_role.png?width=90pc)
-
-- Xóa role thành công
-
-![QuickSight](/images/7/delete_role_success.png?width=90pc)
+Sau khi hoàn thành, tiếp tục với bước [Test Lambda Function](../3.1.3-Test-Lambda-Function).

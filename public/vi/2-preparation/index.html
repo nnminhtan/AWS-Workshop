@@ -12,21 +12,21 @@
     <title>Các bước chuẩn bị :: Tự động hóa quá trình phản ứng sự cố</title>
 
     
-    <link href="/css/nucleus.css?1749367308" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1749367308" rel="stylesheet">
-    <link href="/css/hybrid.css?1749367308" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1749367308" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1749367308" rel="stylesheet">
-    <link href="/css/auto-complete.css?1749367308" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1749367308" rel="stylesheet">
-    <link href="/css/theme.css?1749367308" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1749367308" rel="stylesheet">
+    <link href="/css/nucleus.css?1749457645" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1749457645" rel="stylesheet">
+    <link href="/css/hybrid.css?1749457645" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1749457645" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1749457645" rel="stylesheet">
+    <link href="/css/auto-complete.css?1749457645" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1749457645" rel="stylesheet">
+    <link href="/css/theme.css?1749457645" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1749457645" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1749367308" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1749457645" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1749367308"></script>
+    <script src="/js/jquery-3.3.1.min.js?1749457645"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1749367308"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1749367308"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1749457645"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1749457645"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/nnminhtan.github.io\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1749367308"></script>
+<script type="text/javascript" src="/js/search.js?1749457645"></script>
  
   </div>
 
@@ -106,7 +106,7 @@
             
 <li
   data-nav-id="/vi/2-preparation/2.1-deploy-the-cloudformation-stack/"
-  title="Tạo IAM role"
+  title="Triển khai CloudFormation stack"
   class="dd-item 
         
         
@@ -114,7 +114,7 @@
         "
 >
   <a href="/vi/2-preparation/2.1-deploy-the-cloudformation-stack/">
-    <b>2.1. </b>Tạo IAM role 
+    <b>2.1. </b>Triển khai CloudFormation stack 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -124,7 +124,7 @@
             
 <li
   data-nav-id="/vi/2-preparation/2.2-set-up-security-group/"
-  title="Tạo policy"
+  title="Thiết lập Security Group"
   class="dd-item 
         
         
@@ -132,7 +132,7 @@
         "
 >
   <a href="/vi/2-preparation/2.2-set-up-security-group/">
-    <b>2.2. </b>Tạo policy 
+    <b>2.2. </b>Thiết lập Security Group 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -142,7 +142,7 @@
             
 <li
   data-nav-id="/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
-  title="Gắn policy vào role"
+  title="Tạo IAM user để kiểm thử"
   class="dd-item 
         
         
@@ -150,7 +150,7 @@
         "
 >
   <a href="/vi/2-preparation/2.3-create-an-iam-user-for-testing/">
-    <b>2.3. </b>Gắn policy vào role 
+    <b>2.3. </b>Tạo IAM user để kiểm thử 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -163,7 +163,7 @@
            
 <li
   data-nav-id="/vi/3-configure-response/"
-  title="Thu thập và lưu trữ dữ liệu"
+  title="Cấu hình phản hồi"
   class="dd-item 
         
         
@@ -171,7 +171,7 @@
         "
 >
   <a href="/vi/3-configure-response/">
-    <b>3. </b>Thu thập và lưu trữ dữ liệu 
+    <b>3. </b>Cấu hình phản hồi 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -181,7 +181,7 @@
             
 <li
   data-nav-id="/vi/3-configure-response/3.1-single-lambda-response/"
-  title="Tạo S3 bucket"
+  title="Single Lambda response"
   class="dd-item 
         
         
@@ -189,7 +189,7 @@
         "
 >
   <a href="/vi/3-configure-response/3.1-single-lambda-response/">
-    <b>3.1. </b>Tạo S3 bucket 
+    <b>3.1. </b>Single Lambda response 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -216,26 +216,8 @@
     
             
 <li
-  data-nav-id="/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
-  title="Dọn dẹp tài nguyên"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/">
-    <b>3.1.4. </b>Dọn dẹp tài nguyên 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
-    
-            
-<li
   data-nav-id="/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
-  title="Dọn dẹp tài nguyên"
+  title="Tạo Lambda Function"
   class="dd-item 
         
         
@@ -243,7 +225,7 @@
         "
 >
   <a href="/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/">
-    <b>3.1.2. </b>Dọn dẹp tài nguyên 
+    <b>3.1.2. </b>Tạo Lambda Function 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -253,7 +235,7 @@
             
 <li
   data-nav-id="/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/"
-  title="Dọn dẹp tài nguyên"
+  title="Test Lambda Function"
   class="dd-item 
         
         
@@ -261,7 +243,25 @@
         "
 >
   <a href="/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/">
-    <b>3.1.3. </b>Dọn dẹp tài nguyên 
+    <b>3.1.3. </b>Test Lambda Function 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
+  title="Tạo EventBridge Rule"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/">
+    <b>3.1.4. </b>Tạo EventBridge Rule 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -275,7 +275,7 @@
             
 <li
   data-nav-id="/vi/3-configure-response/3.2-step-function-response/"
-  title="Tạo object cho S3 bucket"
+  title="Phản hồi Step Function"
   class="dd-item 
         
         
@@ -283,7 +283,7 @@
         "
 >
   <a href="/vi/3-configure-response/3.2-step-function-response/">
-    <b>3.2. </b>Tạo object cho S3 bucket 
+    <b>3.2. </b>Phản hồi Step Function 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -293,7 +293,7 @@
             
 <li
   data-nav-id="/vi/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/"
-  title="Dọn dẹp tài nguyên"
+  title="Triển khai CloudFormation stack"
   class="dd-item 
         
         
@@ -301,25 +301,7 @@
         "
 >
   <a href="/vi/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/">
-    <b>3.1.1. </b>Dọn dẹp tài nguyên 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
-    
-            
-<li
-  data-nav-id="/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
-  title="Dọn dẹp tài nguyên"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/">
-    <b>3.1.4. </b>Dọn dẹp tài nguyên 
+    <b>3.2.1. </b>Triển khai CloudFormation stack 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -329,7 +311,7 @@
             
 <li
   data-nav-id="/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/"
-  title="Dọn dẹp tài nguyên"
+  title="Đăng ký SNS"
   class="dd-item 
         
         
@@ -337,7 +319,7 @@
         "
 >
   <a href="/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/">
-    <b>3.1.2. </b>Dọn dẹp tài nguyên 
+    <b>3.2.2. </b>Đăng ký SNS 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -347,7 +329,7 @@
             
 <li
   data-nav-id="/vi/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/"
-  title="Dọn dẹp tài nguyên"
+  title="Test Step Functions"
   class="dd-item 
         
         
@@ -355,7 +337,25 @@
         "
 >
   <a href="/vi/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/">
-    <b>3.1.3. </b>Dọn dẹp tài nguyên 
+    <b>3.2.3. </b>Test Step Functions 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
+  title="Tạo EventBridge Rule"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/">
+    <b>3.2.4. </b>Tạo EventBridge Rule 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -372,7 +372,7 @@
            
 <li
   data-nav-id="/vi/4-configure-automated-response/"
-  title="Tạo Data Catalog"
+  title="Cấu hình phản hồi tự động"
   class="dd-item 
         
         
@@ -380,7 +380,7 @@
         "
 >
   <a href="/vi/4-configure-automated-response/">
-    <b>4. </b>Tạo Data Catalog 
+    <b>4. </b>Cấu hình phản hồi tự động 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -389,7 +389,7 @@
            
 <li
   data-nav-id="/vi/5-clean-up/"
-  title="Dọn dẹp tài nguyên"
+  title="Xoá tài nguyên"
   class="dd-item 
         
         
@@ -397,7 +397,7 @@
         "
 >
   <a href="/vi/5-clean-up/">
-    <b>7. </b>Dọn dẹp tài nguyên 
+    <b>5. </b>Xoá tài nguyên 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -544,7 +544,7 @@
             
           
           
-            <a href='/vi/'>Automating Incident Response</a> > Các bước chuẩn bị
+            <a href='/vi/'>Tự động hoá phản hồi sự cố</a> > Các bước chuẩn bị
           
         
           
@@ -557,7 +557,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#các-bước-chuẩn-bị">Các bước chuẩn bị</a>
+    <li>
       <ul>
         <li></li>
       </ul>
@@ -587,13 +587,16 @@
 
 
 
-	<h2 id="các-bước-chuẩn-bị">Các bước chuẩn bị</h2>
-<p>Chúng ta sẽ chuẩn bị để tạo IAM role và gắn các policy cần thiết để đảm bảo AWS Glue có quyền truy cập vào dữ liệu trong Amazon S3 và thực hiện các công việc ETL một cách an toàn và hiệu quả.</p>
+	<p>Chúng ta sẽ chuẩn bị bằng cách tạo một IAM user để kiểm tra và gán các policy cần thiết. Bạn sẽ bật Amazon GuardDuty và triển khai CloudFormation template để tạo hạ tầng mẫu nhằm mô phỏng kẻ tấn công và mục tiêu.</p>
+
+<div class="notices warning" ><p>Đảm bảo rằng tài khoản được sử dụng cho workshop này <strong>KHÔNG phải là production account</strong>.</p>
+</div>
+
 <h4 id="nội-dung">Nội dung:</h4>
 <ol>
-<li><a href="2.1-IAM-role">Tạo IAM role</a></li>
-<li><a href="2.2-policy">Tạo policy</a></li>
-<li><a href="2.3-attach-policy-to-role/">Attach policy vào role</a></li>
+<li><a href="/vi/2-preparation/2.1-deploy-the-cloudformation-stack/">Triển khai CloudFormation stack</a></li>
+<li><a href="/vi/2-preparation/2.2-set-up-security-group/">Thiết lập Security Group</a></li>
+<li><a href="/vi/2-preparation/2.3-create-an-iam-user-for-testing/">Tạo IAM user để kiểm thử</a></li>
 </ol>
 
 
@@ -945,7 +948,7 @@
 			<a class="nav nav-prev" href="/vi/1-introduction/" title="Giới thiệu"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/2-preparation/2.1-deploy-the-cloudformation-stack/" title="Tạo IAM role" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/2-preparation/2.1-deploy-the-cloudformation-stack/" title="Triển khai CloudFormation stack" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -955,19 +958,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1749367308"></script>
-    <script src="/js/perfect-scrollbar.min.js?1749367308"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1749367308"></script>
-    <script src="/js/jquery.sticky.js?1749367308"></script>
-    <script src="/js/featherlight.min.js?1749367308"></script>
-    <script src="/js/highlight.pack.js?1749367308"></script>
+    <script src="/js/clipboard.min.js?1749457645"></script>
+    <script src="/js/perfect-scrollbar.min.js?1749457645"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1749457645"></script>
+    <script src="/js/jquery.sticky.js?1749457645"></script>
+    <script src="/js/featherlight.min.js?1749457645"></script>
+    <script src="/js/highlight.pack.js?1749457645"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1749367308"></script>
-    <script src="/js/learn.js?1749367308"></script>
-    <script src="/js/hugo-learn.js?1749367308"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1749457645"></script>
+    <script src="/js/learn.js?1749457645"></script>
+    <script src="/js/hugo-learn.js?1749457645"></script>
 
-    <link href="/mermaid/mermaid.css?1749367308" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1749367308"></script>
+    <link href="/mermaid/mermaid.css?1749457645" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1749457645"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

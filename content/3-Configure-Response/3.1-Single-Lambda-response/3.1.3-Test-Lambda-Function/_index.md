@@ -63,30 +63,28 @@ In this step we will test the Lambda Function that created previously.
 
     - Verify status _before execution_ : check on the EC2 console what is the current status of the instance **"BasicLinuxTarget"**
 
-    {{% notice note %}}
+    ```
     Can you answer the following questions?
-
-        • Which Security Group does it have?
-        • Which tags does it have ?
-        • Is there any snapshot related to the instance?
-    {{% /notice %}}
-
+      • Which Security Group does it have?
+      • Which tags does it have ?
+      • Is there any snapshot related to the instance?
+    ```
     - Press the test event just created, and verify the status _after execution_: of the instance **"BasicLinuxTarget"**
     
     ![Test Lambda](/images/3/3.1/3.1.3/Test_event.png?width=90pc)
 
-    {{% notice note %}}
+    ```
     Can you answer the following questions?
 
-        • Has the Security Group changed?
-        • Have the tags changed?
-        • Has any new Snapshot been created?
-        • Log in with a different Internet browser or using private mode, use the link on the IAM Dashboard 
-        (as seen below) and verify if you can delete the EC2 with the IAM user testuser that you created during the Setup steps.
-            
-            • Are you able to delete the instance?
-    {{% /notice %}}
-        ![Test Lambda](/images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
+      • Has the Security Group changed?
+      • Have the tags changed?
+      • Has any new Snapshot been created?
+      • Log in with a different Internet browser or using private mode, use the link on the IAM Dashboard (as seen below) and verify if you can delete the EC2 with the IAM user testuser that you created during the Setup steps.
+
+        • Are you able to delete the instance?
+    ```
+        
+    ![Test Lambda](/images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
 
     - When you use the _testuser_ and try to delete the instance **"BasicLinuxTarget"** it should have this error.
     

@@ -1,35 +1,29 @@
 +++
-title = "Tạo S3 bucket"
+title = "Single Lambda response"
 date = 2020
 weight = 1
 chapter = false
 pre = "<b>3.1. </b>"
 +++
 
-## Tạo S3 bucket
+### Cấu hình phản hồi bằng một Lambda function
 
-1. Tìm kiếm và chọn dịch vụ **S3**
+Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động trên một AWS Lambda Function duy nhất. Hàm này sẽ thực hiện tất cả các hành động cần thiết trong cùng một đoạn mã.
 
-   ![S3](/images/3/s3.png?width=90pc)
+Các bước thực hiện bao gồm:
 
-2. Trong giao diện **S3**, chọn **Create bucket**
+- Tạo IAM policy và đính kèm vào IAM role mà Lambda function sẽ sử dụng để thực thi các phản hồi tự động.
+- Tạo Lambda function.
+- Kiểm thử Lambda function.
+- Tạo EventBridge rule để gọi Lambda function dựa trên các phát hiện từ GuardDuty.
 
-   ![S3](/images/3/create_bucket.png?width=90pc)
+Kiến trúc cho phương án này như sau:  
+![Lambda](/images/1/Workshop_Lambda.jpg?width=90pc)
 
-3. Tại **Bucket name**, đặt tên `asg-datalake-demo-2024`
+#### Nội dung:
 
-   ![S3](/images/3/name_bucket.png?width=90pc)
+1. [Tạo IAM Policies và Roles](3.1.1-Create-IAM-Policies-and-Roles)  
+2. [Tạo Lambda Function](3.1.2-Create-Lambda-Function)  
+3. [Kiểm thử Lambda Function](3.1.3-Test-Lambda-Function)  
+4. [Tạo EventBridge Rule](3.1.4-Create-EventBridge-Rule)
 
-4. Kiểm tra các cấu hình như hình dưới:
-
-   ![S3](/images/3/create_bucket_2.png?width=90pc)
-
-   ![S3](/images/3/create_bucket_3.png?width=90pc)
-
-5. Click **Create bucket**
-
-   ![S3](/images/3/submit_create.png?width=90pc)
-
-6. Tạo bucket thành công
-
-   ![S3](/images/3/create_success.png?width=90pc)

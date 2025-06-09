@@ -9,10 +9,10 @@ pre = "<b>3.2. </b>"
 ### Configure for Step Function response
 
 In this section you will learn how to implement an automated incident response action via a workflow implemented with Step Functions. The advantages of this approach are:
-   - No timeout for the actions to be performed
-   - Almost all the API calls for the AWS Services are implemented and can be directly called without a line of code
-   - Graphical workflow definition
-   - More control over the different paths
+   - No timeout for the actions to be performed.
+   - Almost all the API calls for the AWS Services are implemented and can be directly called without a line of code.
+   - Graphical workflow definition.
+   - More control over the different paths.
 
 The steps we will be performing for this alternative are:
    - Deploy a CloudFormation template that will create all the necessary resources
@@ -39,6 +39,6 @@ A brief explanation of the workflow presented:
 3. Disable termination is applied to the EC2 instance.
 4. Shutdown behavior is changed to the instance.
 5. The _ForensicSG Security Group_ is applied to the instance.
-6. A tag isolated is applied to the instance.
+6. A tag _isolated_ is applied to the instance.
 7. The workflow is finished.
 

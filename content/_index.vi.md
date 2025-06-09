@@ -1,85 +1,59 @@
-+++
-title = "Automating Incident Response"
-date = 2025
-weight = 1
-chapter = false
-+++
+---
+title: 'Tự động hoá phản hồi sự cố'
+date: 2025
+weight: 1
+chapter: false
+---
 
-# Tìm hiểu về Data Lake trên AWS
+# Tự động hoá phản hồi sự cố
 
-#### Giới thiệu Data Lake
+#### Tổng quan
 
-**Data Lake** là một hệ thống lưu trữ tập trung cho phép lưu trữ dữ liệu dưới mọi định dạng - có cấu trúc, bán cấu trúc hoặc không cấu trúc. Không giống như các cơ sở dữ liệu truyền thống yêu cầu định dạng dữ liệu trước khi lưu trữ, Data Lake cho phép lưu trữ dữ liệu thô và xử lý hoặc phân tích khi cần.
+Bài lab này được thiết kế để mô phỏng và phản hồi một sự cố bảo mật trong môi trường cloud, liên quan đến một **EC2 instance bị xâm nhập** trong môi trường AWS. Mục tiêu là xây dựng và triển khai **playbook phản hồi sự cố (IR)** tự động để phát hiện và khắc phục hoạt động độc hại mà không cần can thiệp thủ công, tận dụng các công cụ và dịch vụ gốc của AWS.
 
-#### Lợi ích của Data Lake
+#### Tóm tắt kịch bản
 
-- **Lưu trữ linh hoạt**: Hỗ trợ dữ liệu từ nhiều nguồn và dưới nhiều định dạng khác nhau.
+Kẻ tấn công đã xâm nhập thành công một EC2 instance, có thể thông qua một lỗ hổng như **OS command injection**. Sau khi truy cập trái phép, kẻ tấn công:
 
-- **Phân tích toàn diện**: Tạo điều kiện cho phân tích dữ liệu lớn và các ứng dụng AI/ML.
+- Cài đặt **TOR client** để giao tiếp ẩn danh với máy chủ điều khiển và điều khiển (C2) bên ngoài.
+- Cố gắng thực hiện **đào Bitcoin** và thiết lập kết nối đến **địa chỉ IP độc hại đã biết**.
 
-- **Tiết kiệm chi phí**: Sử dụng các giải pháp lưu trữ chi phí thấp như Amazon S3.
+#### Các phương pháp triển khai Playbook phản hồi sự cố tự động
 
-- **Tích hợp dễ dàng**: Kết nối mượt mà với các công cụ phân tích và báo cáo như Amazon Athena và QuickSight.
+Trong lab này, chúng ta sẽ triển khai hai phương pháp phản hồi sự cố tự động (IR) sử dụng các dịch vụ gốc của AWS. Mỗi phương pháp có ưu điểm và điểm hạn chế riêng, phù hợp với các tình huống và mức độ phức tạp khác nhau của quá trình xử lý.
 
-#### Thách thức khi triển khai Data Lake
+##### 1. Playbook IR dựa trên Lambda
 
-- **Quản Lý Dữ Liệu**: Làm thế nào để tổ chức và quản lý dữ liệu hiệu quả?
+Phương pháp này sử dụng một hàm **AWS Lambda** duy nhất để thực hiện các hành động khắc phục ngay khi phát hiện sự cố. Đây là phương pháp **đơn giản và triển khai nhanh nhất**. Tuy nhiên, nó có một giới hạn quan trọng:
 
-- **Bảo Mật**: Làm sao để ngăn chặn truy cập trái phép vào dữ liệu?
+- **Thời gian thực thi bị giới hạn ở 15 phút**, do đó **không phù hợp với các tác vụ kéo dài**, như chờ sao lưu EBS hoàn tất hoặc thu thập dữ liệu pháp y (forensic data) chi tiết.
+- Thích hợp cho các hành động **nhẹ và tức thời**, như gắn thẻ, cách ly instance bằng cách thay đổi security group, hoặc gửi cảnh báo.
 
-- **Khả Năng Mở Rộng**: Hệ thống phải có khả năng mở rộng để xử lý sự gia tăng dữ liệu.
+##### 2. Playbook IR dựa trên Step Functions
 
-- **Hiệu Suất**: Cần tối ưu hóa cho việc truy vấn và xử lý dữ liệu.
+Phương pháp này sử dụng **AWS Step Functions** để điều phối phản hồi sự cố dưới dạng **modular state machine**, cho phép quy trình IR linh hoạt và mạnh mẽ hơn.
 
-- **Chất Lượng Dữ Liệu**: Đảm bảo tính chính xác và độ tin cậy của dữ liệu là rất quan trọng.
+- Không giống như Lambda, phương pháp này **không bị giới hạn thời gian thực thi nghiêm ngặt**, cho phép các workflow **phức tạp, nhiều bước**, có thể kéo dài hàng phút hoặc hàng giờ.
+- Các tác vụ được chia thành các **state độc lập và dễ quản lý**, hỗ trợ thực thi song song, retry, delay, và xử lý lỗi.
+- Phù hợp với các tình huống cần hành động theo trình tự như tạo snapshot, thu thập dữ liệu pháp y, gửi thông báo cho nhiều hệ thống, sau đó tiến hành cách ly hoặc xoá instance.
 
-#### Kiến trúc Workshop
+Thông qua việc so sánh hai phương pháp, lab này sẽ cho thấy cách các công cụ tự động hoá của AWS có thể được tuỳ chỉnh để đáp ứng nhu cầu phản hồi — từ phản ứng nhanh đến khắc phục toàn diện.
 
-##### Tổng quan về kiến trúc
+#### Mục tiêu của Workshop
 
-Hình dưới đây minh họa kiến trúc hệ thống Data Lake mà chúng ta sẽ triển khai trong workshop này:
-![Workshop](/images/1/workshop.jpg)
+Sau khi hoàn thành workshop này, bạn sẽ:
 
-##### Mô tả kiến trúc
+- Thực hiện được các tác vụ phản hồi sự cố cơ bản một cách tự động, tập trung vào **khoanh vùng (containment)** và **thu thập dữ liệu pháp y (forensic data collection)**.  
+- Hiểu được các hành động khắc phục có thể thực hiện và mức độ công sức cần thiết.
 
-- Thu thập dữ liệu:
+{{% notice info %}}
+Thời lượng workshop khoảng 3 giờ, ngay cả khi bạn không hoàn thành, hãy truy cập phần **xoá tài nguyên** để tránh phát sinh chi phí.
+{{% /notice %}}
 
-  - Dữ liệu từ nhiều nguồn khác nhau được thu thập qua Kinesis.
-  - Kinesis Firehose Stream xử lý và chuyển dữ liệu đến Amazon S3.
+#### Nội dung Workshop
 
-- Lưu trữ dữ liệu thô:
-
-  - Dữ liệu thô được lưu trữ trong S3 ở thư mục "raw data".
-  - CloudFormation tự động triển khai các tài nguyên cần thiết.
-
-- AWS Glue:
-
-  - AWS Glue Crawler quét dữ liệu thô trong S3 để tạo metadata.
-  - Metadata được lưu trữ trong AWS Glue Data Catalog.
-  - Một ETL Job (Extract, Transform, Load) xử lý và chuyển đổi dữ liệu thô thành dữ liệu đã qua xử lý.
-
-- Lưu trữ dữ liệu đã xử lý:
-
-  - Dữ liệu đã được chuyển đổi được lưu trong một bucket S3 khác dưới thư mục "processed-data".
-
-- Phân tích và trực quan hóa dữ liệu:
-
-  - AWS Glue Crawler quét dữ liệu đã qua xử lý và cập nhật Glue Data Catalog.
-  - Amazon Athena được sử dụng để truy vấn dữ liệu trong S3.
-  - Amazon QuickSight kết nối đến dữ liệu để trực quan hóa và báo cáo.
-
-##### Mục tiêu của workshop
-
-- Hiểu các thành phần của kiến trúc Data Lake.
-- Triển khai một hệ thống Data Lake đơn giản bằng các dịch vụ AWS.
-- Tích hợp các công cụ phân tích và trực quan hóa để trích xuất thông tin hữu ích từ dữ liệu.
-
-#### Nội dung:
-
-1. [Giới thiệu](1-introduce)
-2. [Các bước chuẩn bị](2-preparation)
-3. [Thu thập và lưu trữ dữ liệu](3-collection-storage)
-4. [Tạo Data Catalog](4-data-catalog)
-5. [Chuyển đổi dữ liệu](5-data-transform)
-6. [Phân tích và trực quan hóa](6-analysis-visualize)
-7. [Dọn dẹp tài nguyên](7-clean-up)
+1. [Giới thiệu](1-Introduction)
+2. [Các bước chuẩn bị](2-Preparation)
+3. [Cấu hình phản hồi](3-Configure-Response)
+4. [Cấu hình phản hồi tự động](4-Configure-Automated-Response)
+5. [Xoá tài nguyên](5-Clean-up)

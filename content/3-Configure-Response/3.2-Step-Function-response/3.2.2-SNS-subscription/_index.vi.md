@@ -1,176 +1,23 @@
 +++
-title = "Dọn dẹp tài nguyên"
-date = 2021-06-08T18:57:03+07:00
+title = "Đăng ký SNS"
+date = 2025
 weight = 2
 chapter = false
-pre = "<b>3.1.2. </b>"
+pre = "<b>3.2.2. </b>"
 +++
 
-Chúng ta sẽ dọn dẹp các tài nguyên sau:
+<!-- #### Đăng ký SNS -->
 
-#### **Dọn dẹp tài nguyên ở Visual QuickSight**:
+Là một phần của **CloudFormation stack** mà bạn vừa tạo, bạn sẽ nhận được một email như sau tại _địa chỉ_ bạn đã nhập trong quá trình triển khai template:
 
-1.  **Xóa Pie chart sheet**
+![SNS](/images/3/3.2/3.2.2/Subscription-confirmation.png?width=90pc)
 
-![QuickSight](/images/7/delete_piechart.png?width=90pc)
+Bạn cần nhấn vào nút _Confirm Subscription_ để có thể nhận được các thông báo mà **State Machine** sẽ gửi như một phần của quy trình phản hồi tự động. Sau khi xác nhận đăng ký, bạn sẽ thấy thông báo sau trên trang web được mở ra:
 
-2. **Xóa Analyses QuickSight:**
-
-- Chọn **Analyses**.
-- Chọn **Analysis** cần xóa.
-- Chọn **Delete**.
-
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
-
-- Delete done
-
-![QuickSight](/images/7/delete_done.png?width=90pc)
-
-3. **Xóa Dataset QuickSight:**
-
-![QuickSight](/images/7/delete_dataset.png?width=90pc)
-![QuickSight](/images/7/delete_cf_dataset.png?width=90pc)
-
-4. Bạn cũng có thể xóa tài khoản QuickSight nếu không sử dụng
-
-- Tại giao diện **QuickSight**, chọn **Manage QuickSight**
-
-![QuickSight](/images/6/6.2/manage_quicksight.png?width=90pc)
-
-- Tại **Account settings**, chọn **Manage**
-
-![QuickSight](/images/7/delete_qs_acc.png?width=90pc)
-
-- Thực hiện xóa tài khoản
-
-![QuickSight](/images/7/delete_acc_form.png?width=90pc)
-
-- Hủy đăng ký **QuickSight** thành công
-
-![QuickSight](/images/7/delete_success.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở AWS Glue**:
-
-Truy cập vào **AWS Glue**.
-
-1. **Xóa các tables**
-
-- Chọn **Tables**.
-- Chọn các table cần xóa.
-- Chọn **Delete** để xác nhận xóa Table.
-
-![QuickSight](/images/7/delete_tables.png?width=90pc)
-![QuickSight](/images/7/cf_delete_table.png?width=90pc)
-
-2. **Xóa Interactive Sessions**
-
-- Chọn **Interactive Sessions**.
-- Chọn các session cần xóa.
-- Chọn **Delete** để xác nhận xóa session.
-
-![QuickSight](/images/7/delete_session.png?width=90pc)
-
-2. **Xóa crawler**
-
-- Chọn **Crawler**.
-- Chọn các crawler cần xóa.
-- Chọn Action
-- Chọn **Delete crawler** để xác nhận xóa crawler.
-
-![QuickSight](/images/7/delete_cwl.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudFormation**:
-
-- Vào giao diện **CloudFormation**
-- Chọn **Stack**
-- Chọn **stack name** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_cloudform.png?width=90pc)
-
-- Nếu delete stack **fail**
-  - Chọn **Retry delete**
-  - Chọn **Force delete this entire stack**
-
-![QuickSight](/images/7/force_delete_stack.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở Kinesis**:
-
-- Vào **Amazon Data Firehose**
-- Chọn **Firehose stream** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_firehose.png?width=90pc)
-![QuickSight](/images/7/cf_delete_firehose.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudWatch**:
-
-- Vào giao diện **CloudWatch**
-- Chọn **Log groups**
-- Chọn tất cả **Log groups**
-- Chọn **Action**
-- Chọn **Delete log group(s)**
-
-![QuickSight](/images/7/delete_logs.png?width=90pc)
-![QuickSight](/images/7/cf_delete_logs.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở S3**:
-
-- Xóa tất cả các bucket liên quan tới bài lab
-
-- Chọn **bucket**
-- **Empty bucket**
-
-![QuickSight](/images/7/empty__bucket.png?width=90pc)
-![QuickSight](/images/7/cf_empty_s3.png?width=90pc)
-
-- Chọn lại bucket vừa empty
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_s3_bucket.png?width=90pc)
-![QuickSight](/images/7/cf_delete_bucket.png?width=90pc)
+![SNS](/images/3/3.2/3.2.2/Subscription-confirmed.png?width=90pc)
 
 {{% notice note %}}
-Thực hiện tương tự với các bucket còn lại
+Email có thể mất vài phút để được gửi đến. Hãy kiểm tra cả thư mục SPAM trong trường hợp email không xuất hiện trong hộp thư chính.
 {{% /notice %}}
 
----
-
-#### **Dọn dẹp tài nguyên ở IAM**:
-
-Vào giao diện IAM
-
-**1. Xóa Policy**
-
-- Chọn **Policies**
-- Chọn **policy** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_policy.png?width=90pc)
-![QuickSight](/images/7/cf_delete_policy.png?width=90pc)
-
-- Xóa policy thành công
-
-![QuickSight](/images/7/delete_policy_success.png?width=90pc)
-
-**2. Xóa Role**
-
-- Chọn **Roles**
-- Chọn **role** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_role.png?width=90pc)
-
-- Xóa role thành công
-
-![QuickSight](/images/7/delete_role_success.png?width=90pc)
+Nếu bạn đã hoàn thành bước này, hãy tiếp tục với bước tiếp theo [Test Step Functions](../3.2.3-Test-the-Step-Functions).

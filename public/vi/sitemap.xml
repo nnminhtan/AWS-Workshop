@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,21 +15,34 @@
                 href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.1-create-iam-policies-and-roles/"
                 />
   </url><url>
-    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <loc>https://nnminhtan.github.io/vi/1-introduction/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
+                href="https://nnminhtan.github.io/1-introduction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
+                href="https://nnminhtan.github.io/vi/1-introduction/"
+                />
+  </url><url>
+    <loc>https://nnminhtan.github.io/vi/2-preparation/2.1-deploy-the-cloudformation-stack/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/2-preparation/2.1-deploy-the-cloudformation-stack/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/2-preparation/2.1-deploy-the-cloudformation-stack/"
                 />
   </url><url>
     <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -39,19 +52,6 @@
                 rel="alternate"
                 hreflang="vi"
                 href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/"
-                />
-  </url><url>
-    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
                 />
   </url><url>
     <loc>https://nnminhtan.github.io/vi/</loc>
@@ -67,32 +67,6 @@
                 href="https://nnminhtan.github.io/vi/"
                 />
   </url><url>
-    <loc>https://nnminhtan.github.io/vi/2-preparation/2.1-deploy-the-cloudformation-stack/</loc>
-    <lastmod>1970-01-01T08:33:44+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nnminhtan.github.io/2-preparation/2.1-deploy-the-cloudformation-stack/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://nnminhtan.github.io/vi/2-preparation/2.1-deploy-the-cloudformation-stack/"
-                />
-  </url><url>
-    <loc>https://nnminhtan.github.io/vi/1-introduction/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nnminhtan.github.io/1-introduction/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://nnminhtan.github.io/vi/1-introduction/"
-                />
-  </url><url>
     <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/</loc>
     <lastmod>1970-01-01T08:33:40+08:00</lastmod>
     <xhtml:link
@@ -106,34 +80,8 @@
                 href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/"
                 />
   </url><url>
-    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
-                />
-  </url><url>
-    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/"
-                />
-  </url><url>
     <loc>https://nnminhtan.github.io/vi/2-preparation/</loc>
-    <lastmod>1970-01-01T08:33:44+08:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -145,8 +93,21 @@
                 href="https://nnminhtan.github.io/vi/2-preparation/"
                 />
   </url><url>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.2-sns-subscription/"
+                />
+  </url><url>
     <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -158,8 +119,21 @@
                 href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/"
                 />
   </url><url>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.2-create-lambda-function/"
+                />
+  </url><url>
     <loc>https://nnminhtan.github.io/vi/2-preparation/2.2-set-up-security-group/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -171,8 +145,34 @@
                 href="https://nnminhtan.github.io/vi/2-preparation/2.2-set-up-security-group/"
                 />
   </url><url>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/3-configure-response/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/3-configure-response/"
+                />
+  </url><url>
+    <loc>https://nnminhtan.github.io/vi/2-preparation/2.3-create-an-iam-user-for-testing/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nnminhtan.github.io/2-preparation/2.3-create-an-iam-user-for-testing/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://nnminhtan.github.io/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
+                />
+  </url><url>
     <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -185,7 +185,7 @@
                 />
   </url><url>
     <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/</loc>
-    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -197,30 +197,30 @@
                 href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/"
                 />
   </url><url>
-    <loc>https://nnminhtan.github.io/vi/2-preparation/2.3-create-an-iam-user-for-testing/</loc>
-    <lastmod>1970-01-01T08:33:40+08:00</lastmod>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://nnminhtan.github.io/2-preparation/2.3-create-an-iam-user-for-testing/"
+                href="https://nnminhtan.github.io/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://nnminhtan.github.io/vi/2-preparation/2.3-create-an-iam-user-for-testing/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.1-single-lambda-response/3.1.4-create-eventbridge-rule/"
                 />
   </url><url>
-    <loc>https://nnminhtan.github.io/vi/3-configure-response/</loc>
-    <lastmod>1970-01-01T08:33:41+08:00</lastmod>
+    <loc>https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/</loc>
+    <lastmod>1970-01-01T08:33:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://nnminhtan.github.io/3-configure-response/"
+                href="https://nnminhtan.github.io/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://nnminhtan.github.io/vi/3-configure-response/"
+                href="https://nnminhtan.github.io/vi/3-configure-response/3.2-step-function-response/3.2.4-create-eventbridge-rule/"
                 />
   </url><url>
     <loc>https://nnminhtan.github.io/vi/4-configure-automated-response/</loc>

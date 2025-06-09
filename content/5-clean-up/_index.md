@@ -14,7 +14,7 @@ In order to prevent charges to your account we recommend cleaning up the infrast
 Please note that you will need to manually delete some resources before you delete the CloudFormation stacks, so please **_do the following steps in order_**.
 {{% /notice %}}
 
-1. Disable termination protection for the applicable **EC2 instances**.
+1. Disable _termination protection_ for the applicable **EC2 instances**.
     - Open the **EC2 console**.
     - Select the instance.
     - Click on **Actions**, **Instance settings**, change **termination protection**.
@@ -36,7 +36,7 @@ Please note that you will need to manually delete some resources before you dele
 Make sure the Stack delete status is **DELETE_COMPLETE**, this could take a while.
 {{% /notice %}}
 
-1. Check if Amazon **GuardDuty** was disabled automatically or you need to disable it manually.
+3. Check if Amazon **GuardDuty** was disabled automatically or you need to disable it manually.
     - Go to the **GuardDuty** console.
     - Click on _Settings_ (on the left panel menu).
     - Scroll down.

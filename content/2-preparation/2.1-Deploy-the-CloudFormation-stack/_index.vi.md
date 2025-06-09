@@ -1,56 +1,63 @@
 +++
-title = "Tạo IAM role"
-date = 2024
+title = "Triển khai CloudFormation stack"
+date = 2025
 weight = 1
 chapter = false
 pre = "<b>2.1. </b>"
 +++
 
-## Tạo IAM Role
+<!-- ## Triển khai CloudFormation stack -->
 
-Trong bước này, chúng ta sẽ chuyển tới giao diện IAM Console và tạo role cho dịch vụ Glue. Role này sẽ cho phép AWS Glue truy cập tới dữ liệu nằm trong S3 và tạo các đối tượng cần thiết trong Glue Catalog.
+Để khởi động kịch bản và tạo cơ sở hạ tầng, chúng ta cần triển khai một mẫu CloudFormation.
 
-1. Truy cập vào giao diện [AWS Management Console](https://aws.amazon.com/console/)
+{{% notice info %}}
+Bạn có thể tải xuống tệp ví dụ tại đây: [Tệp CloudFormation JSON](files/cfn.json).
+{{% /notice %}}
 
-   - Tìm **IAM**
-   - Chọn **IAM** để vào **IAM Dashboard**
+1. Truy cập [CloudFormation](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create)
 
-   ![IAM](/images/1/iam-service-cropped.png)
+   - Tìm kiếm **CloudFormation**.
+   - Chọn **CloudFormation** để mở **CloudFormation Dashboard**.
 
-2. Trong IAM Dashboard
+   ![CloudFormation](/images/2/2.1/CloudFormation.png)
 
-   - Chọn **Role**
-   - Chọn **Create role**
+2. Trong **CloudFormation Dashboard** 
 
-   ![IAM](/images/1/create_iam_role_cropped.png?width=90pc)
+   - Chọn **Stacks**.
+   - Nhấn **Create stack**.
 
-3. Trong giao diện **Create role**, ở bước **Select trusted entity**
+   ![CloudFormation](/images/2/2.1/Stack.png?width=90pc)
 
-   - Chọn **AWS Service**
-   - Ở phần _Service or use case_ chọn **Glue**
-   - Chọn **Next**
+3. Trong giao diện **Create stack**, tại mục **Create stack**
 
-   ![IAM](/images/1/create_iam_role_detail.png?width=90pc)
+   - Chọn **Choose an existing template**.
+   - Trong phần _Specify template_, chọn **Upload a template file**.
+   - Nhấp **Choose file** và tải lên tệp _cfn.json_ đã tải ở bước trên.
+   - Nhấn **Next**.
 
-4. Trong giao diện **Create role**, ở bước **Add Permission**
+   ![CloudFormation](/images/2/2.1/Create_stack.png?width=90pc)
 
-   - Tìm và chọn **AmazonS3FullAccess**
+4. Trong giao diện **Specify stack details**
 
-   ![AmazonS3FullAccess](/images/1/add_s3_permission_2step.png?width=90pc)
+   - Ở mục _Provide a stack name_, nhập tên stack: `AutomatedIncidentResponseWorkshop`.
+   - Trong phần _Parameters_, tại _Automatically enable GuardDuty?_ chọn **Yes-Enable GuardDuty**.
+   - Giữ nguyên các cài đặt còn lại, nhấn **Next**.
 
-   - Tìm và chọn **AWSGlueServiceRole**
-   - Chọn **Next**
+   ![CloudFormation](/images/2/2.1/Specify_stack_details.png?width=90pc)
 
-   ![AWSGlueServiceRole](/images/1/add_glue_permission.png?width=90pc)
+5. Trong giao diện **Configure stack options**, tại phần **Capabilities**
 
-5. Trong giao diện **Create role**, ở bước **Name, review and create**
+   - **Đánh dấu chọn** cả hai ô dưới đây.
+     ![CloudFormation](/images/2/2.1/Capabilities.png?width=90pc)
 
-   - Ở **Role name**, đặt tên `AWSGlueServiceRoleDefault`
-     ![AWSGlueServiceRole](/images/1/name_role.png?width=90pc)
-   - Xem lại thông tin role tại **Select trusted entity** và **Add Permission**
-     ![AWSGlueServiceRole](/images/1/review_role.png?width=90pc)
-   - Chọn **Create role**
-     ![AWSGlueServiceRole](/images/1/create_role_submit.png?width=90pc)
+6. Trong bước **Review and create**:
+   - Nếu bạn đã làm các bước trên, hãy cuộn xuống và nhấn nút **Submit**.
+   - Trước khi tiếp tục, đảm bảo stack có trạng thái **CREATE_COMPLETE**.
 
-6. Giao diện tạo role thành công:
-   ![AWSGlueServiceRole](/images/1/create_role_success.png?width=90pc)
+{{% notice note %}}
+Quá trình này có thể mất vài phút, bạn có thể tranh thủ đi uống nước trong lúc chờ.
+{{% /notice %}}
+
+   ![CloudFormation](/images/2/2.1/Stack_create_complete.png?width=90pc)
+
+Nếu trạng thái stack là **CREATE_COMPLETE**, hãy tiếp tục sang bước tiếp theo [Thiết lập Security Group](../2.2-Set-up-Security-Group)

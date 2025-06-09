@@ -57,7 +57,7 @@ In this section, we attach the policy to the previously created role to ensure t
    - Leaves the rest unchanged, click the **Create policy**. This should take you back to the **Policy** Interface.
 
 {{% notice info %}}
-In real life scenario the authors recommend using [Service control policies (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+In real life scenario the author recommend using [Service control policies (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 {{% /notice %}}
 
 3. Create a **Group**
@@ -77,7 +77,8 @@ In real life scenario the authors recommend using [Service control policies (SCP
    
    ![IAM](/images/2/2.3/Create_group_result.png?width=90pc)
    
-1. Create a **user**
+4. Create a **user**
+
    - Head back in the side panel click the **Users** and click **Create user**.
 
    ![IAM](/images/2/2.3/Create_user.png?width=90pc)

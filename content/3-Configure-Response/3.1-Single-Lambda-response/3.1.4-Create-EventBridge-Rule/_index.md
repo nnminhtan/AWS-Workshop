@@ -11,11 +11,12 @@ In this step we will create a EventBridge Rule for create a snapshot for the **B
 <!-- #### **Create EventBridge Rule**: -->
 
 #### Create EventBridge Rule
-- Search for the EventBridge. This will take you to the EventBridge home, click on Create Rule.
+- Search for the EventBridge. This will take you to the EventBridge homepage, click on Create Rule.
 
 ![EventBridge](/images/3/3.1/3.1.4/Create_rule.png?width=90pc)
 
 - Name the rule is : `gd-compromised-instance-remediation`, the description is optional, then foward to the creation.
+- 
 ![EventBridge](/images/3/3.1/3.1.4/Create_rule_naming.png?width=90pc)
 
 - Under _Event pattern_, _Creation method_ click the Custom pattern(JSON editor) and paste the **Json** below into the editor.
@@ -40,6 +41,6 @@ In this step we will create a EventBridge Rule for create a snapshot for the **B
 
 {{% notice note %}}
 Make sure the instance is already isolated before taking snapshots otherwise you may end up with many snapshots created every 15 minutes 
-(or 6H depending your GuardDuty setting). The authors recommend disabling this rule once you've completed the testing.
+(or 6H depending your GuardDuty setting). The author recommend disabling this rule once you've completed the testing.
 {{% /notice %}}
 

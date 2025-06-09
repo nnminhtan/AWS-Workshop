@@ -1,17 +1,21 @@
 +++
 title = "Các bước chuẩn bị"
-date = 2024
+date = 2025
 weight = 2
 chapter = false
 pre = "<b>2. </b>"
 +++
 
-## Các bước chuẩn bị
+<!-- ## Các bước chuẩn bị -->
 
-Chúng ta sẽ chuẩn bị để tạo IAM role và gắn các policy cần thiết để đảm bảo AWS Glue có quyền truy cập vào dữ liệu trong Amazon S3 và thực hiện các công việc ETL một cách an toàn và hiệu quả.
+Chúng ta sẽ chuẩn bị bằng cách tạo một IAM user để kiểm tra và gán các policy cần thiết. Bạn sẽ bật Amazon GuardDuty và triển khai CloudFormation template để tạo hạ tầng mẫu nhằm mô phỏng kẻ tấn công và mục tiêu.
+
+{{% notice warning %}}
+Đảm bảo rằng tài khoản được sử dụng cho workshop này **KHÔNG phải là production account**.
+{{% /notice %}}
 
 #### Nội dung:
 
-1. [Tạo IAM role](2.1-IAM-role)
-2. [Tạo policy](2.2-policy)
-3. [Attach policy vào role](2.3-attach-policy-to-role/)
+1. [Triển khai CloudFormation stack](2.1-Deploy-the-CloudFormation-stack)
+2. [Thiết lập Security Group](2.2-Set-up-Security-Group)
+3. [Tạo IAM user để kiểm thử](2.3-Create-an-IAM-user-for-Testing)

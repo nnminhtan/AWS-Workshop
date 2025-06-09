@@ -1,47 +1,45 @@
 +++
-title = "Tạo object cho S3 bucket"
-date = 2020
+title = "Phản hồi Step Function"
+date = 2025
 weight = 2
 chapter = false
 pre = "<b>3.2. </b>"
 +++
 
-## Tạo object cho S3 bucket
+### Cấu hình phản hồi bằng Step Function
 
-1. Tiếp theo, click vào bucket vừa tạo. Tại tab **Object** chọn **Create folder**
+Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động thông qua một workflow được xây dựng bằng Step Functions. Những lợi ích của phương pháp này bao gồm:
 
-   ![object](/images/3/create_folder_s3.png?width=90pc)
+- Không bị giới hạn thời gian khi thực hiện các hành động.
+- Hầu hết các lệnh gọi API của các dịch vụ AWS đều được hỗ trợ và có thể gọi trực tiếp mà không cần viết code.
+- Định nghĩa quy trình làm việc bằng đồ thị.
+- Kiểm soát tốt hơn các nhánh xử lý khác nhau.
 
-2. Trong giao diện **Create bucket**, đặt **Folder name** là `data`
+Các bước chúng ta sẽ thực hiện trong phương án này:
 
-   ![object](/images/3/name_folder_data.png?width=90pc)
+- Triển khai một CloudFormation template để tạo tất cả các tài nguyên cần thiết
+- Xác nhận đăng ký SNS để nhận thông báo qua email
+- Kiểm thử State Machine
+- Tạo một EventBridge rule để gọi State Machine dựa trên các phát hiện từ GuardDuty
 
-3. Kiểm tra các cấu hình và chọn **Create folder**
+Kiến trúc của phương án này như sau:
+![SF](/images/1/Workshop_Step_Function.jpg?width=90pc)
 
-   ![object](/images/3/name_folder_data_and_submit.png?width=90pc)
+Và đồ thị workflow của Step Function như sau:
+![SF](/images/1/.jpg?width=90pc)
 
-4. Tương tự với cách tạo folder, ta sẽ tạo folder `reference_data` ở trong folder **data**
+Giải thích ngắn gọn về workflow được trình bày:
 
-   ![object](/images/3/create_ref_data_folder.png?width=90pc)
-   ![object](/images/3/create_ref_data_folder_submit.png?width=90pc)
+1. Kiểm tra xem có _instance ID_ trong phát hiện từ **GuardDuty** hay không.
+2. Dựa trên mức độ nghiêm trọng (**severity**) của phát hiện từ **GuardDuty**:
 
-5. Tạo folder **reference_data** thành công
+   - Nếu **severity từ 8 trở lên**, một _SNS notification_ sẽ được gửi tới email đã đăng ký (email bạn đã nhập khi triển khai CloudFormation).
+   - Nếu **severity nhỏ hơn 8**, một email _Manual Approval_ sẽ được gửi đến email đã đăng ký:
+     - Nếu _Manual Approval_ bị **từ chối**, workflow sẽ kết thúc và không thực hiện hành động nào.
+     - Nếu _Manual Approval_ được **chấp thuận**, các hành động sau sẽ được thực hiện.
 
-   ![object](/images/3/create_ref_data_folder_success.png?width=90pc)
-
-6. Tiến hành download file **tracks_list.json** [tại đây](https://raw.githubusercontent.com/ngcuyen/ws-doc/refs/heads/main/tracks_list.json)
-
-   - **Ctrl + S** để lưu file
-
-7. Tiến hành upload file **tracks_list.json** lên folder **reference_data**
-
-   - Chọn **Object**
-   - Chọn **Upload**
-     ![object](/images/3/upload_tracklist.png?width=90pc)
-   - Chọn **Add file**, chọn file đã tải
-   - Chọn file **tracks_list.json**
-     ![object](/images/3/add_file_tracklist.png?width=90pc)
-   - Chọn **Upload**
-     ![object](/images/3/upload_submit.png?width=90pc)
-   - Upload file thành công
-     ![object](/images/3/upload_success.png?width=90pc)
+3. Bật chế độ bảo vệ khỏi bị terminate trên EC2 instance.
+4. Thay đổi hành vi khi shutdown của instance.
+5. Áp dụng Security Group _ForensicSG_ cho instance.
+6. Gán tag _isolated_ cho instance.
+7. Workflow kết thúc.

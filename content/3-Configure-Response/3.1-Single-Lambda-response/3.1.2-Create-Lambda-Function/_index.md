@@ -41,13 +41,13 @@ pre = "<b>3.1.2. </b>"
      ![Lambda](/images/3/3.1/3.1.2/Configure_function_create_env_var.png?width=90pc)
 
      - Select **Add environment variable**.
-       - Key: ForensicsSG
-       - Value: sg-...(the ID of your Forensics SG)
+       - Key: `ForensicsSG`
+       - Value: `sg-...(the ID of your Forensics SG)`
      - They should be like as below.
 
      ![Lambda](/images/3/3.1/3.1.2/Configure_function_add_env_var.png?width=90pc)
 
-     - Then click save. 
+     - Then click **Save**. 
 
 3. Add the code for the **Lambda Function**
      - Click the _Code_ next to the _Configuration_.

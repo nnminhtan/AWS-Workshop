@@ -1,176 +1,72 @@
 +++
 title = "Dọn dẹp tài nguyên"
-date = 2021-06-08T18:57:03+07:00
+date = 2025
 weight = 1
 chapter = false
 pre = "<b>3.1.1. </b>"
 +++
 
-Chúng ta sẽ dọn dẹp các tài nguyên sau:
+<!-- #### Tạo IAM Policies & Roles: -->
+Vì bạn đang ở IAM dashboard từ bước trước, bây giờ hãy chuyển sang phần Policies để tạo một policy cho _execution role_.
 
-#### **Dọn dẹp tài nguyên ở Visual QuickSight**:
+1. Tạo policy cho **execution role**
 
-1.  **Xóa Pie chart sheet**
+   - Đầu tiên nhấn **Create policy**
 
-![QuickSight](/images/7/delete_piechart.png?width=90pc)
+    ![Lambda](/images/3/3.1/3.1.1/Create_policy.png?width=90pc)
 
-2. **Xóa Analyses QuickSight:**
+   - Chọn định dạng **json** và dán đoạn JSON sau vào **Policy editor**, sau đó nhấn _Next_
 
-- Chọn **Analyses**.
-- Chọn **Analysis** cần xóa.
-- Chọn **Delete**.
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "EC2Snapshot",
+                "Effect": "Allow",
+                "Action": [
+                    "ec2:AuthorizeSecurityGroupIngress",
+                    "ec2:Describe*",
+                    "logs:CreateLogStream",
+                    "ec2:CreateSecurityGroup",
+                    "ec2:CreateTags",
+                    "ec2:CreateSnapshots",
+                    "ec2:CreateSnapshot",
+                    "ec2:ModifyInstanceAttribute",
+                    "ec2:StopInstances",
+                    "logs:CreateLogGroup",
+                    "logs:PutLogEvents"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
+   - Kết quả sẽ như hình dưới đây.
 
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
+    ![Lambda](/images/3/3.1/3.1.1/Create_policy_add_permission.png?width=90pc)
 
-- Delete done
+   - Đặt tên cho policy là: `ec2instance-containment-with-forensics-policy` và giữ nguyên các thiết lập còn lại, sau đó nhấn _Create policy_.
 
-![QuickSight](/images/7/delete_done.png?width=90pc)
+    ![Lambda](/images/3/3.1/3.1.1/Create_policy_naming.png?width=90pc)
 
-3. **Xóa Dataset QuickSight:**
+2. Tạo _execution role_ cho **Lambda Function**
 
-![QuickSight](/images/7/delete_dataset.png?width=90pc)
-![QuickSight](/images/7/delete_cf_dataset.png?width=90pc)
+   - Vẫn trong **IAM dashboard**, chuyển sang phần Roles ở thanh bên trái, chọn **Create role**
 
-4. Bạn cũng có thể xóa tài khoản QuickSight nếu không sử dụng
+    ![Lambda](/images/3/3.1/3.1.1/Create_role.png?width=90pc)
 
-- Tại giao diện **QuickSight**, chọn **Manage QuickSight**
+   - Mặc định _Trusted entity type_ sẽ là **AWS service**.
+   - Ở phần _Service or use case_, chọn **Lambda** rồi nhấn _Next_.
 
-![QuickSight](/images/6/6.2/manage_quicksight.png?width=90pc)
+    ![Lambda](/images/3/3.1/3.1.1/Create_role_use_case.png?width=90pc)
 
-- Tại **Account settings**, chọn **Manage**
+   - Gán policy `ec2instance-containment-with-forensics-policy` vừa tạo và nhấn Next.
 
-![QuickSight](/images/7/delete_qs_acc.png?width=90pc)
+    ![Lambda](/images/3/3.1/3.1.1/Create_role_add_permission.png?width=90pc)
 
-- Thực hiện xóa tài khoản
+   - Đặt tên Role là `ec2instance-containment-with-forensics-role`, giữ nguyên các thiết lập còn lại và nhấn _Create Role_.
 
-![QuickSight](/images/7/delete_acc_form.png?width=90pc)
+    ![Lambda](/images/3/3.1/3.1.1/Create_role_naming.png?width=90pc)
 
-- Hủy đăng ký **QuickSight** thành công
-
-![QuickSight](/images/7/delete_success.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở AWS Glue**:
-
-Truy cập vào **AWS Glue**.
-
-1. **Xóa các tables**
-
-- Chọn **Tables**.
-- Chọn các table cần xóa.
-- Chọn **Delete** để xác nhận xóa Table.
-
-![QuickSight](/images/7/delete_tables.png?width=90pc)
-![QuickSight](/images/7/cf_delete_table.png?width=90pc)
-
-2. **Xóa Interactive Sessions**
-
-- Chọn **Interactive Sessions**.
-- Chọn các session cần xóa.
-- Chọn **Delete** để xác nhận xóa session.
-
-![QuickSight](/images/7/delete_session.png?width=90pc)
-
-2. **Xóa crawler**
-
-- Chọn **Crawler**.
-- Chọn các crawler cần xóa.
-- Chọn Action
-- Chọn **Delete crawler** để xác nhận xóa crawler.
-
-![QuickSight](/images/7/delete_cwl.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudFormation**:
-
-- Vào giao diện **CloudFormation**
-- Chọn **Stack**
-- Chọn **stack name** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_cloudform.png?width=90pc)
-
-- Nếu delete stack **fail**
-  - Chọn **Retry delete**
-  - Chọn **Force delete this entire stack**
-
-![QuickSight](/images/7/force_delete_stack.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở Kinesis**:
-
-- Vào **Amazon Data Firehose**
-- Chọn **Firehose stream** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_firehose.png?width=90pc)
-![QuickSight](/images/7/cf_delete_firehose.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudWatch**:
-
-- Vào giao diện **CloudWatch**
-- Chọn **Log groups**
-- Chọn tất cả **Log groups**
-- Chọn **Action**
-- Chọn **Delete log group(s)**
-
-![QuickSight](/images/7/delete_logs.png?width=90pc)
-![QuickSight](/images/7/cf_delete_logs.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở S3**:
-
-- Xóa tất cả các bucket liên quan tới bài lab
-
-- Chọn **bucket**
-- **Empty bucket**
-
-![QuickSight](/images/7/empty__bucket.png?width=90pc)
-![QuickSight](/images/7/cf_empty_s3.png?width=90pc)
-
-- Chọn lại bucket vừa empty
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_s3_bucket.png?width=90pc)
-![QuickSight](/images/7/cf_delete_bucket.png?width=90pc)
-
-{{% notice note %}}
-Thực hiện tương tự với các bucket còn lại
-{{% /notice %}}
-
----
-
-#### **Dọn dẹp tài nguyên ở IAM**:
-
-Vào giao diện IAM
-
-**1. Xóa Policy**
-
-- Chọn **Policies**
-- Chọn **policy** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_policy.png?width=90pc)
-![QuickSight](/images/7/cf_delete_policy.png?width=90pc)
-
-- Xóa policy thành công
-
-![QuickSight](/images/7/delete_policy_success.png?width=90pc)
-
-**2. Xóa Role**
-
-- Chọn **Roles**
-- Chọn **role** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_role.png?width=90pc)
-
-- Xóa role thành công
-
-![QuickSight](/images/7/delete_role_success.png?width=90pc)
+Sau khi hoàn tất, bạn có thể chuyển sang bước tiếp theo [Create Lambda Function](../3.1.2-Create-Lambda-Function)

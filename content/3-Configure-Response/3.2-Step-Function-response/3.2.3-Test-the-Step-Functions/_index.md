@@ -55,15 +55,14 @@ In this step we will test the Step Functions that created previously.
 
     ![Test SF](/images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
     
-    - After replace all the Account ID and Instance ID.
+    - After replace all the **Account ID** and **Instance ID**.
 
     ![Test SF](/images/3/3.2/3.2.3/Start_execution_modification.png?width=90pc)
 
-    - Verify status _before execution_ : check on the EC2 console what is the current status of the instance **"BasicLinuxTarget"**
+    - Verify status _before execution_: check on the **EC2 console** what is the current status of the instance **"BasicLinuxTarget"**
 
     {{% notice note %}}
     Can you answer the following questions?
-
         • Which Security Group does it have?
         • Which tags does it have ?
         • Is there any snapshot related to the instance?
@@ -77,8 +76,7 @@ In this step we will test the Step Functions that created previously.
         • Has the Security Group changed?
         • Have the tags changed?
         • Has any new Snapshot been created?
-        • Log in with a different Internet browser or using private mode, use the link on the IAM Dashboard 
-        (as seen below) and verify if you can delete the EC2 with the IAM user testuser that you created during the Setup steps.
+        • Log in with a different Internet browser or using private mode, use the link on the IAM Dashboard (as seen below) and verify if you can delete the EC2 with the IAM user testuser that you created during the Setup steps.
             
             • Are you able to delete the instance?
     {{% /notice %}}
@@ -89,7 +87,7 @@ In this step we will test the Step Functions that created previously.
     ![Test SF](/images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
 
 3. Test the State Machine with a different severity
-    - Follow the same steps as before but change the severity field on the JSON event from 8 to 7.
+    - Follow the same steps as before but change the **severity** field on the JSON event from 8 to 7.
       - Is the workflow executed still the same?
       - What changed?
 

@@ -19,7 +19,7 @@ In this step we will create a EventBridge Rule for create a snapshot for the **B
 
 ![EventBridge](/images/3/3.1/3.1.4/Create_rule_naming.png?width=90pc)
 
-- Under _Event pattern_, _Creation method_ click the Custom pattern(JSON editor) and paste the **Json** below into the editor.
+- Under _Event pattern_, _Creation method_ click the _Custom pattern(JSON editor)_ and paste the **Json** below into the editor.
 ```json
 {
     "source": ["aws.guardduty"],
@@ -41,6 +41,6 @@ In this step we will create a EventBridge Rule for create a snapshot for the **B
 
 {{% notice note %}}
 Make sure the instance is already isolated before taking snapshots otherwise you may end up with many snapshots created every 15 minutes 
-(or 6H depending your GuardDuty setting). The authors recommend disabling this rule once you've completed the testing.
+(or 6H depending your GuardDuty setting). The author recommend disabling this rule once you've completed the testing.
 {{% /notice %}}
 

@@ -1,176 +1,96 @@
 +++
-title = "Dọn dẹp tài nguyên"
-date = 2021-06-08T18:57:03+07:00
+title = "Test Step Functions"
+date = 2025
 weight = 3
 chapter = false
-pre = "<b>3.1.3. </b>"
+pre = "<b>3.2.3. </b>"
 +++
 
-Chúng ta sẽ dọn dẹp các tài nguyên sau:
+<!-- #### Kiểm thử Lambda Function: -->
 
-#### **Dọn dẹp tài nguyên ở Visual QuickSight**:
+Trong bước này, chúng ta sẽ kiểm thử Step Functions đã được tạo trước đó.
 
-1.  **Xóa Pie chart sheet**
+1. Truy cập vào dịch vụ **Step Functions** và trong mục **State machines**, chọn tên của state machine mới được tạo _**PREFIX_StateMachine**_.
 
-![QuickSight](/images/7/delete_piechart.png?width=90pc)
+   ![Test SF](/images/3/3.2/3.2.3/State_machine.png?width=90pc)
 
-2. **Xóa Analyses QuickSight:**
+2. Chọn **Start execution**
 
-- Chọn **Analyses**.
-- Chọn **Analysis** cần xóa.
-- Chọn **Delete**.
+   ![Test SF](/images/3/3.2/3.2.3/Start_execution.png?width=90pc)
 
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
+    - Sao chép đoạn JSON bên dưới và dán vào phần _Input_, tuy nhiên bạn cần chỉnh sửa vài giá trị trước khi chạy.
 
-- Delete done
+    ```json
+    {
+        "version": "0",
+        "id": "cd2d702e-ab31-411b-9344-793ce56b1bc7",
+        "detail-type": "GuardDuty Finding",
+        "source": "aws.guardduty",
+        "account": "<<Account ID>>",
+        "time": "1970-01-01T00:00:00Z",
+        "region": "us-east-1",
+        "resources": [],
+        
+        "detail": {
+            "schemaVersion": "2.0",
+            "accountId": "<<Account ID>>",
+            "region": "us-east-1",
+            "partition": "aws",
+            "id": "b0baa89de4ab301f8d0a8c9a3dfd5726",
+            "arn": "arn:aws:guardduty:us-east-1:<<Account ID>>:detector/feb3c048238f682b8902532ec100b3fb/finding/b0baa89de4ab301f8d0a8c9a3dfd5726",
+            "title": "Bitcoin-related domain name queried by EC2 instance <<Instance ID>>.",
+            "type": "CryptoCurrency:EC2/BitcoinTool.B!DNS",
+            "severity": 8,
+            "resource": {
+                "instanceDetails": {
+                    "instanceId": "<<Instance ID>>"
+                }
+            }
+        }
+    }
+    ```
 
-![QuickSight](/images/7/delete_done.png?width=90pc)
+    - Thay thế **Account ID** bằng tài khoản của bạn.
+    - Thay thế **Instance ID** bằng ID của instance "BasicLinuxTarget" được triển khai bởi CloudFormation template. (Xem hình dưới để biết cách tìm _Instance ID_).
 
-3. **Xóa Dataset QuickSight:**
+    ![Test SF](/images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
 
-![QuickSight](/images/7/delete_dataset.png?width=90pc)
-![QuickSight](/images/7/delete_cf_dataset.png?width=90pc)
+    - Sau khi thay thế đầy đủ **Account ID** và **Instance ID**.
 
-4. Bạn cũng có thể xóa tài khoản QuickSight nếu không sử dụng
+    ![Test SF](/images/3/3.2/3.2.3/Start_execution_modification.png?width=90pc)
 
-- Tại giao diện **QuickSight**, chọn **Manage QuickSight**
+    - Kiểm tra trạng thái _trước khi thực thi_: vào **EC2 console** để kiểm tra trạng thái hiện tại của instance **"BasicLinuxTarget"**
 
-![QuickSight](/images/6/6.2/manage_quicksight.png?width=90pc)
+    {{% notice note %}}
+    Bạn có thể trả lời các câu hỏi sau không?
 
-- Tại **Account settings**, chọn **Manage**
+        • Nó đang sử dụng Security Group nào?
+        • Nó có các tag nào?
+        • Có snapshot nào liên quan đến instance này không?
+    {{% /notice %}}
 
-![QuickSight](/images/7/delete_qs_acc.png?width=90pc)
+    - Nhấn nút _Start execution_, rồi kiểm tra lại trạng thái _sau khi thực thi_ của instance **"BasicLinuxTarget"**
 
-- Thực hiện xóa tài khoản
+    {{% notice note %}}
+    Bạn có thể trả lời các câu hỏi sau không?
 
-![QuickSight](/images/7/delete_acc_form.png?width=90pc)
+        • Security Group có thay đổi không?
+        • Các tag có thay đổi không?
+        • Có Snapshot mới nào được tạo ra không?
+        • Đăng nhập bằng trình duyệt khác hoặc chế độ riêng tư, sử dụng liên kết trên IAM Dashboard (như hình bên dưới) để kiểm tra xem bạn có thể xóa EC2 bằng người dùng IAM testuser đã tạo ở bước cài đặt không.
+        
+            • Bạn có thể xóa được instance không?
+    {{% /notice %}}
 
-- Hủy đăng ký **QuickSight** thành công
+   ![Test SF](/images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
 
-![QuickSight](/images/7/delete_success.png?width=90pc)
+   - Khi bạn sử dụng _testuser_ để cố gắng xóa instance **"BasicLinuxTarget"**, bạn sẽ thấy lỗi như hình dưới.
 
----
+   ![Test SF](/images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
 
-#### **Dọn dẹp tài nguyên ở AWS Glue**:
+3. Kiểm thử State Machine với mức độ nghiêm trọng (severity) khác
+   - Làm lại các bước như trên nhưng thay đổi giá trị biến **severity** trong JSON từ `8` thành `7`.
+     - Quy trình hoạt động có giống như trước không?
+     - Điều gì đã thay đổi?
 
-Truy cập vào **AWS Glue**.
-
-1. **Xóa các tables**
-
-- Chọn **Tables**.
-- Chọn các table cần xóa.
-- Chọn **Delete** để xác nhận xóa Table.
-
-![QuickSight](/images/7/delete_tables.png?width=90pc)
-![QuickSight](/images/7/cf_delete_table.png?width=90pc)
-
-2. **Xóa Interactive Sessions**
-
-- Chọn **Interactive Sessions**.
-- Chọn các session cần xóa.
-- Chọn **Delete** để xác nhận xóa session.
-
-![QuickSight](/images/7/delete_session.png?width=90pc)
-
-2. **Xóa crawler**
-
-- Chọn **Crawler**.
-- Chọn các crawler cần xóa.
-- Chọn Action
-- Chọn **Delete crawler** để xác nhận xóa crawler.
-
-![QuickSight](/images/7/delete_cwl.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudFormation**:
-
-- Vào giao diện **CloudFormation**
-- Chọn **Stack**
-- Chọn **stack name** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_cloudform.png?width=90pc)
-
-- Nếu delete stack **fail**
-  - Chọn **Retry delete**
-  - Chọn **Force delete this entire stack**
-
-![QuickSight](/images/7/force_delete_stack.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở Kinesis**:
-
-- Vào **Amazon Data Firehose**
-- Chọn **Firehose stream** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_firehose.png?width=90pc)
-![QuickSight](/images/7/cf_delete_firehose.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudWatch**:
-
-- Vào giao diện **CloudWatch**
-- Chọn **Log groups**
-- Chọn tất cả **Log groups**
-- Chọn **Action**
-- Chọn **Delete log group(s)**
-
-![QuickSight](/images/7/delete_logs.png?width=90pc)
-![QuickSight](/images/7/cf_delete_logs.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở S3**:
-
-- Xóa tất cả các bucket liên quan tới bài lab
-
-- Chọn **bucket**
-- **Empty bucket**
-
-![QuickSight](/images/7/empty__bucket.png?width=90pc)
-![QuickSight](/images/7/cf_empty_s3.png?width=90pc)
-
-- Chọn lại bucket vừa empty
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_s3_bucket.png?width=90pc)
-![QuickSight](/images/7/cf_delete_bucket.png?width=90pc)
-
-{{% notice note %}}
-Thực hiện tương tự với các bucket còn lại
-{{% /notice %}}
-
----
-
-#### **Dọn dẹp tài nguyên ở IAM**:
-
-Vào giao diện IAM
-
-**1. Xóa Policy**
-
-- Chọn **Policies**
-- Chọn **policy** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_policy.png?width=90pc)
-![QuickSight](/images/7/cf_delete_policy.png?width=90pc)
-
-- Xóa policy thành công
-
-![QuickSight](/images/7/delete_policy_success.png?width=90pc)
-
-**2. Xóa Role**
-
-- Chọn **Roles**
-- Chọn **role** liên quan đến bài lab
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_role.png?width=90pc)
-
-- Xóa role thành công
-
-![QuickSight](/images/7/delete_role_success.png?width=90pc)
+Khi bạn đã hoàn thành tất cả các bước, hãy tiếp tục sang phần tiếp theo của Workshop là [Tạo EventBridge Rule](../3.2.4-Create-EventBridge-Rule)

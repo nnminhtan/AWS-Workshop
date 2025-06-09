@@ -1,176 +1,62 @@
 +++
-title = "Dọn dẹp tài nguyên"
-date = 2021-06-08T18:57:03+07:00
+title = "Triển khai CloudFormation stack"
+date = 2025
 weight = 1
 chapter = false
-pre = "<b>3.1.1. </b>"
+pre = "<b>3.2.1. </b>"
 +++
 
-Chúng ta sẽ dọn dẹp các tài nguyên sau:
+<!-- #### Tạo IAM Policies & Roles: -->
+Để bắt đầu kịch bản và tạo cơ sở hạ tầng cần thiết, chúng ta cần triển khai một CloudFormation template.
 
-#### **Dọn dẹp tài nguyên ở Visual QuickSight**:
-
-1.  **Xóa Pie chart sheet**
-
-![QuickSight](/images/7/delete_piechart.png?width=90pc)
-
-2. **Xóa Analyses QuickSight:**
-
-- Chọn **Analyses**.
-- Chọn **Analysis** cần xóa.
-- Chọn **Delete**.
-
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
-
-- Delete done
-
-![QuickSight](/images/7/delete_done.png?width=90pc)
-
-3. **Xóa Dataset QuickSight:**
-
-![QuickSight](/images/7/delete_dataset.png?width=90pc)
-![QuickSight](/images/7/delete_cf_dataset.png?width=90pc)
-
-4. Bạn cũng có thể xóa tài khoản QuickSight nếu không sử dụng
-
-- Tại giao diện **QuickSight**, chọn **Manage QuickSight**
-
-![QuickSight](/images/6/6.2/manage_quicksight.png?width=90pc)
-
-- Tại **Account settings**, chọn **Manage**
-
-![QuickSight](/images/7/delete_qs_acc.png?width=90pc)
-
-- Thực hiện xóa tài khoản
-
-![QuickSight](/images/7/delete_acc_form.png?width=90pc)
-
-- Hủy đăng ký **QuickSight** thành công
-
-![QuickSight](/images/7/delete_success.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở AWS Glue**:
-
-Truy cập vào **AWS Glue**.
-
-1. **Xóa các tables**
-
-- Chọn **Tables**.
-- Chọn các table cần xóa.
-- Chọn **Delete** để xác nhận xóa Table.
-
-![QuickSight](/images/7/delete_tables.png?width=90pc)
-![QuickSight](/images/7/cf_delete_table.png?width=90pc)
-
-2. **Xóa Interactive Sessions**
-
-- Chọn **Interactive Sessions**.
-- Chọn các session cần xóa.
-- Chọn **Delete** để xác nhận xóa session.
-
-![QuickSight](/images/7/delete_session.png?width=90pc)
-
-2. **Xóa crawler**
-
-- Chọn **Crawler**.
-- Chọn các crawler cần xóa.
-- Chọn Action
-- Chọn **Delete crawler** để xác nhận xóa crawler.
-
-![QuickSight](/images/7/delete_cwl.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudFormation**:
-
-- Vào giao diện **CloudFormation**
-- Chọn **Stack**
-- Chọn **stack name** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_cloudform.png?width=90pc)
-
-- Nếu delete stack **fail**
-  - Chọn **Retry delete**
-  - Chọn **Force delete this entire stack**
-
-![QuickSight](/images/7/force_delete_stack.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở Kinesis**:
-
-- Vào **Amazon Data Firehose**
-- Chọn **Firehose stream** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_firehose.png?width=90pc)
-![QuickSight](/images/7/cf_delete_firehose.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudWatch**:
-
-- Vào giao diện **CloudWatch**
-- Chọn **Log groups**
-- Chọn tất cả **Log groups**
-- Chọn **Action**
-- Chọn **Delete log group(s)**
-
-![QuickSight](/images/7/delete_logs.png?width=90pc)
-![QuickSight](/images/7/cf_delete_logs.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở S3**:
-
-- Xóa tất cả các bucket liên quan tới bài lab
-
-- Chọn **bucket**
-- **Empty bucket**
-
-![QuickSight](/images/7/empty__bucket.png?width=90pc)
-![QuickSight](/images/7/cf_empty_s3.png?width=90pc)
-
-- Chọn lại bucket vừa empty
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_s3_bucket.png?width=90pc)
-![QuickSight](/images/7/cf_delete_bucket.png?width=90pc)
-
-{{% notice note %}}
-Thực hiện tương tự với các bucket còn lại
+{{% notice info %}}
+Bạn có thể tải về: [CloudFormation template](/files/IRWorkshop-StepFunctionsResponse.yaml) chứa kiến trúc.
 {{% /notice %}}
 
----
+1. Truy cập vào [CloudFormation](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create)
 
-#### **Dọn dẹp tài nguyên ở IAM**:
+   - Tìm kiếm **CloudFormation**.
+   - Chọn **CloudFormation** để mở **CloudFormation Dashboard**.
 
-Vào giao diện IAM
+   ![CloudFormation](/images/2/2.1/CloudFormation.png)
 
-**1. Xóa Policy**
+2. Trong **CloudFormation Dashboard**
 
-- Chọn **Policies**
-- Chọn **policy** liên quan đến bài lab
-- Chọn **Delete**
+   - Chọn **Stacks**.
+   - Nhấn **Create stack**.
 
-![QuickSight](/images/7/delete_policy.png?width=90pc)
-![QuickSight](/images/7/cf_delete_policy.png?width=90pc)
+   ![CloudFormation](/images/2/2.1/Stack.png?width=90pc)
 
-- Xóa policy thành công
+3. Trong giao diện **Create stack**, dưới phần **Create stack**
 
-![QuickSight](/images/7/delete_policy_success.png?width=90pc)
+   - Chọn **Choose an existing template**.
+   - Ở mục _Specify template_, chọn **Upload a template file**.
+   - Nhấn **Choose file** và tải lên tệp _IRWorkshop-StepFunctionsResponse.yaml_ đã tải ở trên.
+   - Nhấn **Next**.
 
-**2. Xóa Role**
+   ![CloudFormation](/images/3/3.2/3.2.1/Create_stack.png?width=90pc)
 
-- Chọn **Roles**
-- Chọn **role** liên quan đến bài lab
-- Chọn **Delete**
+4. Trong giao diện **Specify stack details**, ở phần **Specify stack details**
 
-![QuickSight](/images/7/delete_role.png?width=90pc)
+   - Ở mục _Provide a stack name_, nhập **Stack name**: `workshop-IR-StepFunctions`.
+   - Ở mục _Parameters_, nhập một **địa chỉ email hợp lệ** và một **optional prefix** cho các tài nguyên sẽ được tạo.
+   - Nhấn **Next**.
 
-- Xóa role thành công
+   ![CloudFormation](/images/3/3.2/3.2.1/Specify_stack_details.png?width=90pc)
 
-![QuickSight](/images/7/delete_role_success.png?width=90pc)
+5. Trong giao diện **Configure stack options**, ở phần **Capabilities**
+
+   - **Chọn dấu tích** vào ô bên dưới.
+     ![CloudFormation](/images/3/3.2/3.2.1/Capabilities.png?width=90pc)
+
+6. Trong phần **Review and create**:
+   - Nếu bạn làm đúng các bước, hãy cuộn xuống và nhấn nút **Submit**.
+   - Trước khi tiếp tục, hãy chắc chắn rằng stack đang ở trạng thái **CREATE_COMPLETE**.
+
+{{% notice note %}}
+Quá trình này sẽ mất vài phút, bạn có thể tranh thủ đi uống nước.
+{{% /notice %}}
+
+   ![CloudFormation](/images/3/3.2/3.2.1/Stack_create_complete.png?width=90pc)
+
+Nếu stack hiển thị trạng thái **CREATE_COMPLETE**, hãy chuyển sang bước tiếp theo [Đăng ký SNS](../3.2.2-SNS-subscription)

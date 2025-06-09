@@ -1,176 +1,51 @@
 +++
-title = "Dọn dẹp tài nguyên"
+title = "Xoá tài nguyên"
 date = 2021-06-08T18:57:03+07:00
-weight = 7
+weight = 5
 chapter = false
-pre = "<b>7. </b>"
+pre = "<b>5. </b>"
 +++
 
-Chúng ta sẽ dọn dẹp các tài nguyên sau:
+#### Xoá tài nguyên
 
-#### **Dọn dẹp tài nguyên ở Visual QuickSight**:
-
-1.  **Xóa Pie chart sheet**
-
-![QuickSight](/images/7/delete_piechart.png?width=90pc)
-
-2. **Xóa Analyses QuickSight:**
-
-- Chọn **Analyses**.
-- Chọn **Analysis** cần xóa.
-- Chọn **Delete**.
-
-![QuickSight](/images/7/delete_qs_ana.png?width=90pc)
-
-- Delete done
-
-![QuickSight](/images/7/delete_done.png?width=90pc)
-
-3. **Xóa Dataset QuickSight:**
-
-![QuickSight](/images/7/delete_dataset.png?width=90pc)
-![QuickSight](/images/7/delete_cf_dataset.png?width=90pc)
-
-4. Bạn cũng có thể xóa tài khoản QuickSight nếu không sử dụng
-
-- Tại giao diện **QuickSight**, chọn **Manage QuickSight**
-
-![QuickSight](/images/6/6.2/manage_quicksight.png?width=90pc)
-
-- Tại **Account settings**, chọn **Manage**
-
-![QuickSight](/images/7/delete_qs_acc.png?width=90pc)
-
-- Thực hiện xóa tài khoản
-
-![QuickSight](/images/7/delete_acc_form.png?width=90pc)
-
-- Hủy đăng ký **QuickSight** thành công
-
-![QuickSight](/images/7/delete_success.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở AWS Glue**:
-
-Truy cập vào **AWS Glue**.
-
-1. **Xóa các tables**
-
-- Chọn **Tables**.
-- Chọn các table cần xóa.
-- Chọn **Delete** để xác nhận xóa Table.
-
-![QuickSight](/images/7/delete_tables.png?width=90pc)
-![QuickSight](/images/7/cf_delete_table.png?width=90pc)
-
-2. **Xóa Interactive Sessions**
-
-- Chọn **Interactive Sessions**.
-- Chọn các session cần xóa.
-- Chọn **Delete** để xác nhận xóa session.
-
-![QuickSight](/images/7/delete_session.png?width=90pc)
-
-2. **Xóa crawler**
-
-- Chọn **Crawler**.
-- Chọn các crawler cần xóa.
-- Chọn Action
-- Chọn **Delete crawler** để xác nhận xóa crawler.
-
-![QuickSight](/images/7/delete_cwl.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudFormation**:
-
-- Vào giao diện **CloudFormation**
-- Chọn **Stack**
-- Chọn **stack name** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_cloudform.png?width=90pc)
-
-- Nếu delete stack **fail**
-  - Chọn **Retry delete**
-  - Chọn **Force delete this entire stack**
-
-![QuickSight](/images/7/force_delete_stack.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở Kinesis**:
-
-- Vào **Amazon Data Firehose**
-- Chọn **Firehose stream** cần xóa
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_firehose.png?width=90pc)
-![QuickSight](/images/7/cf_delete_firehose.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở CloudWatch**:
-
-- Vào giao diện **CloudWatch**
-- Chọn **Log groups**
-- Chọn tất cả **Log groups**
-- Chọn **Action**
-- Chọn **Delete log group(s)**
-
-![QuickSight](/images/7/delete_logs.png?width=90pc)
-![QuickSight](/images/7/cf_delete_logs.png?width=90pc)
-
----
-
-#### **Dọn dẹp tài nguyên ở S3**:
-
-- Xóa tất cả các bucket liên quan tới bài lab
-
-- Chọn **bucket**
-- **Empty bucket**
-
-![QuickSight](/images/7/empty__bucket.png?width=90pc)
-![QuickSight](/images/7/cf_empty_s3.png?width=90pc)
-
-- Chọn lại bucket vừa empty
-- Chọn **Delete**
-
-![QuickSight](/images/7/delete_s3_bucket.png?width=90pc)
-![QuickSight](/images/7/cf_delete_bucket.png?width=90pc)
+Để tránh phát sinh chi phí không cần thiết cho tài khoản của bạn, chúng tôi khuyến nghị bạn nên xoá các tài nguyên đã được tạo trong suốt quá trình thực hiện workshop này. Nếu bạn muốn giữ lại để xem xét sau, hãy đảm bảo xoá tài nguyên khi hoàn tất.
 
 {{% notice note %}}
-Thực hiện tương tự với các bucket còn lại
+Lưu ý rằng bạn cần xoá một số tài nguyên thủ công **trước khi xoá các CloudFormation stack**, vì vậy vui lòng **_thực hiện các bước sau theo thứ tự_**.
 {{% /notice %}}
 
----
+1. Tắt _termination protection_ cho các **EC2 instances** liên quan.
+   - Mở **EC2 console**.
+   - Chọn instance cần xoá.
+   - Nhấn vào **Actions**, chọn **Instance settings**, sau đó thay đổi **termination protection**.
 
-#### **Dọn dẹp tài nguyên ở IAM**:
+   ![CleanUp](/images/5/Instance_delete_1.png?width=90pc)
 
-Vào giao diện IAM
+   - Bỏ chọn mục **Enable checkbox**, nhấn **Save**.
 
-**1. Xóa Policy**
+   ![CleanUp](/images/5/Instance_delete_2.png?width=90pc)
 
-- Chọn **Policies**
-- Chọn **policy** liên quan đến bài lab
-- Chọn **Delete**
+2. Xoá **CloudFormation stack**.
+   - Truy cập **CloudFormation console**.
+   - Chọn stack phù hợp (lưu ý rằng tuỳ thuộc vào phản hồi tự động bạn đã triển khai, có thể có 2 stack và 1 nested stack).
+   - Nhấn **Delete**.
 
-![QuickSight](/images/7/delete_policy.png?width=90pc)
-![QuickSight](/images/7/cf_delete_policy.png?width=90pc)
+   ![CleanUp](/images/5/Delete_stack.png?width=90pc)
 
-- Xóa policy thành công
+{{% notice warning %}}
+Đảm bảo rằng trạng thái stack sau khi xoá là **DELETE_COMPLETE**, quá trình này có thể mất vài phút.
+{{% /notice %}}
 
-![QuickSight](/images/7/delete_policy_success.png?width=90pc)
+3. Kiểm tra xem **GuardDuty** có được vô hiệu hóa tự động hay không, nếu không thì bạn cần tắt thủ công.
+   - Mở **GuardDuty console**.
+   - Nhấn vào mục _Settings_ ở menu bên trái.
+   - Kéo xuống cuối trang.
+   - Nhấn **Disable GuardDuty**.
 
-**2. Xóa Role**
+   ![CleanUp](/images/5/GuardDuty_disable.png?width=90pc)
 
-- Chọn **Roles**
-- Chọn **role** liên quan đến bài lab
-- Chọn **Delete**
+{{% notice note %}}
+Tắt GuardDuty sẽ xoá toàn bộ dữ liệu của dịch vụ này.
+{{% /notice %}}
 
-![QuickSight](/images/7/delete_role.png?width=90pc)
-
-- Xóa role thành công
-
-![QuickSight](/images/7/delete_role_success.png?width=90pc)
+4. Kiểm tra và xoá bất kỳ **EC2 snapshot** nào còn sót lại được tạo trong quá trình workshop.
