@@ -11,7 +11,7 @@ pre = "<b>2.1. </b>"
 To initiate the scenario and create the infrastructure we need to deploy a CloudFormation template.
 
 {{% notice info %}}
-You can download the example file here: [The CloudFormation JSON file](files/cfn.json).
+You can download the example file here: [The CloudFormation JSON file](../../files/cfn.json).
 {{% /notice %}}
 
 1. Access the [CloudFormation](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create)
@@ -19,14 +19,14 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
    - Search for **CloudFormation**.
    - Select **CloudFormation** to open the **CloudFormation Dashboard**.
 
-   ![CloudFormation](/images/2/2.1/CloudFormation.png)
+   ![CloudFormation](../../images/2/2.1/CloudFormation.png)
 
 2. In the **CloudFormation** Dashboard
 
    - Select **Stacks**.
    - Click **Create stack**.
 
-   ![CloudFormation](/images/2/2.1/Stack.png?width=90pc)
+   ![CloudFormation](../../images/2/2.1/Stack.png?width=90pc)
 
 3. In the **Create stack** interface, under **Create stack**
 
@@ -35,7 +35,7 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
    - Click **Choose file** and upload the _cfn.json_ file above.
    - Click **Next**.
 
-   ![CloudFormation](/images/2/2.1/Create_stack.png?width=90pc)
+   ![CloudFormation](../../images/2/2.1/Create_stack.png?width=90pc)
 
 4. In the **Specify stack details** interface, under **Specify stack details**
 
@@ -43,12 +43,12 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
    - Under _Parameters_, In _Automatically enable GuardDuty?_ select **Yes-Enable GuardDuty**.
    - Leave the other settings unchanged, Click **Next**.
 
-   ![CloudFormation](/images/2/2.1/Specify_stack_details.png?width=90pc)
+   ![CloudFormation](../../images/2/2.1/Specify_stack_details.png?width=90pc)
 
 5. In the **Configure stack options** interface, under **Capabilities**
 
    - **Check yes** for 2 of the box below.
-     ![CloudFormation](/images/2/2.1/Capabilities.png?width=90pc)
+     ![CloudFormation](../../images/2/2.1/Capabilities.png?width=90pc)
 
 6. In the **Review and create**:
    - If you follow the steps It's should be right so scroll down and click the **Submit** button.
@@ -58,6 +58,6 @@ You can download the example file here: [The CloudFormation JSON file](files/cfn
 This should take a couple minutes, so go grab a coffee while at it.
 {{% /notice %}}
 
-   ![CloudFormation](/images/2/2.1/Stack_create_complete.png?width=90pc)
+   ![CloudFormation](../../images/2/2.1/Stack_create_complete.png?width=90pc)
 
 If the stack status is **CREATE_COMPLETE** go to the next step [Set up Security Group](../2.2-Set-up-Security-Group)

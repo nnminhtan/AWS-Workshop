@@ -12,11 +12,11 @@ In this step we will test the Step Functions that created previously.
 
 1. Go to the **Step Functions** service and on **States machines** select the name of the newly created one _**PREFIX_StateMachine**_.
    
-   ![Test SF](/images/3/3.2/3.2.3/State_machine.png?width=90pc)
+   ![Test SF](../../../images/3/3.2/3.2.3/State_machine.png?width=90pc)
    
 2. Select **Start execution**
    
-   ![Test SF](/images/3/3.2/3.2.3/Start_execution.png?width=90pc)
+   ![Test SF](../../../images/3/3.2/3.2.3/Start_execution.png?width=90pc)
 
     - Copy this JSON below and paste in _Input_, this JSON will need some modifications before you can run it.
     
@@ -53,11 +53,11 @@ In this step we will test the Step Functions that created previously.
       - Replace the **AccountID** for yours.
       - Replace the **Instance ID** with the ID of the BasicLinuxTarget instance deployed by the CloudFormation template (below is how you can find the _Instance ID_).
 
-    ![Test SF](/images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
+    ![Test SF](../../../images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
     
     - After replace all the **Account ID** and **Instance ID**.
 
-    ![Test SF](/images/3/3.2/3.2.3/Start_execution_modification.png?width=90pc)
+    ![Test SF](../../../images/3/3.2/3.2.3/Start_execution_modification.png?width=90pc)
 
     - Verify status _before execution_: check on the **EC2 console** what is the current status of the instance **"BasicLinuxTarget"**
 
@@ -80,11 +80,11 @@ In this step we will test the Step Functions that created previously.
             
             • Are you able to delete the instance?
     {{% /notice %}}
-        ![Test SF](/images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
+        ![Test SF](../../../images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
 
     - When you use the _testuser_ and try to delete the instance **"BasicLinuxTarget"** it should have this error.
     
-    ![Test SF](/images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
+    ![Test SF](../../../images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
 
 3. Test the State Machine with a different severity
     - Follow the same steps as before but change the **severity** field on the JSON event from 8 to 7.

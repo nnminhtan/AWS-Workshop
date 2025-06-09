@@ -20,7 +20,7 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
    - Trong cùng trang _Function code editor_,  
    - Chọn **Test**, panel **Create new test event** sẽ mở ra, nhấn vào đó.
 
-   ![Test Lambda](/images/3/3.1/3.1.3/Create_test_event.png?width=90pc)
+   ![Test Lambda](../../../../images/3/3.1/3.1.3/Create_test_event.png?width=90pc)
 
    - Panel _Create new test event_ sẽ mở, đặt tên test event là: `GuardDutyViaCWE`.
    - Dán JSON test event vào _Event JSON_, nhớ sửa lại:
@@ -54,11 +54,11 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
     }
     ```
 
-   ![Test Lambda](/images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
+   ![Test Lambda](../../../../images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
 
    - Sau khi chỉnh sửa xong, nhấn **Save**.
 
-   ![Test Lambda](/images/3/3.1/3.1.3/Create_test_event_modification.png?width=90pc)
+   ![Test Lambda](../../../../images/3/3.1/3.1.3/Create_test_event_modification.png?width=90pc)
 
    - Kiểm tra trạng thái instance **BasicLinuxTarget** trên EC2 console trước khi chạy test.
   
@@ -71,7 +71,7 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
    
    - Chạy test event vừa tạo và kiểm tra trạng thái instance **BasicLinuxTarget** sau khi chạy.
 
-   ![Test Lambda](/images/3/3.1/3.1.3/Test_event.png?width=90pc)
+   ![Test Lambda](../../../../images/3/3.1/3.1.3/Test_event.png?width=90pc)
 
    ```
    Bạn có thể trả lời:
@@ -83,10 +83,10 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
          • Bạn có xóa được instance không?
    ```
 
-   ![Test Lambda](/images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
+   ![Test Lambda](../../../../images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
 
    - Khi dùng user _testuser_ xóa instance **BasicLinuxTarget**, bạn sẽ gặp lỗi như hình dưới.
 
-   ![Test Lambda](/images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
+   ![Test Lambda](../../../../images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
 
 Khi hoàn thành, tiếp tục bước tiếp theo trong Workshop là [Create a EventBridge Rule](../3.1.4-Create-EventBridge-Rule).

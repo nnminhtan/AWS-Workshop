@@ -17,7 +17,7 @@ Thời lượng phòng lab khoảng 3 giờ, ngay cả khi bạn không hoàn th
 
 ##### 1. Kịch bản IR dựa trên Lambda
 
-![Workshop](/images/1/Workshop_Lambda.jpg)
+![Workshop](../../images/1/Workshop_Lambda.jpg)
 
 Phương pháp này sử dụng một hàm **AWS Lambda** để thực hiện các hành động khắc phục ngay khi phát hiện sự cố. Đây là phương pháp **đơn giản và nhanh nhất để triển khai**. Tuy nhiên, nó có điểm hạn chế đáng chú ý:
 
@@ -26,7 +26,7 @@ Phương pháp này sử dụng một hàm **AWS Lambda** để thực hiện c�
 
 ##### 2. Kịch bản IR dựa trên Step Functions
 
-![Workshop](/images/1/Workshop_Step_Function.jpg)
+![Workshop](../../images/1/Workshop_Step_Function.jpg)
 
 Phương pháp này sử dụng **AWS Step Functions** để điều phối phản ứng sự cố dưới dạng một **modular state machine**, cho phép một quy trình IR linh hoạt và mạnh mẽ hơn.
 

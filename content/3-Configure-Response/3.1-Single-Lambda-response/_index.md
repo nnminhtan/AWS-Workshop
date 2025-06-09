@@ -18,7 +18,7 @@ The steps we will be performing are:
    - Create an EventBridge rule that will call the Lambda function based on the GuardDuty findings.
 
 The architecture for this alternative is the following:
-   ![Lambda](/images/1/Workshop_Lambda.jpg?width=90pc)
+   ![Lambda](../../images/1/Workshop_Lambda.jpg?width=90pc)
 
 #### Contents:
 

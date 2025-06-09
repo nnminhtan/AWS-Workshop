@@ -17,7 +17,7 @@ This workshop length is around 3hrs, even if you dont complete it visit the **cl
 
 ##### 1. Lambda-based IR Playbook
 
-![Workshop](/images/1/Workshop_Lambda.jpg)
+![Workshop](../images/1/Workshop_Lambda.jpg)
 
 This approach uses a **single AWS Lambda function** to execute remediation actions as soon as an incident is detected. It is the **simplest and fastest method** to deploy. However, it comes with an important limitation:
 
@@ -26,7 +26,7 @@ This approach uses a **single AWS Lambda function** to execute remediation actio
 
 ##### 2. Step Functions-based IR Playbook
 
-![Workshop](/images/1/Workshop_Step_Function.jpg)
+![Workshop](../images/1/Workshop_Step_Function.jpg)
 
 This method uses **AWS Step Functions** to orchestrate the incident response as a **modular state machine**, enabling a more flexible and robust IR process.
 

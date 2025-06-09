@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Test the Step Functions on Automating Incident Response</title>
-    <link>http://localhost:1313/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/</link>
+    <link>http://localhost:1313/AWS-Workshop/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/</link>
     <description>Recent content in Test the Step Functions on Automating Incident Response</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/3-configure-response/3.2-step-function-response/3.2.3-test-the-step-functions/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

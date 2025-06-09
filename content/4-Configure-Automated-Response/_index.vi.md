@@ -15,7 +15,7 @@ Trong môi trường, có một instance _"RedTeam"_ sẽ tạo ra các phát hi
 1. Truy cập vào **GuardDuty**, chọn **Settings**.
 2. Trong phần _Findings export options_, tần suất cập nhật nên là mỗi 15 phút nếu bạn sử dụng CloudFormation template. (Nếu chưa được thiết lập, hãy nhấn _Edit_ và chỉnh tần suất cập nhật thành mỗi 15 phút).
 
-![GuardDuty](/images/4/GuardDuty_frequency.png?width=90pc)
+![GuardDuty](../../images/4/GuardDuty_frequency.png?width=90pc)
 
 3. Sau đó chọn mục **Findings**.
 
@@ -23,7 +23,7 @@ Trong môi trường, có một instance _"RedTeam"_ sẽ tạo ra các phát hi
 Bạn cần chờ một lúc để các phát hiện được tạo ra, ngoài ra một số dịch vụ khác đang chạy có thể làm tăng chi phí. Nếu không muốn chờ, bạn có thể bỏ qua phần này (tùy chọn!). Dưới đây là ví dụ kết quả mà bạn có thể thấy.
 {{% /notice %}}
 
-![GuardDuty](/images/4/GuardDuty_findings.png?width=90pc)
+![GuardDuty](../../images/4/GuardDuty_findings.png?width=90pc)
 
 
 #### Kiểm thử phản hồi tự động

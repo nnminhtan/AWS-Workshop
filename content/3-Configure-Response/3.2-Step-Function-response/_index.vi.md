@@ -23,10 +23,10 @@ Các bước chúng ta sẽ thực hiện trong phương án này:
 - Tạo một EventBridge rule để gọi State Machine dựa trên các phát hiện từ GuardDuty
 
 Kiến trúc của phương án này như sau:
-![SF](/images/1/Workshop_Step_Function.jpg?width=90pc)
+![SF](../../../images/1/Workshop_Step_Function.jpg?width=90pc)
 
 Và đồ thị workflow của Step Function như sau:
-![SF](/images/1/.jpg?width=90pc)
+![SF](../../../images/1/Step_Function_workflow.jpg?width=90pc)
 
 Giải thích ngắn gọn về workflow được trình bày:
 

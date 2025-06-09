@@ -12,11 +12,11 @@ pre = "<b>3.1.2. </b>"
 
    - Trong thanh tìm kiếm, nhập **Lambda**, bạn sẽ được chuyển tới trang bắt đầu của Lambda.
 
-   ![Lambda](/images/3/3.1/3.1.2/Lambda.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Lambda.png?width=90pc)
 
    - Nhấn **Create a function**
 
-   ![Lambda](/images/3/3.1/3.1.2/Create_function.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Create_function.png?width=90pc)
 
    - Đặt tên function là: `ec2instance-containment-with-forensics`.
    - Chọn Runtime: **Python 3.9**.
@@ -24,29 +24,29 @@ pre = "<b>3.1.2. </b>"
    - Chọn role `ec2instance-containment-with-forensics-role`.
    - Kết quả sẽ như bên dưới, nhấn **Create function**.
 
-   ![Lambda](/images/3/3.1/3.1.2/Create_function_settings.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Create_function_settings.png?width=90pc)
 
 2. Sửa đổi **Lambda function** đã tạo
 
    - Vào tab _Configuration_, bấm nút _Edit_.
 
-   ![Lambda](/images/3/3.1/3.1.2/Configure_function_runtime1.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Configure_function_runtime1.png?width=90pc)
 
    - Thay đổi **Timeout** thành 15 phút, rồi lưu lại.
 
-   ![Lambda](/images/3/3.1/3.1.2/Configure_function_runtime2.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Configure_function_runtime2.png?width=90pc)
 
    - Tạo **environment variables** cho Lambda function.
    - Vẫn trong _Configuration_, chọn **Environment variables** rồi bấm _Edit_.
 
-   ![Lambda](/images/3/3.1/3.1.2/Configure_function_create_env_var.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Configure_function_create_env_var.png?width=90pc)
 
    - Thêm biến môi trường:
      - Key: `ForensicsSG`
      - Value: `sg-...(ID của Security Group Forensics của bạn)`
    - Kết quả như hình bên dưới.
 
-   ![Lambda](/images/3/3.1/3.1.2/Configure_function_add_env_var.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Configure_function_add_env_var.png?width=90pc)
 
    - Nhấn **Save**.
 
@@ -54,7 +54,7 @@ pre = "<b>3.1.2. </b>"
 
    - Chọn tab _Code_ bên cạnh _Configuration_.
 
-   ![Lambda](/images/3/3.1/3.1.2/Add_code_Lambda.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Add_code_Lambda.png?width=90pc)
 
      ```python
           import boto3, json
@@ -147,7 +147,7 @@ pre = "<b>3.1.2. </b>"
 
    - Nhấn **Deploy** để deploy function Lambda.
 
-   ![Lambda](/images/3/3.1/3.1.2/Deploy_code_Lambda.png?width=90pc)
+   ![Lambda](../../../../images/3/3.1/3.1.2/Deploy_code_Lambda.png?width=90pc)
 
 {{% notice note %}}
 Bạn có thể xem các comment trong code để hiểu chức năng từng phần.

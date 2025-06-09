@@ -13,7 +13,7 @@ Since you are already at the IAM dashboard for the last step, now headed to the 
 1. Create a policy for the **execution role**
    - First click **Create policy**
 
-    ![Lambda](/images/3/3.1/3.1.1/Create_policy.png?width=90pc)
+    ![Lambda](../../..../../../images/3/3.1/3.1.1/Create_policy.png?width=90pc)
 
    - Click the **json** format and paste the following into the **Policy editor** and click _Next_
 
@@ -44,29 +44,29 @@ Since you are already at the IAM dashboard for the last step, now headed to the 
     ```
     - The result should be like this.
     
-    ![Lambda](/images/3/3.1/3.1.1/Create_policy_add_permission.png?width=90pc)
+    ![Lambda](../../../images/3/3.1/3.1.1/Create_policy_add_permission.png?width=90pc)
 
     - **Name** the policy : `ec2instance-containment-with-forensics-policy` and leave the rest unchanged, then _Create policy_.
 
-    ![Lambda](/images/3/3.1/3.1.1/Create_policy_naming.png?width=90pc)
+    ![Lambda](../../../images/3/3.1/3.1.1/Create_policy_naming.png?width=90pc)
 
 2. Create the _execution role_ for the **Lambda Function**
    - Still in the **IAM dashboard**, head to the roles in the left side panel, Select **Create role** 
 
-    ![Lambda](/images/3/3.1/3.1.1/Create_role.png?width=90pc)
+    ![Lambda](../../../images/3/3.1/3.1.1/Create_role.png?width=90pc)
     
    - The default _Trusted entity type_ should be **AWS service**. 
    - Under _Service or use case_, Select **Lambda** and click _Next_.
 
-    ![Lambda](/images/3/3.1/3.1.1/Create_role_use_case.png?width=90pc)
+    ![Lambda](../../../images/3/3.1/3.1.1/Create_role_use_case.png?width=90pc)
 
    - Add the prior created `ec2instance-containment-with-forensics-policy` policy and click next.
 
-    ![Lambda](/images/3/3.1/3.1.1/Create_role_add_permission.png?width=90pc)
+    ![Lambda](../../../images/3/3.1/3.1.1/Create_role_add_permission.png?width=90pc)
 
    - Name the Role `ec2instance-containment-with-forensics-role` and leave every unchanged, click _Create Role_.
 
-    ![Lambda](/images/3/3.1/3.1.1/Create_role_naming.png?width=90pc)
+    ![Lambda](../../../images/3/3.1/3.1.1/Create_role_naming.png?width=90pc)
 
 If you done with that go to the next step which is [Create Lambda Function](../3.1.2-Create-Lambda-Function)
 

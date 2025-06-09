@@ -21,10 +21,10 @@ The steps we will be performing for this alternative are:
    - Create an EventBridge rule that will call the State Machine based on the GuardDuty findings.
 
 The architecture for this alternative is the following:
-   ![SF](/images/1/Workshop_Step_Function.jpg?width=90pc)
+   ![SF](../../images/1/Workshop_Step_Function.jpg?width=90pc)
 
 And the Step Function workflow graph is the following:
-   ![SF](/images/1/.jpg?width=90pc)
+   ![SF](../../images/1/Step_Function_workflow.jpg?width=90pc)
 
 A brief explanation of the workflow presented:
 

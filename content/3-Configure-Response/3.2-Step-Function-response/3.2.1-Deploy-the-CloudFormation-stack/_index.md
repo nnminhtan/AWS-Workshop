@@ -19,14 +19,14 @@ You can download: [The CloudFormation template](/files/IRWorkshop-StepFunctionsR
    - Search for **CloudFormation**.
    - Select **CloudFormation** to open the **CloudFormation Dashboard**.
 
-   ![CloudFormation](/images/2/2.1/CloudFormation.png)
+   ![CloudFormation](../../../images/2/2.1/CloudFormation.png)
 
 2. In the **CloudFormation** Dashboard
 
    - Select **Stacks**.
    - Click **Create stack**.
 
-   ![CloudFormation](/images/2/2.1/Stack.png?width=90pc)
+   ![CloudFormation](../../../images/2/2.1/Stack.png?width=90pc)
 
 3. In the **Create stack** interface, under **Create stack**
 
@@ -35,7 +35,7 @@ You can download: [The CloudFormation template](/files/IRWorkshop-StepFunctionsR
    - Click **Choose file** and upload the _IRWorkshop-StepFunctionsResponse.yaml_ file above.
    - Click **Next**.
 
-   ![CloudFormation](/images/3/3.2/3.2.1/Create_stack.png?width=90pc)
+   ![CloudFormation](../../../images/3/3.2/3.2.1/Create_stack.png?width=90pc)
 
 4. In the **Specify stack details** interface, under **Specify stack details**
 
@@ -43,12 +43,12 @@ You can download: [The CloudFormation template](/files/IRWorkshop-StepFunctionsR
    - Under _Parameters_, Enter a **valid email address** and an **optional prefix** for the resouces that will be created.
    - Click **Next**.
 
-   ![CloudFormation](/images/3/3.2/3.2.1/Specify_stack_details.png?width=90pc)
+   ![CloudFormation](../../../images/3/3.2/3.2.1/Specify_stack_details.png?width=90pc)
 
 5. In the **Configure stack options** interface, under **Capabilities**
 
    - **Check yes** for the box below.
-    ![CloudFormation](/images/3/3.2/3.2.1/Capabilities.png?width=90pc)
+    ![CloudFormation](../../../images/3/3.2/3.2.1/Capabilities.png?width=90pc)
 
 6. In the **Review and create**:
    - If you follow the steps It's should be right so scroll down and click the **Submit** button.
@@ -58,7 +58,7 @@ You can download: [The CloudFormation template](/files/IRWorkshop-StepFunctionsR
 This should take a couple minutes, so go grab a coffee while at it.
 {{% /notice %}}
 
-   ![CloudFormation](/images/3/3.2/3.2.1/Stack_create_complete.png?width=90pc)
+   ![CloudFormation](../../../images/3/3.2/3.2.1/Stack_create_complete.png?width=90pc)
 
 If the stack status is **CREATE_COMPLETE** go to the next step [Set up SNS subscription](../3.2.2-SNS-subscription)
 

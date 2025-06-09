@@ -19,18 +19,18 @@ Lưu ý rằng bạn cần xoá một số tài nguyên thủ công **trước k
    - Chọn instance cần xoá.
    - Nhấn vào **Actions**, chọn **Instance settings**, sau đó thay đổi **termination protection**.
 
-   ![CleanUp](/images/5/Instance_delete_1.png?width=90pc)
+   ![CleanUp](../../images/5/Instance_delete_1.png?width=90pc)
 
    - Bỏ chọn mục **Enable checkbox**, nhấn **Save**.
 
-   ![CleanUp](/images/5/Instance_delete_2.png?width=90pc)
+   ![CleanUp](../../images/5/Instance_delete_2.png?width=90pc)
 
 2. Xoá **CloudFormation stack**.
    - Truy cập **CloudFormation console**.
    - Chọn stack phù hợp (lưu ý rằng tuỳ thuộc vào phản hồi tự động bạn đã triển khai, có thể có 2 stack và 1 nested stack).
    - Nhấn **Delete**.
 
-   ![CleanUp](/images/5/Delete_stack.png?width=90pc)
+   ![CleanUp](../../images/5/Delete_stack.png?width=90pc)
 
 {{% notice warning %}}
 Đảm bảo rằng trạng thái stack sau khi xoá là **DELETE_COMPLETE**, quá trình này có thể mất vài phút.
@@ -42,7 +42,7 @@ Lưu ý rằng bạn cần xoá một số tài nguyên thủ công **trước k
    - Kéo xuống cuối trang.
    - Nhấn **Disable GuardDuty**.
 
-   ![CleanUp](/images/5/GuardDuty_disable.png?width=90pc)
+   ![CleanUp](../../images/5/GuardDuty_disable.png?width=90pc)
 
 {{% notice note %}}
 Tắt GuardDuty sẽ xoá toàn bộ dữ liệu của dịch vụ này.

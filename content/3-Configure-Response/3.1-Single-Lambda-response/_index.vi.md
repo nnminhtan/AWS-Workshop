@@ -18,7 +18,7 @@ Các bước thực hiện bao gồm:
 - Tạo EventBridge rule để gọi Lambda function dựa trên các phát hiện từ GuardDuty.
 
 Kiến trúc cho phương án này như sau:  
-![Lambda](/images/1/Workshop_Lambda.jpg?width=90pc)
+![Lambda](../../../images/1/Workshop_Lambda.jpg?width=90pc)
 
 #### Nội dung:
 

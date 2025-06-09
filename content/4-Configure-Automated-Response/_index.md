@@ -14,7 +14,7 @@ In the environment there is a _"RedTeam"_ instance that will generate **GuardDut
 
 1. Go to **GuardDuty**, select **Settings**.
 2. Under _Findings export options_, the prequency should be update findings every 15 mins if you using the CloudFormation template. (If not Click _Edit_ set the Frequency to set it to update every 15 mins).
-![GuardDuty](/images/4/GuardDuty_frequency.png?width=90pc)
+![GuardDuty](../images/4/GuardDuty_frequency.png?width=90pc)
 
 3. Then select **findings**.
 
@@ -22,7 +22,7 @@ In the environment there is a _"RedTeam"_ instance that will generate **GuardDut
 You have to wait for a while for it to get the findings, also other service running might raise the cost if you don't want to wait then you can skip this (optional!). But here is the sample results should look like.
 {{% /notice %}}
 
-![GuardDuty](/images/4/GuardDuty_findings.png?width=90pc)
+![GuardDuty](../images/4/GuardDuty_findings.png?width=90pc)
 
 
 #### Test Automated Response

@@ -19,18 +19,18 @@ Please note that you will need to manually delete some resources before you dele
     - Select the instance.
     - Click on **Actions**, **Instance settings**, change **termination protection**.
 
-    ![CleanUp](/images/5/Instance_delete_1.png?width=90pc)
+    ![CleanUp](../images/5/Instance_delete_1.png?width=90pc)
 
     - Uncheck the **Enable checkbox**, click **Save**.
     
-    ![CleanUp](/images/5/Instance_delete_2.png?width=90pc)
+    ![CleanUp](../images/5/Instance_delete_2.png?width=90pc)
 
 2. Delete the **Cloudformation stack**.
     - Go to the AWS **CloudFormation console**.
     - Select the appropiate stack (remember that depending on the automated responses deployed you might have 2 stacks and 1 nested stack).
     - Click **Delete**.
     
-    ![CleanUp](/images/5/Delete_stack.png?width=90pc)
+    ![CleanUp](../images/5/Delete_stack.png?width=90pc)
 
 {{% notice warning %}}
 Make sure the Stack delete status is **DELETE_COMPLETE**, this could take a while.
@@ -42,7 +42,7 @@ Make sure the Stack delete status is **DELETE_COMPLETE**, this could take a whil
     - Scroll down.
     - Click **Disable GuardDuty**.
     
-    ![CleanUp](/images/5/GuardDuty_disable.png?width=90pc)
+    ![CleanUp](../images/5/GuardDuty_disable.png?width=90pc)
 
 {{% notice note %}}
 Disabling GuardDuty will remove its data.

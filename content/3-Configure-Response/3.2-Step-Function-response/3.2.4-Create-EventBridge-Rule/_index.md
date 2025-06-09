@@ -13,11 +13,11 @@ In this step we will create a EventBridge Rule for create a snapshot for the **B
 #### Create EventBridge Rule
 - Search for the EventBridge. This will take you to the EventBridge home, click on Create Rule.
 
-![EventBridge](/images/3/3.1/3.1.4/Create_rule.png?width=90pc)
+![EventBridge](../../../images/3/3.1/3.1.4/Create_rule.png?width=90pc)
 
 - Name the rule is : `gd-compromised-instance-remediation` (if you still kept the old one then add this rule with `-sf`), the description is optional, then foward to the creation.
 
-![EventBridge](/images/3/3.1/3.1.4/Create_rule_naming.png?width=90pc)
+![EventBridge](../../../images/3/3.1/3.1.4/Create_rule_naming.png?width=90pc)
 
 - Under _Event pattern_, _Creation method_ click the _Custom pattern(JSON editor)_ and paste the **Json** below into the editor.
 ```json
@@ -30,12 +30,12 @@ In this step we will create a EventBridge Rule for create a snapshot for the **B
 ```
 - The result should be like this then click _Next_.
 
-![EventBridge](/images/3/3.1/3.1.4/Create_rule_event_pattern.png?width=90pc)
+![EventBridge](../../../images/3/3.1/3.1.4/Create_rule_event_pattern.png?width=90pc)
 
 1. Select **Step Functions state machine** as the target.
 2. Select the the _**State Machine**_ that we tested before **PREFIX_StateMachine** as the Target. (The result should be like this)
 
-![EventBridge](/images/3/3.2/3.2.4/Create_rule_target.png?width=90pc)
+![EventBridge](../../../images/3/3.2/3.2.4/Create_rule_target.png?width=90pc)
 
 3. Leave every unchanged and create the Rule.
 

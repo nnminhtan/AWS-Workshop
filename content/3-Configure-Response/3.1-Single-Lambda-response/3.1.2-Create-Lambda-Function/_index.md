@@ -12,11 +12,11 @@ pre = "<b>3.1.2. </b>"
 
      - In the search bar look for **Lambda**, It should take we to the _Lambda begin page_
 
-     ![Lambda](/images/3/3.1/3.1.2/Lambda.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Lambda.png?width=90pc)
 
      - Click **Create a function**
 
-     ![Lambda](/images/3/3.1/3.1.2/Create_function.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Create_function.png?width=90pc)
 
      - Name the function : `ec2instance-containment-with-forensics`.
      - Select the Runtime as : **Python 3.9**.
@@ -24,35 +24,35 @@ pre = "<b>3.1.2. </b>"
      - Select the `ec2instance-containment-with-forensics-role` as execution role.
      - The result should be like this, then click **Create function**
      
-     ![Lambda](/images/3/3.1/3.1.2/Create_function_settings.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Create_function_settings.png?width=90pc)
 
 2. Modify the prior created **Lambda function**
      - Click the _Configuration_, then click the _Edit_ button.
      
-     ![Lambda](/images/3/3.1/3.1.2/Configure_function_runtime1.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Configure_function_runtime1.png?width=90pc)
 
      - Change the **Timeout** to 15 min, then save.
 
-     ![Lambda](/images/3/3.1/3.1.2/Configure_function_runtime2.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Configure_function_runtime2.png?width=90pc)
        
      - Now we will create the **environment variables** to the **lambda function**
      - Still in the _Configuration_, select the **Environment variables** and click _Edit_.
 
-     ![Lambda](/images/3/3.1/3.1.2/Configure_function_create_env_var.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Configure_function_create_env_var.png?width=90pc)
 
      - Select **Add environment variable**.
        - Key: `ForensicsSG`
        - Value: `sg-...(the ID of your Forensics SG)`
      - They should be like as below.
 
-     ![Lambda](/images/3/3.1/3.1.2/Configure_function_add_env_var.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Configure_function_add_env_var.png?width=90pc)
 
      - Then click **Save**. 
 
 3. Add the code for the **Lambda Function**
      - Click the _Code_ next to the _Configuration_.
      
-     ![Lambda](/images/3/3.1/3.1.2/Add_code_Lambda.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Add_code_Lambda.png?width=90pc)
      
      - In the code editor, paste the _following code_.
      
@@ -147,7 +147,7 @@ pre = "<b>3.1.2. </b>"
 
      - Then click on **deploy**, as shown below.
      
-     ![Lambda](/images/3/3.1/3.1.2/Deploy_code_Lambda.png?width=90pc)
+     ![Lambda](../../../images/3/3.1/3.1.2/Deploy_code_Lambda.png?width=90pc)
 
 {{% notice note %}}
 You can review comments on the code to understand what it's doing.

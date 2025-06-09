@@ -20,7 +20,7 @@ In this step we will test the Lambda Function that created previously.
     - In the same _Function code editor_,  
     - Select **Test** this will open a **Create new test event** on the top, click on it.
 
-    ![Test Lambda](/images/3/3.1/3.1.3/Create_test_event.png?width=90pc)
+    ![Test Lambda](../../../images/3/3.1/3.1.3/Create_test_event.png?width=90pc)
 
     - The panel _Create new test event_ will open, name the _test event_ : `GuardDutyViaCWE`.
     - Copy this JSON below and paste in _Event JSON_, this JSON will need some modifications before you can run it.
@@ -55,11 +55,11 @@ In this step we will test the Lambda Function that created previously.
       - Replace the **AccountID** for yours.
       - Replace the **Instance ID** with the ID of the BasicLinuxTarget instance deployed by the CloudFormation template (below is how you can find the _Instance ID_).
 
-    ![Test Lambda](/images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
+    ![Test Lambda](../../../images/3/3.1/3.1.3/Create_test_event_InstanceID.png?width=90pc)
     
     - After replace all the Account ID and Instance ID, then save.
 
-    ![Test Lambda](/images/3/3.1/3.1.3/Create_test_event_modification.png?width=90pc)
+    ![Test Lambda](../../../images/3/3.1/3.1.3/Create_test_event_modification.png?width=90pc)
 
     - Verify status _before execution_ : check on the EC2 console what is the current status of the instance **"BasicLinuxTarget"**
 
@@ -71,7 +71,7 @@ In this step we will test the Lambda Function that created previously.
     ```
     - Press the test event just created, and verify the status _after execution_: of the instance **"BasicLinuxTarget"**
     
-    ![Test Lambda](/images/3/3.1/3.1.3/Test_event.png?width=90pc)
+    ![Test Lambda](../../../images/3/3.1/3.1.3/Test_event.png?width=90pc)
 
     ```
     Can you answer the following questions?
@@ -84,10 +84,10 @@ In this step we will test the Lambda Function that created previously.
         • Are you able to delete the instance?
     ```
         
-    ![Test Lambda](/images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
+    ![Test Lambda](../../../images/3/3.1/3.1.3/testuser_signin.png?width=90pc)
 
     - When you use the _testuser_ and try to delete the instance **"BasicLinuxTarget"** it should have this error.
     
-    ![Test Lambda](/images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
+    ![Test Lambda](../../../images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
 
 When you are done with all the steps, head to the next part of the Workshop which is [Create a EventBridge Rule](../3.1.4-Create-EventBridge-Rule)
