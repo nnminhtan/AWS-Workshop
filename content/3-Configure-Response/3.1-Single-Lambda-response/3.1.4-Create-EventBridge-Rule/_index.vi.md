@@ -42,3 +42,5 @@ Trong bước này, chúng ta sẽ tạo một EventBridge Rule để tự độ
 {{% notice note %}}
 Hãy chắc chắn rằng instance đã được cách ly trước khi tạo snapshot, nếu không bạn có thể bị tạo nhiều snapshot liên tục mỗi 15 phút (hoặc 6 tiếng tùy cấu hình GuardDuty). Tác giả khuyến nghị nên tắt rule này sau khi hoàn tất quá trình testing.
 {{% /notice %}}
+
+Khi bạn đã hoàn thành tất cả các bước, hãy chuyển sang phần tiếp theo của Workshop là [Configure Automated Response](../../../../4-Configure-Automated-Response) hoặc bạn có thể thực hiện [Step Function response](../../3.2-Step-Function-response).

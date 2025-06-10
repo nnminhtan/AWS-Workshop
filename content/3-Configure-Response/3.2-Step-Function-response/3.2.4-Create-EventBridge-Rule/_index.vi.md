@@ -15,7 +15,7 @@ Trong bước này, chúng ta sẽ tạo một EventBridge Rule để tạo snap
 
 ![EventBridge](../../../../images/3/3.1/3.1.4/Create_rule.png?width=90pc)
 
-- Đặt tên cho rule là: `gd-compromised-instance-remediation` (nếu bạn vẫn giữ rule cũ thì thêm hậu tố `-sf`), phần mô tả là tùy chọn, sau đó tiếp tục tạo rule.
+- Đặt tên cho rule là: `gd-compromised-instance-remediation` (nếu bạn vẫn giữ rule cũ thì thêm vào đuôi `-sf`), phần mô tả là tùy chọn, sau đó tiếp tục tạo rule.
 
 ![EventBridge](../../../../images/3/3.1/3.1.4/Create_rule_naming.png?width=90pc)
 
@@ -43,3 +43,5 @@ Trong bước này, chúng ta sẽ tạo một EventBridge Rule để tạo snap
 Hãy đảm bảo rằng instance đã được cách ly trước khi tạo snapshot, nếu không bạn có thể gặp tình trạng snapshot bị tạo liên tục mỗi 15 phút 
 (hoặc 6 giờ tùy theo cấu hình GuardDuty của bạn). Tác giả khuyến nghị bạn nên vô hiệu hóa rule này sau khi đã hoàn thành việc kiểm thử.
 {{% /notice %}}
+
+Khi bạn đã hoàn thành tất cả các bước, hãy tiếp tục sang phần tiếp theo của Workshop là [Cấu hình phản hồi tự động](../../../../4-Configure-Automated-Response)

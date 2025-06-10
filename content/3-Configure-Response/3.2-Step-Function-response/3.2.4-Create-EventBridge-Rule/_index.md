@@ -44,3 +44,4 @@ Make sure the instance is already isolated before taking snapshots otherwise you
 (or 6H depending your GuardDuty setting). The author recommend disabling this rule once you've completed the testing.
 {{% /notice %}}
 
+When you are done with all the steps, head to the next part of the Workshop which is [Configure Automated Response](../../../4-Configure-Automated-Response)

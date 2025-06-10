@@ -8,25 +8,25 @@ pre = "<b>3.2. </b>"
 
 ### Cấu hình phản hồi bằng Step Function
 
-Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động thông qua một workflow được xây dựng bằng Step Functions. Những lợi ích của phương pháp này bao gồm:
+Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động thông qua một workflow được xây dựng bằng **Step Functions**. Những lợi ích của phương pháp này bao gồm:
 
-- Không bị giới hạn thời gian khi thực hiện các hành động.
+- **Không bị giới hạn thời gian** khi thực hiện các hành động.
 - Hầu hết các lệnh gọi API của các dịch vụ AWS đều được hỗ trợ và có thể gọi trực tiếp mà không cần viết code.
 - Định nghĩa quy trình làm việc bằng đồ thị.
 - Kiểm soát tốt hơn các nhánh xử lý khác nhau.
 
 Các bước chúng ta sẽ thực hiện trong phương án này:
 
-- Triển khai một CloudFormation template để tạo tất cả các tài nguyên cần thiết
-- Xác nhận đăng ký SNS để nhận thông báo qua email
-- Kiểm thử State Machine
-- Tạo một EventBridge rule để gọi State Machine dựa trên các phát hiện từ GuardDuty
+- Triển khai một **CloudFormation** template để tạo tất cả các tài nguyên cần thiết.
+- Xác nhận đăng ký SNS để nhận _thông báo qua email_.
+- Kiểm thử **State Machine**.
+- Tạo một **EventBridge** rule để gọi _State Machine_ dựa trên các phát hiện từ **GuardDuty**.
 
 Kiến trúc của phương án này như sau:
 ![SF](../../../images/1/Workshop_Step_Function.jpg?width=90pc)
 
 Và đồ thị workflow của Step Function như sau:
-![SF](../../../images/1/Step_Function_workflow.jpg?width=90pc)
+![SF](../../../images/1/Step_Functions_workflow.png?width=90pc)
 
 Giải thích ngắn gọn về workflow được trình bày:
 
@@ -43,3 +43,5 @@ Giải thích ngắn gọn về workflow được trình bày:
 5. Áp dụng Security Group _ForensicSG_ cho instance.
 6. Gán tag _isolated_ cho instance.
 7. Workflow kết thúc.
+
+Nếu bạn đã đọc xong, hãy chuyển sang bước tiếp theo là [Triển khai CloudFormation stack](3.2.1-Deploy-the-CloudFormation-stack).

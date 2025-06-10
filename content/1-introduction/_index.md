@@ -34,5 +34,5 @@ This method uses **AWS Step Functions** to orchestrate the incident response as 
 - Tasks can be broken into **independent, manageable states**, including parallel execution, retries, wait conditions, and failure handling logic.
 - Ideal for scenarios requiring **sequenced actions**, such as taking snapshots, gathering forensic data, notifying multiple systems, and then terminating or quarantining the instance.
 
-By comparing both approaches, this lab highlights how AWS automation tools can be tailored to meet different response needs — from rapid reaction to comprehensive remediation pipelines.
+By comparing both approaches, this lab highlights how AWS automation tools can be tailored to meet different response needs from rapid reaction to comprehensive remediation pipelines.
 

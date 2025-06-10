@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.147.5">
@@ -12,21 +12,21 @@
     <title>Phản hồi Step Function :: Tự động hóa quá trình phản ứng sự cố</title>
 
     
-    <link href="/AWS-Workshop/css/nucleus.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/fontawesome-all.min.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/hybrid.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/featherlight.min.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/perfect-scrollbar.min.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/auto-complete.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/atom-one-dark-reasonable.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/hugo-theme.css?1749464264" rel="stylesheet">
+    <link href="/AWS-Workshop/css/nucleus.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/fontawesome-all.min.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/hybrid.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/featherlight.min.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/perfect-scrollbar.min.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/auto-complete.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/atom-one-dark-reasonable.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/hugo-theme.css?1749541880" rel="stylesheet">
     
-    <link href="/AWS-Workshop/css/theme-workshop.css?1749464264" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme-workshop.css?1749541880" rel="stylesheet">
     
     
 
-    <script src="/AWS-Workshop/js/jquery-3.3.1.min.js?1749464264"></script>
+    <script src="/AWS-Workshop/js/jquery-3.3.1.min.js?1749541880"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/AWS-Workshop/js/lunr.min.js?1749464264"></script>
-<script type="text/javascript" src="/AWS-Workshop/js/auto-complete.js?1749464264"></script>
+<script type="text/javascript" src="/AWS-Workshop/js/lunr.min.js?1749541880"></script>
+<script type="text/javascript" src="/AWS-Workshop/js/auto-complete.js?1749541880"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost:1313\/AWS-Workshop\/\/vi";
+        var baseurl = "https:\/\/nnminhtan.github.io\/AWS-Workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="/AWS-Workshop/js/search.js?1749464264"></script>
+<script type="text/javascript" src="/AWS-Workshop/js/search.js?1749541880"></script>
  
   </div>
 
@@ -440,14 +440,14 @@
                        
                 <option
                   id="en"
-                  value="http://localhost:1313/AWS-Workshop/3-configure-response/3.2-step-function-response/"
+                  value="https://nnminhtan.github.io/AWS-Workshop/3-configure-response/3.2-step-function-response/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="http://localhost:1313/AWS-Workshop/vi/3-configure-response/3.2-step-function-response/"
+                  value="https://nnminhtan.github.io/AWS-Workshop/vi/3-configure-response/3.2-step-function-response/"
                   selected
                 >
                   Tiếng Việt
@@ -605,24 +605,24 @@
 
 
 	<h3 id="cấu-hình-phản-hồi-bằng-step-function">Cấu hình phản hồi bằng Step Function</h3>
-<p>Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động thông qua một workflow được xây dựng bằng Step Functions. Những lợi ích của phương pháp này bao gồm:</p>
+<p>Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động thông qua một workflow được xây dựng bằng <strong>Step Functions</strong>. Những lợi ích của phương pháp này bao gồm:</p>
 <ul>
-<li>Không bị giới hạn thời gian khi thực hiện các hành động.</li>
+<li><strong>Không bị giới hạn thời gian</strong> khi thực hiện các hành động.</li>
 <li>Hầu hết các lệnh gọi API của các dịch vụ AWS đều được hỗ trợ và có thể gọi trực tiếp mà không cần viết code.</li>
 <li>Định nghĩa quy trình làm việc bằng đồ thị.</li>
 <li>Kiểm soát tốt hơn các nhánh xử lý khác nhau.</li>
 </ul>
 <p>Các bước chúng ta sẽ thực hiện trong phương án này:</p>
 <ul>
-<li>Triển khai một CloudFormation template để tạo tất cả các tài nguyên cần thiết</li>
-<li>Xác nhận đăng ký SNS để nhận thông báo qua email</li>
-<li>Kiểm thử State Machine</li>
-<li>Tạo một EventBridge rule để gọi State Machine dựa trên các phát hiện từ GuardDuty</li>
+<li>Triển khai một <strong>CloudFormation</strong> template để tạo tất cả các tài nguyên cần thiết.</li>
+<li>Xác nhận đăng ký SNS để nhận <em>thông báo qua email</em>.</li>
+<li>Kiểm thử <strong>State Machine</strong>.</li>
+<li>Tạo một <strong>EventBridge</strong> rule để gọi <em>State Machine</em> dựa trên các phát hiện từ <strong>GuardDuty</strong>.</li>
 </ul>
 <p>Kiến trúc của phương án này như sau:
 <img src="../../../images/1/Workshop_Step_Function.jpg?width=90pc" alt="SF"></p>
 <p>Và đồ thị workflow của Step Function như sau:
-<img src="../../../images/1/Step_Function_workflow.jpg?width=90pc" alt="SF"></p>
+<img src="../../../images/1/Step_Functions_workflow.png?width=90pc" alt="SF"></p>
 <p>Giải thích ngắn gọn về workflow được trình bày:</p>
 <ol>
 <li>
@@ -656,6 +656,7 @@
 <p>Workflow kết thúc.</p>
 </li>
 </ol>
+<p>Nếu bạn đã đọc xong, hãy chuyển sang bước tiếp theo là <a href="/AWS-Workshop/vi/3-configure-response/3.2-step-function-response/3.2.1-deploy-the-cloudformation-stack/">Triển khai CloudFormation stack</a>.</p>
 
 
 
@@ -1020,19 +1021,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/AWS-Workshop/js/clipboard.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/perfect-scrollbar.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/perfect-scrollbar.jquery.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/jquery.sticky.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/featherlight.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/highlight.pack.js?1749464264"></script>
+    <script src="/AWS-Workshop/js/clipboard.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar.jquery.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/jquery.sticky.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/featherlight.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/highlight.pack.js?1749541880"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/AWS-Workshop/js/modernizr.custom-3.6.0.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/learn.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/hugo-learn.js?1749464264"></script>
+    <script src="/AWS-Workshop/js/modernizr.custom-3.6.0.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/learn.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/hugo-learn.js?1749541880"></script>
 
-    <link href="/AWS-Workshop/mermaid/mermaid.css?1749464264" rel="stylesheet" />
-    <script src="/AWS-Workshop/mermaid/mermaid.js?1749464264"></script>
+    <link href="/AWS-Workshop/mermaid/mermaid.css?1749541880" rel="stylesheet" />
+    <script src="/AWS-Workshop/mermaid/mermaid.js?1749541880"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

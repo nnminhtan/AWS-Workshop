@@ -8,14 +8,14 @@ pre = "<b>3.1. </b>"
 
 ### Cấu hình phản hồi bằng một Lambda function
 
-Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động trên một AWS Lambda Function duy nhất. Hàm này sẽ thực hiện tất cả các hành động cần thiết trong cùng một đoạn mã.
+Trong phần này, bạn sẽ học cách triển khai hành động phản hồi sự cố tự động trên một AWS **Lambda Function** duy nhất. Hàm này sẽ thực hiện tất cả các hành động cần thiết trong cùng một đoạn mã.
 
 Các bước thực hiện bao gồm:
 
-- Tạo IAM policy và đính kèm vào IAM role mà Lambda function sẽ sử dụng để thực thi các phản hồi tự động.
-- Tạo Lambda function.
-- Kiểm thử Lambda function.
-- Tạo EventBridge rule để gọi Lambda function dựa trên các phát hiện từ GuardDuty.
+- Tạo **IAM policy** và đính kèm vào **IAM role** mà **Lambda function** sẽ sử dụng để thực thi các phản hồi tự động.
+- Tạo _Lambda function_.
+- Kiểm thử _Lambda function_.
+- Tạo **EventBridge rule** để gọi _Lambda function_ dựa trên các phát hiện từ **GuardDuty**.
 
 Kiến trúc cho phương án này như sau:  
 ![Lambda](../../../images/1/Workshop_Lambda.jpg?width=90pc)

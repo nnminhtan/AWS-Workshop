@@ -11,7 +11,7 @@ pre = "<b>3.2.1. </b>"
 To initiate the scenario and create the infrastructure we need to deploy a CloudFormation template.
 
 {{% notice info %}}
-You can download: [The CloudFormation template](/files/IRWorkshop-StepFunctionsResponse.yaml) file with the required architecture.
+You can download: [The CloudFormation template](../../../files/IRWorkshop-StepFunctionsResponse.yaml) file with the required architecture.
 {{% /notice %}}
 
 1. Access the [CloudFormation](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create)

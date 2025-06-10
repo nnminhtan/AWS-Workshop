@@ -10,7 +10,7 @@ pre = "<b>3.2.1. </b>"
 Để bắt đầu kịch bản và tạo cơ sở hạ tầng cần thiết, chúng ta cần triển khai một CloudFormation template.
 
 {{% notice info %}}
-Bạn có thể tải về: [CloudFormation template](/files/IRWorkshop-StepFunctionsResponse.yaml) chứa kiến trúc.
+Bạn có thể tải về: [CloudFormation template](../../../../files/IRWorkshop-StepFunctionsResponse.yaml) chứa kiến trúc.
 {{% /notice %}}
 
 1. Truy cập vào [CloudFormation](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create)

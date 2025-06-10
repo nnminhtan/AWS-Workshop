@@ -43,12 +43,12 @@ Bạn có thể tải xuống tệp ví dụ tại đây: [Tệp CloudFormation 
    - Trong phần _Parameters_, tại _Automatically enable GuardDuty?_ chọn **Yes-Enable GuardDuty**.
    - Giữ nguyên các cài đặt còn lại, nhấn **Next**.
 
-   ![CloudFormation](../../images/2/2.1/Specify_stack_details.png?width=90pc)
+   ![CloudFormation](../../../images/2/2.1/Specify_stack_details.png?width=90pc)
 
 5. Trong giao diện **Configure stack options**, tại phần **Capabilities**
 
    - **Đánh dấu chọn** cả hai ô dưới đây.
-     ![CloudFormation](../../images/2/2.1/Capabilities.png?width=90pc)
+     ![CloudFormation](../../../images/2/2.1/Capabilities.png?width=90pc)
 
 6. Trong bước **Review and create**:
    - Nếu bạn đã làm các bước trên, hãy cuộn xuống và nhấn nút **Submit**.

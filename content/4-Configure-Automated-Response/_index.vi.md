@@ -20,7 +20,7 @@ Trong môi trường, có một instance _"RedTeam"_ sẽ tạo ra các phát hi
 3. Sau đó chọn mục **Findings**.
 
 {{% notice note %}}
-Bạn cần chờ một lúc để các phát hiện được tạo ra, ngoài ra một số dịch vụ khác đang chạy có thể làm tăng chi phí. Nếu không muốn chờ, bạn có thể bỏ qua phần này (tùy chọn!). Dưới đây là ví dụ kết quả mà bạn có thể thấy.
+Bạn cần chờ một lúc để các phát hiện được tạo ra, ngoài ra một số dịch vụ khác đang chạy có thể làm tăng chi phí. Nếu không muốn chờ, bạn có thể bỏ qua phần này (optional). Dưới đây là ví dụ kết quả mà bạn có thể thấy.
 {{% /notice %}}
 
 ![GuardDuty](../../images/4/GuardDuty_findings.png?width=90pc)

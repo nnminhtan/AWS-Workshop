@@ -23,7 +23,7 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
    ![Test Lambda](../../../../images/3/3.1/3.1.3/Create_test_event.png?width=90pc)
 
    - Panel _Create new test event_ sẽ mở, đặt tên test event là: `GuardDutyViaCWE`.
-   - Dán JSON test event vào _Event JSON_, nhớ sửa lại:
+   - Dán JSON test event vào _Event JSON_, cần edit lại vài phần trước khi chạy được:
      - Thay `<<Account ID>>` bằng AWS Account của bạn.
      - Thay `<<Instance ID>>` bằng ID instance BasicLinuxTarget đã deploy (bạn có thể tìm ID như hình).
 
@@ -64,6 +64,7 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
   
    ```
    Bạn có thể trả lời những câu hỏi sau không?
+
       • Instance đang dùng Security Group nào?.
       • Instance có những tag gì?.
       • Có snapshot nào liên quan đến instance không?.
@@ -75,11 +76,12 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
 
    ```
    Bạn có thể trả lời:
+
       • Security Group đã thay đổi chưa?
       • Tag đã thay đổi chưa?
       • Snapshot mới được tạo chưa?
       • Dùng trình duyệt khác hoặc chế độ ẩn danh, đăng nhập bằng user IAM `testuser` (đã tạo ở phần Setup), thử xóa instance BasicLinuxTarget.
-         
+
          • Bạn có xóa được instance không?
    ```
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.147.5">
@@ -12,21 +12,21 @@
     <title>Single Lambda response :: Automating Incident Response</title>
 
     
-    <link href="/AWS-Workshop/css/nucleus.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/fontawesome-all.min.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/hybrid.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/featherlight.min.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/perfect-scrollbar.min.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/auto-complete.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/atom-one-dark-reasonable.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.css?1749464264" rel="stylesheet">
-    <link href="/AWS-Workshop/css/hugo-theme.css?1749464264" rel="stylesheet">
+    <link href="/AWS-Workshop/css/nucleus.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/fontawesome-all.min.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/hybrid.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/featherlight.min.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/perfect-scrollbar.min.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/auto-complete.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/atom-one-dark-reasonable.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.css?1749541880" rel="stylesheet">
+    <link href="/AWS-Workshop/css/hugo-theme.css?1749541880" rel="stylesheet">
     
-    <link href="/AWS-Workshop/css/theme-workshop.css?1749464264" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme-workshop.css?1749541880" rel="stylesheet">
     
     
 
-    <script src="/AWS-Workshop/js/jquery-3.3.1.min.js?1749464264"></script>
+    <script src="/AWS-Workshop/js/jquery-3.3.1.min.js?1749541880"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/AWS-Workshop/js/lunr.min.js?1749464264"></script>
-<script type="text/javascript" src="/AWS-Workshop/js/auto-complete.js?1749464264"></script>
+<script type="text/javascript" src="/AWS-Workshop/js/lunr.min.js?1749541880"></script>
+<script type="text/javascript" src="/AWS-Workshop/js/auto-complete.js?1749541880"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost:1313\/AWS-Workshop\/";
+        var baseurl = "https:\/\/nnminhtan.github.io\/AWS-Workshop\/";
     
 </script>
-<script type="text/javascript" src="/AWS-Workshop/js/search.js?1749464264"></script>
+<script type="text/javascript" src="/AWS-Workshop/js/search.js?1749541880"></script>
  
   </div>
 
@@ -440,7 +440,7 @@
                        
                 <option
                   id="en"
-                  value="http://localhost:1313/AWS-Workshop/3-configure-response/3.1-single-lambda-response/"
+                  value="https://nnminhtan.github.io/AWS-Workshop/3-configure-response/3.1-single-lambda-response/"
                   selected
                 >
                   English
@@ -448,7 +448,7 @@
                             
                 <option
                   id="vi"
-                  value="http://localhost:1313/AWS-Workshop/vi/3-configure-response/3.1-single-lambda-response/"
+                  value="https://nnminhtan.github.io/AWS-Workshop/vi/3-configure-response/3.1-single-lambda-response/"
                 >
                   Tiếng Việt
                 </option>
@@ -605,13 +605,13 @@
 
 
 	<h3 id="configure-for-single-lambda-response">Configure for single Lambda response</h3>
-<p>In this section you will learn how to implement an automated incident response action on a single AWS Lambda Function. This function will perform all the necessary actions in the same code.</p>
+<p>In this section you will learn how to implement an automated incident response action on a single AWS <strong>Lambda Function</strong>. This function will perform all the necessary actions in the same code.</p>
 <p>The steps we will be performing are:</p>
 <ul>
-<li>Create an IAM policy and attach it to the IAM role that the Lambda function will assume for the automated responses.</li>
-<li>Create the Lambda function.</li>
-<li>Test the Lambda function.</li>
-<li>Create an EventBridge rule that will call the Lambda function based on the GuardDuty findings.</li>
+<li>Create an <strong>IAM policy</strong> and attach it to the <strong>IAM role</strong> that the <strong>Lambda function</strong> will assume for the automated responses.</li>
+<li>Create the <em>Lambda function</em>.</li>
+<li>Test the <em>Lambda function</em>.</li>
+<li>Create an <strong>EventBridge rule</strong> that will call the <em>Lambda function</em> based on the <strong>GuardDuty</strong> findings.</li>
 </ul>
 <p>The architecture for this alternative is the following:
 <img src="../../images/1/Workshop_Lambda.jpg?width=90pc" alt="Lambda"></p>
@@ -983,19 +983,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/AWS-Workshop/js/clipboard.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/perfect-scrollbar.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/perfect-scrollbar.jquery.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/jquery.sticky.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/featherlight.min.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/highlight.pack.js?1749464264"></script>
+    <script src="/AWS-Workshop/js/clipboard.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar.jquery.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/jquery.sticky.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/featherlight.min.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/highlight.pack.js?1749541880"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/AWS-Workshop/js/modernizr.custom-3.6.0.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/learn.js?1749464264"></script>
-    <script src="/AWS-Workshop/js/hugo-learn.js?1749464264"></script>
+    <script src="/AWS-Workshop/js/modernizr.custom-3.6.0.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/learn.js?1749541880"></script>
+    <script src="/AWS-Workshop/js/hugo-learn.js?1749541880"></script>
 
-    <link href="/AWS-Workshop/mermaid/mermaid.css?1749464264" rel="stylesheet" />
-    <script src="/AWS-Workshop/mermaid/mermaid.js?1749464264"></script>
+    <link href="/AWS-Workshop/mermaid/mermaid.css?1749541880" rel="stylesheet" />
+    <script src="/AWS-Workshop/mermaid/mermaid.js?1749541880"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
