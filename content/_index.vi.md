@@ -37,7 +37,7 @@ Phương pháp này sử dụng **AWS Step Functions** để điều phối ph�
 - Các tác vụ được chia thành các **state độc lập và dễ quản lý**, hỗ trợ thực thi song song, retry, delay, và xử lý lỗi.
 - Phù hợp với các tình huống cần hành động theo trình tự như tạo snapshot, thu thập dữ liệu pháp y, gửi thông báo cho nhiều hệ thống, sau đó tiến hành cách ly hoặc xoá instance.
 
-Thông qua việc so sánh hai phương pháp, lab này sẽ cho thấy cách các công cụ tự động hoá của AWS có thể được tuỳ chỉnh để đáp ứng nhu cầu phản hồi — từ phản ứng nhanh đến khắc phục toàn diện.
+Thông qua việc so sánh hai phương pháp, lab này sẽ cho thấy cách các công cụ tự động hoá của AWS có thể được tuỳ chỉnh để đáp ứng nhu cầu phản hồi từ phản ứng nhanh đến khắc phục toàn diện.
 
 #### Mục tiêu của Workshop
 
