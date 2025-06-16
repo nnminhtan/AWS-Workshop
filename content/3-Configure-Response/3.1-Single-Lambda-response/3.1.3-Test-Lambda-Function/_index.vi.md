@@ -91,4 +91,4 @@ Trong bước này, chúng ta sẽ kiểm thử Lambda Function đã tạo ở b
 
    ![Test Lambda](../../../../images/3/3.1/3.1.3/testuser_delete.png?width=90pc)
 
-Khi hoàn thành, tiếp tục bước tiếp theo trong Workshop là [Create a EventBridge Rule](../3.1.4-Create-EventBridge-Rule).
+Khi hoàn thành, tiếp tục bước tiếp theo trong Workshop là [Tạo EventBridge Rule](../3.1.4-Create-EventBridge-Rule).

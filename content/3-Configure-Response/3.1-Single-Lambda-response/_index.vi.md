@@ -1,5 +1,5 @@
 +++
-title = "Single Lambda response"
+title = "Phản hồi bằng Lambda"
 date = 2020
 weight = 1
 chapter = false

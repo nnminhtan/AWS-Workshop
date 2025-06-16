@@ -1,5 +1,5 @@
 +++
-title = "Phản hồi Step Function"
+title = "Phản hồi bằng Step Function"
 date = 2025
 weight = 2
 chapter = false

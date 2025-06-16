@@ -1,5 +1,5 @@
 +++
-title = "Dọn dẹp tài nguyên"
+title = "Tạo IAM Policies và Roles"
 date = 2025
 weight = 1
 chapter = false
@@ -69,4 +69,4 @@ Vì bạn đang ở IAM dashboard từ bước trước, bây giờ hãy chuyể
 
     ![Lambda](../../../../images/3/3.1/3.1.1/Create_role_naming.png?width=90pc)
 
-Sau khi hoàn tất, bạn có thể chuyển sang bước tiếp theo [Create Lambda Function](../3.1.2-Create-Lambda-Function)
+Sau khi hoàn tất, bạn có thể chuyển sang bước tiếp theo [Tạo Lambda Function](../3.1.2-Create-Lambda-Function)
