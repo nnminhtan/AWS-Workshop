@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Test Lambda Function on Tự động hóa quá trình phản ứng sự cố</title>
-    <link>https://nnminhtan.github.io/AWS-Workshop/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/</link>
     <description>Recent content in Test Lambda Function on Tự động hóa quá trình phản ứng sự cố</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="https://nnminhtan.github.io/AWS-Workshop/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/3-configure-response/3.1-single-lambda-response/3.1.3-test-lambda-function/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
