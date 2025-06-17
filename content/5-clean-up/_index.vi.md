@@ -23,7 +23,7 @@ Lưu ý rằng bạn cần xoá một số tài nguyên thủ công **trước k
 
    - Bỏ chọn mục **Enable checkbox**, nhấn **Save**.
 
-   ![CleanUp](../../images/5/Instance_delete_2.png?width=90pc)
+   ![CleanUp](../../images/5/Instance_delete_2.png)
 
 2. Xoá **CloudFormation stack**.
    - Truy cập **CloudFormation console**.

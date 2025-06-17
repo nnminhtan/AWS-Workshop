@@ -26,7 +26,7 @@ Kiến trúc của phương án này như sau:
 ![SF](../../../images/1/Workshop_Step_Function.jpg?width=90pc)
 
 Và đồ thị workflow của Step Function như sau:
-![SF](../../../images/1/Step_Functions_workflow.png?width=90pc)
+![SF](../../../images/1/Step_Functions_workflow.png)
 
 Giải thích ngắn gọn về workflow được trình bày:
 

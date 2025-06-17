@@ -24,7 +24,7 @@ The architecture for this alternative is the following:
    ![SF](../../images/1/Workshop_Step_Function.jpg?width=90pc)
 
 And the Step Function workflow graph is the following:
-   ![SF](../../images/1/Step_Functions_workflow.png?width=90pc)
+   ![SF](../../images/1/Step_Functions_workflow.png)
 
 A brief explanation of the workflow presented:
 

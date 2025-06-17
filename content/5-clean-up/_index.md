@@ -23,7 +23,7 @@ Please note that you will need to manually delete some resources before you dele
 
     - Uncheck the **Enable checkbox**, click **Save**.
     
-    ![CleanUp](../images/5/Instance_delete_2.png?width=90pc)
+    ![CleanUp](../images/5/Instance_delete_2.png)
 
 2. Delete the **Cloudformation stack**.
     - Go to the AWS **CloudFormation console**.
